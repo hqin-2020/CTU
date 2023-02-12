@@ -47,12 +47,12 @@ ell = 1/9
 
 #################################
 ############# Grids #############
-zmax = 0.02
+zmax = 0.0225
 zmin = -zmax
 
 W1_min = zmin
 W1_max = zmax
-hW1 = 0.001
+hW1 = 0.00045
 W1 = np.arange(W1_min, W1_max+hW1, hW1)
 nW1 = len(W1)
 
