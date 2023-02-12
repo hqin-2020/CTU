@@ -47,7 +47,7 @@ epsilon = args.epsilon
 
 Data_Dir = "./data/"+args.dataname+"/"
 
-model_simul_dir_post = Data_Dir + "result_ell_{}_rho_{}_eps_{}_frac_{}".format(ell,rho,epsilon,fraction)
+model_simul_dir_post = Data_Dir + "result_rho_{}_eps_{}_frac_{}".format(rho,epsilon,fraction)
 
 res = pickle.load(open(model_simul_dir_post, "rb"))
 
