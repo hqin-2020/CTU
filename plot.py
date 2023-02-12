@@ -47,8 +47,9 @@ epsilon = args.epsilon
 
 Data_Dir = "./data/"+args.dataname+"/"
 
+print(1)
 model_simul_dir_post = Data_Dir + "result_rho_{}_eps_{}_frac_{}".format(rho,epsilon,fraction)
-
+print(model_simul_dir_post)
 res = pickle.load(open(model_simul_dir_post, "rb"))
 
 W1 = res["W1"]
