@@ -195,7 +195,7 @@ while FC_Err > tol and epoch < max_iter:
     C_2 = np.sum((sigma_z1)**2)/2*np.ones(W1_mat.shape)
     C_3 = np.zeros(W1_mat.shape)
     C_12 = np.sum(sigma_z1*(sigma_2-sigma_1))*np.ones(W1_mat.shape)
-    C_12 = np.zeros(W1_mat.shape)
+    # C_12 = np.zeros(W1_mat.shape)
     C_23 = np.zeros(W1_mat.shape)
     C_31 = np.zeros(W1_mat.shape)
     D = delta/(1-rho) * (c**(1-rho)*np.exp((rho-1)*V0) - 1) 
