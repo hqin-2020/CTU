@@ -98,7 +98,7 @@ print("Grid step: [{}, {}, {}]\n".format(hW1, hW2, hW3))
 V0 = W1_mat**2 + 5
 
 i1_star = 0.0025*np.ones(W1_mat.shape)
-i2_star = 0.0025*np.ones(W1_mat.shape)
+i2_star = 0.0015*np.ones(W1_mat.shape)
 
 dVec = np.array([hW1, hW2, hW3])
 increVec = np.array([1, nW1, nW1*nW2], dtype=np.int32)
