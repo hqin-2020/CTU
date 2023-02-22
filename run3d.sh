@@ -9,9 +9,9 @@ python_name="twocap3d.py"
 
 maxiter=3000000
 
-rhoarray=(1.00001)
+rhoarray=(1.1)
 
-gammaarray=(1.001)
+gammaarray=(8.0)
 for epsilon in ${epsilonarray[@]}; do
     for fraction in "${fractionarray[@]}"; do
         for rho in "${rhoarray[@]}"; do
