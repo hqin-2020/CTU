@@ -35,8 +35,8 @@ gamma = args.gamma
 
 phi1 = 28.0
 phi2 = 28.0
-eta1 = 0.013
-eta2 = 0.013
+eta1 = 0.0
+eta2 = 0.0
 
 a11 = 0.014
 alpha = 0.05
