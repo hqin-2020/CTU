@@ -197,7 +197,7 @@ while FC_Err > tol and epoch < max_iter:
     C_31 = np.zeros(W1_mat.shape)
     temp = (1-rho)* ( np.log( (1-r_mat)*(A1_cap - d1) + r_mat *(A2_cap-d2))-V0 )
     D = delta/(1-rho) * ( np.exp(temp) - 1) 
-    D += psi1*(1-r_mat) +psi2*r_mat - (.01)**2/2 * (  (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)**2  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)**2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)**2     )
+    D += psi1*(1-r_mat) +psi2*r_mat - 1/2* (  (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)**2  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)**2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)**2     )
     # D += .01*( (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)*h1  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)*h2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)*hz       )
     D += ell * ( h1**2 + h2**2 +hz**2 )/2
     
