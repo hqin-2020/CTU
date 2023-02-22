@@ -19,6 +19,7 @@ reporterror = True
 
 parser = argparse.ArgumentParser(description="xi_r values")
 parser.add_argument("--rho", type=float)
+parser.add_argument("--gamma", type=float)
 parser.add_argument("--epsilon", type=float)
 parser.add_argument("--fraction", type=float)
 parser.add_argument("--maxiter", type=float)
@@ -47,7 +48,7 @@ beta_hat = 1.0
 kappa_hat = 0.014
 
 rho = args.rho
-gamma = 10
+gamma = args.gamma
 zeta = 0.5
 kappa = 0.5
 beta1 = 1
