@@ -72,7 +72,7 @@ nW1 = len(W1)
 
 W2_min = zmin
 W2_max = zmax
-hW2 = 0.1
+hW2 = 0.001
 W2 = np.arange(W2_min, W2_max+hW2, hW2)
 nW2 = len(W2)
 
