@@ -161,6 +161,7 @@ while FC_Err > tol and epoch < max_iter:
     
 ########################## distortion #############
 
+    gamma = 8
     h1_new =  (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z[0] *dVdW2
     h2_new =  (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z[1] *dVdW2
     hz_new =  (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z[2] *dVdW2
@@ -176,29 +177,29 @@ while FC_Err > tol and epoch < max_iter:
     d2[d2>=alpha] = alpha-0.001
     
     
-    # h1[h1>=-1e-16] = -1e-16
-    # h2[h2>=-1e-16] = -1e-16
-    # hz[hz>=-1e-16] = -1e-16
+    h1[h1>=-1e-16] = -1e-16
+    h2[h2>=-1e-16] = -1e-16
+    hz[hz>=-1e-16] = -1e-16
 
     psi1 = 1/phi1 * np.log(1+phi1*d1_star) + beta_hat*W2_mat
     psi2 = 1/phi2 * np.log(1+phi2*d2_star) + beta_hat*W2_mat
     
     A = np.zeros(W1_mat.shape)
-    B_1 = psi2-psi1 -1/2 *  (np.sum(sigma_2**2)-np.sum(sigma_1**2))
+    B_1 = psi2-psi1 -1/2 * (np.sum(sigma_2**2)-np.sum(sigma_1**2))
     # B_1 += .01*( ((1-r_mat)*sigma_1[0]+ r_mat*sigma_2[0])*h1  + ((1-r_mat)*sigma_1[1]+ r_mat*sigma_2[1])*h2 + ((1-r_mat)*sigma_1[2]+ r_mat*sigma_2[2])*hz)
     B_2 = -kappa_hat*W2_mat #+ sigma_z[0]*h1 + sigma_z[1]*h2 + sigma_z[2]*hz
     B_3 = np.zeros(W1_mat.shape)
     C_1 = np.sum( (sigma_2-sigma_1)**2 )*np.ones(W1_mat.shape)/2
     C_2 = np.sum( (sigma_z)**2 )*np.ones(W1_mat.shape)/2
     C_3 = np.zeros(W1_mat.shape)
-    # C_12 = .01*np.sum( (sigma_2-sigma_1)*sigma_z)*np.ones(W1_mat.shape)
-    C_12 = np.zeros(W1_mat.shape)
+    C_12 = np.sum( (sigma_2-sigma_1)*sigma_z)*np.ones(W1_mat.shape)
+    # C_12 = np.zeros(W1_mat.shape)
     C_23 = np.zeros(W1_mat.shape)
     C_31 = np.zeros(W1_mat.shape)
     D = delta/(1-rho) * (c**(1-rho)*np.exp((rho-1)*V0) - 1) 
     # D += psi1*(1-r_mat) +psi2*r_mat - 1/2* (  (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)**2  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)**2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)**2     )
     # D += .01*( (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)*h1  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)*h2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)*hz       )
-    D += ( h1**2 + h2**2 +hz**2 )/2
+    # D +=  (1-gamma)*( h1**2 + h2**2 +hz**2 )/2
     
     start_ksp = time.time()
 
