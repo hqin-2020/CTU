@@ -78,7 +78,7 @@ nW2 = len(W2)
 
 W3_min = kamin
 W3_max = kamax
-hW3 = 0.5
+hW3 = 0.1
 W3 = np.arange(W3_min, W3_max+hW3, hW3)
 nW3 = len(W3)
 
@@ -95,7 +95,7 @@ upperLims = np.array([W1.max(), W2.max(), W3.max()], dtype=np.float64)
 print("Grid dimension: [{}, {}, {}]\n".format(nW1, nW2, nW3))
 print("Grid step: [{}, {}, {}]\n".format(hW1, hW2, hW3))
 
-V0 = W3_mat**2 + 5
+V0 = W1_mat**2 + 5
 
 i1_star = 0.0025*np.ones(W1_mat.shape)
 i2_star = 0.0025*np.ones(W1_mat.shape)
@@ -224,34 +224,6 @@ while FC_Err > tol and epoch < max_iter:
     i1_star = i1
     i2_star = i2
     epoch += 1
-    
-    # if FC_Err<=1e-5 or epoch >=2990000:
-        
-    #     if epoch %1==0:
-    #         print("V0_max,min={},{}".format(V0.max() , V0.min()))
-    #         print("D_max,min={},{}".format(D.max() , D.min()))
-    #         print("d_max,min={},{}".format(d.max() , d.min()))
-    #         print("h1_max,min={},{}".format(h1.max() , h1.min()))
-    #         print("hz_max,min={},{}".format(hz.max() , hz.min()))
-    #         print("petsc total: {:.3f}s".format(end_ksp - start_ksp))
-    #         print("PETSc preconditioned residual norm is {:g} iterations: {}".format(
-    #             ksp.getResidualNorm(), ksp.getIterationNumber()))
-    #         print("Epoch {:d} (PETSc): PDE Error: {:.10f} False Transient Error: {:.10f}" .format(
-    #             epoch, PDE_Err, FC_Err))
-    #         print("Epoch time: {:.4f}".format(time.time() - start_eps))
-    # else:
-    #     if epoch %100==0:
-    #         print("V0_max,min={},{}".format(V0.max() , V0.min()))
-    #         print("D_max,min={},{}".format(D.max() , D.min()))
-    #         print("d_max,min={},{}".format(d.max() , d.min()))
-    #         print("h1_max,min={},{}".format(h1.max() , h1.min()))
-    #         print("hz_max,min={},{}".format(hz.max() , hz.min()))
-    #         print("petsc total: {:.3f}s".format(end_ksp - start_ksp))
-    #         print("PETSc preconditioned residual norm is {:g} iterations: {}".format(
-    #             ksp.getResidualNorm(), ksp.getIterationNumber()))
-    #         print("Epoch {:d} (PETSc): PDE Error: {:.10f} False Transient Error: {:.10f}" .format(
-    #             epoch, PDE_Err, FC_Err))
-    #         print("Epoch time: {:.4f}".format(time.time() - start_eps))
     
     print("V0_max,min={},{}".format(V0.max() , V0.min()))
     print("D_max,min={},{}".format(D.max() , D.min()))
