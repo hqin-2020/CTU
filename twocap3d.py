@@ -80,7 +80,7 @@ nW2 = len(W2)
 
 W3_min = 0
 W3_max = 1
-hW3 = 0.1
+hW3 = 0.5
 W3 = np.arange(W3_min, W3_max+hW3, hW3)
 nW3 = len(W3)
 
@@ -146,8 +146,8 @@ while FC_Err > tol and epoch < max_iter:
     
 ##########################investment-capital ratio#############
 
-    i1_star[i1_star>=alpha/2] = alpha/2-0.001
-    i2_star[i2_star>=alpha/2] = alpha/2-0.001
+    i1_star[i1_star>=alpha] = alpha-0.001
+    i2_star[i2_star>=alpha] = alpha-0.001
 
     Phi1 = 1/phi1 * np.log(1+phi1*i1_star)
     Phi2 = 1/phi2 * np.log(1+phi2*i2_star)
@@ -188,10 +188,10 @@ while FC_Err > tol and epoch < max_iter:
     B_1 = Phi2 - Phi1 + (beta2-beta1)*W2_mat - eta2*np.ones(W1_mat.shape) + eta1*np.ones(W1_mat.shape) - 1/2*(np.sum(sigma_2**2)-np.sum(sigma_1**2))*np.ones(W1_mat.shape)
     B_2 = -a11*W2_mat
     B_3 = np.zeros(W1_mat.shape)
-    C_1 = np.sum((sigma_2-sigma_1)**2)/2
-    C_2 = np.sum((sigma_z1)**2)/2 
+    C_1 = np.sum((sigma_2-sigma_1)**2)/2*np.ones(W1_mat.shape)
+    C_2 = np.sum((sigma_z1)**2)/2*np.ones(W1_mat.shape)
     C_3 = np.zeros(W1_mat.shape)
-    C_12 = np.sum(sigma_z1*(sigma_2-sigma_1))
+    C_12 = np.sum(sigma_z1*(sigma_2-sigma_1))*np.ones(W1_mat.shape)
     C_12 = np.zeros(W1_mat.shape)
     C_23 = np.zeros(W1_mat.shape)
     C_31 = np.zeros(W1_mat.shape)
