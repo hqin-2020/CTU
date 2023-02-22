@@ -127,42 +127,26 @@ FC_Err = 1
 epoch = 0
 max_iter = args.maxiter
 tol = 1e-6
-# fraction = 0.1
-# epsilon = 0.01
+
 fraction = args.fraction
 epsilon = args.epsilon
 
 while FC_Err > tol and epoch < max_iter:
     start_eps = time.time()
 
-
-
-    # dVdW1= finiteDiff_3D(V0, 0, 1, hW1)
-    # ddVddW1= finiteDiff_3D(V0, 0, 2, hW1)
     dVdW1= finiteDiff_3D2(V0, 0, 1, hW1)
     ddVddW1= finiteDiff_3D2(V0, 0, 2, hW1)
-    # dZ = dW1
+
     dVdW2 = finiteDiff_3D(V0, 1, 1, hW2)
     ddVddW2 = finiteDiff_3D(V0, 1, 2, hW2)
     
     ddVdW1dW2 = finiteDiff_3D2(dVdW1, 1, 1, hW2)
-    # # # dY = dW2
-    # dVdW3 = finiteDiff_3D(V0, 2, 1, hW3)
-    # ddVddW3 = finiteDiff_3D(V0, 2, 2, hW3)
-    # # dZ = dW2
 
-    # need to change the control optimizatio completely due to corner solution of c
-
-    # if np.any(dVdW1+ddVddW1 * r * sigma**2 >= 0):
-    #     print("warning\n")
-    
 ##########################investment-capital ratio#############
     d1_star[d1_star>=A1_cap] = A1_cap-0.001
     d2_star[d2_star>=A2_cap] = A2_cap-0.001
     
     mc = (delta*np.exp(V0)**(rho-1))   /  ( (1-r_mat)*(A1_cap-d1_star) + (r_mat)*(A2_cap-d2_star) )**(rho)
-    
-    # mc[mc<=1]=1+1e-16
     
     d1_new = mc / (1-r_mat-dVdW1)
     d1_new = d1_new -1
@@ -176,9 +160,9 @@ while FC_Err > tol and epoch < max_iter:
     
 ########################## distortion #############
 
-    h1_new = -(.01*(sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)+.01*dVdW1*(sigma_2[0]-sigma_1[0])+sigma_z[0]*dVdW2)/ell
-    h2_new = -(.01*(sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)+.01*dVdW1*(sigma_2[1]-sigma_1[1])+sigma_z[1]*dVdW2)/ell
-    hz_new = -(.01*(sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)+.01*dVdW1*(sigma_2[2]-sigma_1[2])+sigma_z[2]*dVdW2)/ell
+    h1_new = -((sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)+dVdW1*(sigma_2[0]-sigma_1[0])+sigma_z[0]*dVdW2)/ell
+    h2_new = -((sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)+dVdW1*(sigma_2[1]-sigma_1[1])+sigma_z[1]*dVdW2)/ell
+    hz_new = -((sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)+dVdW1*(sigma_2[2]-sigma_1[2])+sigma_z[2]*dVdW2)/ell
     # c_new[c_new<=1e-16] = 1e-16
 
     d1 = d1_new * fraction + d1_star*(1-fraction)
@@ -196,15 +180,15 @@ while FC_Err > tol and epoch < max_iter:
     # hz[hz>=-1e-16] = -1e-16
 
 
-    psi1 = d1 - phi1/2*d1**2+.01*(alpha_z_hat+beta_hat*W2_mat)
-    psi2 = d2 - phi2/2*d2**2+.01*(alpha_z_hat+beta_hat*W2_mat)
+    psi1 = d1 - phi1/2*d1**2+(alpha_z_hat+beta_hat*W2_mat)
+    psi2 = d2 - phi2/2*d2**2+(alpha_z_hat+beta_hat*W2_mat)
     
     A = np.zeros(W1_mat.shape)
-    B_1 = psi2-psi1 - (.01)**2/2 *  (np.sum(sigma_2**2)-np.sum(sigma_1**2))
+    B_1 = psi2-psi1 -1/2 *  (np.sum(sigma_2**2)-np.sum(sigma_1**2))
     # B_1 += .01*( ((1-r_mat)*sigma_1[0]+ r_mat*sigma_2[0])*h1  + ((1-r_mat)*sigma_1[1]+ r_mat*sigma_2[1])*h2 + ((1-r_mat)*sigma_1[2]+ r_mat*sigma_2[2])*hz)
-    B_2 = -kappa_hat*W2_mat + sigma_z[0]*h1 + sigma_z[1]*h2 + sigma_z[2]*hz
+    B_2 = -kappa_hat*W2_mat #+ sigma_z[0]*h1 + sigma_z[1]*h2 + sigma_z[2]*hz
     B_3 = np.zeros(W1_mat.shape)
-    C_1 = (.01)**2 * np.sum( (sigma_2-sigma_1)**2 )*np.ones(W1_mat.shape)/2
+    C_1 = np.sum( (sigma_2-sigma_1)**2 )*np.ones(W1_mat.shape)/2
     C_2 = np.sum( (sigma_z)**2 )*np.ones(W1_mat.shape)/2
     C_3 = np.zeros(W1_mat.shape)
     # C_12 = .01*np.sum( (sigma_2-sigma_1)*sigma_z)*np.ones(W1_mat.shape)
