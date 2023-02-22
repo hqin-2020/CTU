@@ -337,7 +337,7 @@ while FC_Err > tol and epoch < max_iter:
 
 res = {
     "V0": V0,
-    "d_star": d_star,
+    "d_star": d1_star,
     "h1_star": h1_star,
     "hz_star": hz_star,
     "FC_Err": FC_Err,

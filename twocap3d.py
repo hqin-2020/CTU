@@ -128,13 +128,13 @@ while FC_Err > tol and epoch < max_iter:
     
     start_eps = time.time()
 
-    dVdW1= finiteDiff_3D(V0, 0, 1, hW1)
-    ddVddW1= finiteDiff_3D(V0, 0, 2, hW1)
+    dVdW1= finiteDiff_3D2(V0, 0, 1, hW1)
+    ddVddW1= finiteDiff_3D2(V0, 0, 2, hW1)
 
-    dVdW2 = finiteDiff_3D(V0, 1, 1, hW2)
-    ddVddW2 = finiteDiff_3D(V0, 1, 2, hW2)
+    dVdW2 = finiteDiff_3D2(V0, 1, 1, hW2)
+    ddVddW2 = finiteDiff_3D2(V0, 1, 2, hW2)
     
-    ddVdW1dW2 = finiteDiff_3D(dVdW1, 1, 1, hW2)
+    ddVdW1dW2 = finiteDiff_3D2(dVdW1, 1, 1, hW2)
 
     # need to change the control optimizatio completely due to corner solution of c
 
@@ -202,11 +202,11 @@ while FC_Err > tol and epoch < max_iter:
     petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff(W1_mat_1d, W2_mat_1d, W3_mat_1d, A_1d, B_1_1d, B_2_1d,
                                        B_3_1d, C_1_1d, C_2_1d, C_3_1d, C_12_1d, C_23_1d, C_31_1d, epsilon, lowerLims, upperLims, dVec, increVec, petsc_mat)
     V0_1d = V0.ravel(order='F')
-    b = V0_1d / epsilon + D_1d 
+    # b = V0_1d / epsilon + D_1d 
     # petsclinearsystemXDiff.formLinearSystem(W1_mat_1d, W2_mat_1d, W3_mat_1d, A_1d, B_1_1d, B_2_1d,
     #                                    B_3_1d, C_1_1d, C_2_1d, C_3_1d, epsilon, lowerLims, upperLims, dVec, increVec, petsc_mat)
     # V0_1d = V0.ravel(order='F')
-    # b = V0_1d  + D_1d *epsilon
+    b = V0_1d  + D_1d *epsilon
     petsc_rhs = PETSc.Vec().createWithArray(b)
     x = petsc_mat.createVecRight()
 
