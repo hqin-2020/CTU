@@ -201,7 +201,7 @@ while FC_Err > tol and epoch < max_iter:
     
     A = np.zeros(W1_mat.shape)
     B_1 = psi2-psi1 - (.01)**2/2 *  (np.sum(sigma_2**2)-np.sum(sigma_1**2))
-    B_1 += .01*( ((1-r_mat)*sigma_1[0]+ r_mat*sigma_2[0])*h1  + ((1-r_mat)*sigma_1[1]+ r_mat*sigma_2[1])*h2 + ((1-r_mat)*sigma_1[2]+ r_mat*sigma_2[2])*hz)
+    # B_1 += .01*( ((1-r_mat)*sigma_1[0]+ r_mat*sigma_2[0])*h1  + ((1-r_mat)*sigma_1[1]+ r_mat*sigma_2[1])*h2 + ((1-r_mat)*sigma_1[2]+ r_mat*sigma_2[2])*hz)
     B_2 = -kappa_hat*W2_mat + sigma_z[0]*h1 + sigma_z[1]*h2 + sigma_z[2]*hz
     B_3 = np.zeros(W1_mat.shape)
     C_1 = (.01)**2 * np.sum( (sigma_2-sigma_1)**2 )*np.ones(W1_mat.shape)/2
@@ -214,7 +214,7 @@ while FC_Err > tol and epoch < max_iter:
     temp = (1-rho)* ( np.log( (1-r_mat)*(A1_cap - d1) + r_mat *(A2_cap-d2))-V0 )
     D = delta/(1-rho) * ( np.exp(temp) - 1) 
     D += psi1*(1-r_mat) +psi2*r_mat - (.01)**2/2 * (  (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)**2  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)**2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)**2     )
-    D += .01*( (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)*h1  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)*h2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)*hz       )
+    # D += .01*( (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)*h1  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)*h2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)*hz       )
     D += ell * ( h1**2 + h2**2 +hz**2 )/2
     
     start_ksp = time.time()
