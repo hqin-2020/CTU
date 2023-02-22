@@ -146,8 +146,8 @@ while FC_Err > tol and epoch < max_iter:
     
 ##########################investment-capital ratio#############
 
-    i1_star[i1_star>=alpha] = alpha-0.001
-    i2_star[i2_star>=alpha] = alpha-0.001
+    i1_star[i1_star>=alpha/2] = alpha/2-0.001
+    i2_star[i2_star>=alpha/2] = alpha/2-0.001
 
     Phi1 = 1/phi1 * np.log(1+phi1*i1_star)
     Phi2 = 1/phi2 * np.log(1+phi2*i2_star)
@@ -167,8 +167,8 @@ while FC_Err > tol and epoch < max_iter:
     i1 = i1_new * fraction + i1_star*(1-fraction)
     i2 = i2_new * fraction + i2_star*(1-fraction)
 
-    i1[i1>=alpha] = alpha-0.001
-    i2[i2>=alpha] = alpha-0.001
+    i1[i1>=alpha/2] = alpha/2-0.001
+    i2[i2>=alpha/2] = alpha/2-0.001
 
     ut1 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z1[0] *dVdW2
     ut2 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
