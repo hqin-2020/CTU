@@ -198,7 +198,7 @@ while FC_Err > tol and epoch < max_iter:
     D = delta/(1-rho) * (c**(1-rho)*np.exp((rho-1)*V0) - 1) 
     # D += psi1*(1-r_mat) +psi2*r_mat - 1/2* (  (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)**2  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)**2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)**2     )
     # D += .01*( (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)*h1  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)*h2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)*hz       )
-    D += ell * ( h1**2 + h2**2 +hz**2 )/2
+    D += ( h1**2 + h2**2 +hz**2 )/2
     
     start_ksp = time.time()
 
