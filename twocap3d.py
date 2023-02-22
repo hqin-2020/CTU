@@ -50,8 +50,8 @@ sigma_1 = scale * np.array([.0048, 0, 0])
 sigma_2 = scale * np.array([ 0, .0048, 0])
 sigma_z1 = np.array([ .011*np.sqrt(5), .011*np.sqrt(5) , .025])
 
-beta1 = 0.1
-beta2 = 0.1
+beta1 = 0.01
+beta2 = 0.01
 
 #==============================================================================#
 #    Grids
@@ -139,11 +139,6 @@ while FC_Err > tol and epoch < max_iter:
     
     ddVdW1dW2 = finiteDiff_3D2(dVdW1, 1, 1, hW2)
 
-    # need to change the control optimizatio completely due to corner solution of c
-
-    # if np.any(dVdW1+ddVddW1 * r * sigma**2 >= 0):
-    #     print("warning\n")
-    
 ##########################investment-capital ratio#############
 
     i1_star[i1_star>=alpha] = alpha-0.001
@@ -200,7 +195,6 @@ while FC_Err > tol and epoch < max_iter:
     C_2 = np.sum((sigma_z1)**2)/2*np.ones(W1_mat.shape)
     C_3 = np.zeros(W1_mat.shape)
     C_12 = np.sum(sigma_z1*(sigma_2-sigma_1))*np.ones(W1_mat.shape)
-    # C_12 = np.zeros(W1_mat.shape)
     C_23 = np.zeros(W1_mat.shape)
     C_31 = np.zeros(W1_mat.shape)
     D = delta/(1-rho) * (c**(1-rho)*np.exp((rho-1)*V0) - 1) 
