@@ -171,9 +171,17 @@ while FC_Err > tol and epoch < max_iter:
     ut2 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
     ut3 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
 
-    # ut1 = ut1 * fraction + ut1_star*(1-fraction)
-    # ut2 = ut2 * fraction + ut2_star*(1-fraction)
-    # ut3 = ut3 * fraction + ut3_star*(1-fraction)
+    ut1 = ut1 * fraction + ut1_star*(1-fraction)
+    ut2 = ut2 * fraction + ut2_star*(1-fraction)
+    ut3 = ut3 * fraction + ut3_star*(1-fraction)
+
+    ut1 = -ut1
+    ut2 = -ut2
+    ut3 = -ut3
+
+    ut1[ut1>=-1e-16] = -1e-16
+    ut2[ut2>=-1e-16] = -1e-16
+    ut3[ut3>=-1e-16] = -1e-16
 
     ut = (1-gamma)/2 * np.sum(ut1**2 + ut2**2 + ut3**2)
 
