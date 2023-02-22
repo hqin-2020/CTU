@@ -119,7 +119,7 @@ fraction = args.fraction
 epsilon = args.epsilon
 
 ############ Initialization ############
-V0 = W1_mat**2 + 5
+V0 = W2_mat**2 + 5
 
 i1_star = 0.0025*np.ones(W1_mat.shape)
 i2_star = 0.0025*np.ones(W1_mat.shape)
