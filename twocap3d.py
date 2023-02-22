@@ -149,8 +149,6 @@ while FC_Err > tol and epoch < max_iter:
     i1_star[i1_star>=alpha] = alpha-0.001
     i2_star[i2_star>=alpha] = alpha-0.001
 
-    Phi1 = 1/phi1 * np.log(1+phi1*i1_star)
-    Phi2 = 1/phi2 * np.log(1+phi2*i2_star)
 
     k1a = ((1-zeta) + zeta*np.exp(W1_mat)**(1-kappa))**(1/(kappa-1))
     k2a = ((1-zeta)*np.exp(W1_mat)**(kappa-1) + zeta)**(1/(kappa-1))
@@ -183,6 +181,9 @@ while FC_Err > tol and epoch < max_iter:
     dkadk1dk1 = (kappa-1) * ((1-zeta)**2*(k1a)**(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k1a)**(-kappa+1))
     dkadk1dk2 = (kappa-1) * zeta*(1-zeta)*(k1a)**(-kappa+1)*(k2a)**(-kappa+1) 
     dkadk2dk2 = (kappa-1) * (zeta**2*(k2a)**(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k2a)**(-kappa+1))
+    
+    Phi1 = 1/phi1 * np.log(1+phi1*i1)
+    Phi2 = 1/phi2 * np.log(1+phi2*i2)
 
     A = np.zeros(W1_mat.shape)
     B_1 = Phi2 - Phi1 + (beta2-beta1)*W2_mat - eta2*np.ones(W1_mat.shape) + eta1*np.ones(W1_mat.shape) - 1/2*(np.sum(sigma_2**2)-np.sum(sigma_1**2))*np.ones(W1_mat.shape)
