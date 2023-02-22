@@ -157,8 +157,8 @@ while FC_Err > tol and epoch < max_iter:
     #     print("warning\n")
     
 ##########################investment-capital ratio#############
-    # d1_star[d1_star>=A1_cap] = A1_cap-0.001
-    # d2_star[d2_star>=A2_cap] = A2_cap-0.001
+    d1_star[d1_star>=A1_cap] = A1_cap-0.001
+    d2_star[d2_star>=A2_cap] = A2_cap-0.001
     
     mc = (delta*np.exp(V0)**(rho-1))   /  ( (1-r_mat)*(A1_cap-d1_star) + (r_mat)*(A2_cap-d2_star) )**(rho)
     
@@ -187,8 +187,8 @@ while FC_Err > tol and epoch < max_iter:
     h2 = h2_new * fraction + h2_star*(1-fraction)
     hz = hz_new * fraction + hz_star*(1-fraction)
 
-    # d1[d1>=A1_cap] = A1_cap-0.001
-    # d2[d2>=A2_cap] = A2_cap-0.001
+    d1[d1>=A1_cap] = A1_cap-0.001
+    d2[d2>=A2_cap] = A2_cap-0.001
     
     
     # h1[h1>=-1e-16] = -1e-16
