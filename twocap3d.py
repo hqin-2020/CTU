@@ -196,10 +196,10 @@ while FC_Err > tol and epoch < max_iter:
     C_23 = np.zeros(W1_mat.shape)
     C_31 = np.zeros(W1_mat.shape)
     D = delta/(1-rho) * (c**(1-rho)*np.exp((rho-1)*V0) - 1) 
-    # D += (1-zeta)*k1a**(1-kappa)*(Phi1+beta1*W2_mat-eta1*np.ones(W1_mat.shape)) 
-    # D += zeta*k2a**(1-kappa)*(Phi2+beta2*W2_mat-eta2*np.ones(W1_mat.shape))
-    # D += 1/2*(np.sum(sigma_1**2)*dkadk1dk1 + np.sum(sigma_2**2)*dkadk2dk2 + 2*np.sum(sigma_1*sigma_2)*dkadk1dk2)
-    # D += ut
+    D += (1-zeta)*k1a**(1-kappa)*(Phi1+beta1*W2_mat-eta1*np.ones(W1_mat.shape)) 
+    D += zeta*k2a**(1-kappa)*(Phi2+beta2*W2_mat-eta2*np.ones(W1_mat.shape))
+    D += 1/2*(np.sum(sigma_1**2)*dkadk1dk1 + np.sum(sigma_2**2)*dkadk2dk2 + 2*np.sum(sigma_1*sigma_2)*dkadk1dk2)
+    D += ut
     
     start_ksp = time.time()
 
