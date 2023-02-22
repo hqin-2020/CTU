@@ -220,7 +220,6 @@ while FC_Err > tol and epoch < max_iter:
     h2[h2>=-1e-16] = -1e-16
     hz[hz>=-1e-16] = -1e-16
 
-
     psi1 = d1 - phi1/2*d1**2+(alpha_z_hat+beta_hat*W2_mat)
     psi2 = d2 - phi2/2*d2**2+(alpha_z_hat+beta_hat*W2_mat)
     

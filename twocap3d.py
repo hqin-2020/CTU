@@ -171,9 +171,9 @@ while FC_Err > tol and epoch < max_iter:
     ut2 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
     ut3 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
 
-    ut1 = ut1 * fraction + ut1_star*(1-fraction)
-    ut2 = ut2 * fraction + ut2_star*(1-fraction)
-    ut3 = ut3 * fraction + ut3_star*(1-fraction)
+    # ut1 = ut1 * fraction + ut1_star*(1-fraction)
+    # ut2 = ut2 * fraction + ut2_star*(1-fraction)
+    # ut3 = ut3 * fraction + ut3_star*(1-fraction)
 
     ut = (1-gamma)/2 * np.sum(ut1**2 + ut2**2 + ut3**2)
 
@@ -181,11 +181,11 @@ while FC_Err > tol and epoch < max_iter:
     dkadk1dk2 = (kappa-1) * zeta*(1-zeta)*(k1a)**(-kappa+1)*(k2a)**(-kappa+1) 
     dkadk2dk2 = (kappa-1) * (zeta**2*(k2a)**(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k2a)**(-kappa+1))
     
-    # Phi1 = 1/phi1 * np.log(1+phi1*i1)
-    # Phi2 = 1/phi2 * np.log(1+phi2*i2)
+    Phi1 = 1/phi1 * np.log(1+phi1*i1)
+    Phi2 = 1/phi2 * np.log(1+phi2*i2)
 
-    Phi1 = i1 - phi1/2*i1**2
-    Phi2 = i2 - phi2/2*i2**2
+    # Phi1 = i1 - phi1/2*i1**2
+    # Phi2 = i2 - phi2/2*i2**2
 
     A = np.zeros(W1_mat.shape)
     B_1 = Phi2 - Phi1 + (beta2-beta1)*W2_mat - eta2*np.ones(W1_mat.shape) + eta1*np.ones(W1_mat.shape) - 1/2*(np.sum(sigma_2**2)-np.sum(sigma_1**2))*np.ones(W1_mat.shape)
