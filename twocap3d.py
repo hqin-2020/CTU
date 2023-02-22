@@ -255,8 +255,8 @@ while FC_Err > tol and epoch < max_iter:
     
     print("V0_max,min={},{}".format(V0.max() , V0.min()))
     print("D_max,min={},{}".format(D.max() , D.min()))
-    print("i1_max,min={},{}".format(d1.max() , i1.min()))
-    print("i2_max,min={},{}".format(d2.max() , i2.min()))
+    print("i1_max,min={},{}".format(i1.max() , i1.min()))
+    print("i2_max,min={},{}".format(i2.max() , i2.min()))
     print("petsc total: {:.3f}s".format(end_ksp - start_ksp))
     print("PETSc preconditioned residual norm is {:g} iterations: {}".format(
         ksp.getResidualNorm(), ksp.getIterationNumber()))
