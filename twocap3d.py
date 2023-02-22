@@ -134,8 +134,8 @@ while FC_Err > tol and epoch < max_iter:
     dVdW1= finiteDiff_3D2(V0, 0, 1, hW1)
     ddVddW1= finiteDiff_3D2(V0, 0, 2, hW1)
 
-    dVdW2 = finiteDiff_3D2(V0, 1, 1, hW2)
-    ddVddW2 = finiteDiff_3D2(V0, 1, 2, hW2)
+    dVdW2 = finiteDiff_3D(V0, 1, 1, hW2)
+    ddVddW2 = finiteDiff_3D(V0, 1, 2, hW2)
     
     ddVdW1dW2 = finiteDiff_3D2(dVdW1, 1, 1, hW2)
 
