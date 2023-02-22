@@ -164,6 +164,11 @@ while FC_Err > tol and epoch < max_iter:
     ut1 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z1[0] *dVdW2
     ut2 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
     ut3 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
+
+    ut1 = ut1 * fraction + ut1_star*(1-fraction)
+    ut2 = ut2 * fraction + ut2_star*(1-fraction)
+    ut3 = ut3 * fraction + ut3_star*(1-fraction)
+
     ut = (1-gamma)/2 * np.sum(ut1**2 + ut2**2 + ut3**2)
 
     dkadk1dk1 = (kappa-1) * ((1-zeta)**2*(k1a)**(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k1a)**(-kappa+1))
@@ -229,6 +234,10 @@ while FC_Err > tol and epoch < max_iter:
 
     i1_star = i1
     i2_star = i2
+    ut1_star = ut1
+    ut2_star = ut2
+    ut3_star = ut3
+
     epoch += 1
     
     print("V0_max,min={},{}".format(V0.max() , V0.min()))
