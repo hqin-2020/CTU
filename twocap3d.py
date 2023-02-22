@@ -181,12 +181,12 @@ while FC_Err > tol and epoch < max_iter:
     dkadk1dk2 = (kappa-1) * zeta*(1-zeta)*(k1a)**(-kappa+1)*(k2a)**(-kappa+1) 
     dkadk2dk2 = (kappa-1) * (zeta**2*(k2a)**(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k2a)**(-kappa+1))
     
-    Phi1 = 1/phi1 * np.log(1+phi1*i1)
-    Phi2 = 1/phi2 * np.log(1+phi2*i2)
+    # Phi1 = 1/phi1 * np.log(1+phi1*i1)
+    # Phi2 = 1/phi2 * np.log(1+phi2*i2)
 
     Phi1 = i1 - phi1/2*i1**2
     Phi2 = i2 - phi2/2*i2**2
-    
+
     A = np.zeros(W1_mat.shape)
     B_1 = Phi2 - Phi1 + (beta2-beta1)*W2_mat - eta2*np.ones(W1_mat.shape) + eta1*np.ones(W1_mat.shape) - 1/2*(np.sum(sigma_2**2)-np.sum(sigma_1**2))*np.ones(W1_mat.shape)
     B_2 = -a11*W2_mat
