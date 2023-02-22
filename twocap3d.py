@@ -1,6 +1,3 @@
-# from matplotlib.backends.backend_pdf import PdfPages
-# import matplotlib.pyplot as plt
-# import matplotlib as mpl
 import pickle
 import time
 # import petsclinearsystem
@@ -17,7 +14,7 @@ petsc4py.init(sys.argv)
 reporterror = True
 
 
-parser = argparse.ArgumentParser(description="xi_r values")
+parser = argparse.ArgumentParser(description="parameters")
 parser.add_argument("--rho", type=float)
 parser.add_argument("--gamma", type=float)
 parser.add_argument("--epsilon", type=float)
@@ -33,33 +30,38 @@ args = parser.parse_args()
 #    PARAMETERS
 #==============================================================================#
 
-scale = 1.754 # 1.307
-sigma_1 = scale * np.array([.477, 0, 0])
-sigma_2 = scale * np.array([ 0, .477, 0])
-sigma_z1 = np.array([ .011*np.sqrt(5), .011*np.sqrt(5) , .025])
-a11 = 0.014
-phi = 28.0
-
-delta = 0.0025 
-alpha = 0.0288
-
-alpha_z_hat = 0.0
-beta_hat = 1.0
-kappa_hat = 0.014
-
 rho = args.rho
 gamma = args.gamma
-zeta = 0.5
-kappa = 0.5
-beta1 = 1
-beta2 = 1
-##################################################
 
-ymin = -1
-ymax = 1
+phi1 = 28.0
+phi2 = 28.0
+eta1 = 0.013
+eta2 = 0.013
+
+a11 = 0.014
+alpha = 0.05
+zeta = 0.5
+kappa = 0.
+
+delta = 0.002 
+
+scale = 1.32
+sigma_1 = scale * np.array([.0048, 0, 0])
+sigma_2 = scale * np.array([ 0, .0048, 0])
+sigma_z1 = np.array([ .011*np.sqrt(5), .011*np.sqrt(5) , .025])
+
+beta1 = 0.1
+beta2 = 0.1
+
+#==============================================================================#
+#    Grids
+#==============================================================================#
+
+ymin = -np.log(20)
+ymax = -ymin
 
 zmin = -0.0225
-zmax = 0.0225
+zmax = -zmin
 
 kamin = -1
 kamax = 1
@@ -95,11 +97,6 @@ upperLims = np.array([W1.max(), W2.max(), W3.max()], dtype=np.float64)
 print("Grid dimension: [{}, {}, {}]\n".format(nW1, nW2, nW3))
 print("Grid step: [{}, {}, {}]\n".format(hW1, hW2, hW3))
 
-V0 = W1_mat**2 + 5
-
-i1_star = 0.0025*np.ones(W1_mat.shape)
-i2_star = 0.0035*np.ones(W1_mat.shape)
-
 dVec = np.array([hW1, hW2, hW3])
 increVec = np.array([1, nW1, nW1*nW2], dtype=np.int32)
 
@@ -121,7 +118,14 @@ tol = 1e-6
 fraction = args.fraction
 epsilon = args.epsilon
 
+############ Initialization ############
+V0 = W1_mat**2 + 5
+
+i1_star = 0.0025*np.ones(W1_mat.shape)
+i2_star = 0.0025*np.ones(W1_mat.shape)
+
 while FC_Err > tol and epoch < max_iter:
+    
     start_eps = time.time()
 
     dVdW1= finiteDiff_3D2(V0, 0, 1, hW1)
@@ -139,45 +143,47 @@ while FC_Err > tol and epoch < max_iter:
     
 ##########################investment-capital ratio#############
 
-    phi1 = 1/phi*np.log(1+phi*i1_star)
-    phi2 = 1/phi*np.log(1+phi*i2_star)
-    k1a = ((1-zeta)+zeta*np.exp(W1_mat)**(1-kappa))**(1/kappa-1)
-    k2a = ((1-zeta)*np.exp(W1_mat)**(kappa-1)+zeta)**(1/kappa-1)
+    Phi1 = 1/phi1 * np.log(1+phi1*i1_star)
+    Phi2 = 1/phi2 * np.log(1+phi2*i2_star)
+
+    k1a = ((1-zeta) + zeta*np.exp(W1_mat)**(1-kappa))**(1/(kappa-1))
+    k2a = ((1-zeta)*np.exp(W1_mat)**(kappa-1) + zeta)**(1/(kappa-1))
     c = alpha - i1_star*k1a - i2_star*k2a
     
-    mc = (delta*np.exp(V0)**(rho-1))/c**(rho)
+    mc = delta * np.exp((rho-1)*V0) * c**(-rho)
     
-    i1_new = ((1-zeta)*k1a**(1-kappa) - dVdW1) /(mc*k1a) - 1
-    i1_new = i1_new/phi
+    i1_new = ((1-zeta)*k1a**(1-kappa) - dVdW1) / (mc*k1a) - 1
+    i1_new = i1_new/phi1
+
     i2_new = (zeta*k2a**(1-kappa)+ dVdW1)/(mc*k2a) -1 
-    i2_new = i1_new/phi
+    i2_new = i1_new/phi2
+
     i1 = i1_new * fraction + i1_star*(1-fraction)
     i2 = i2_new * fraction + i2_star*(1-fraction)
 
     ut1 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z1[0] *dVdW2
     ut2 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
     ut3 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
-    ut = (1-gamma)/2*np.sum(ut1**2 + ut2**2 + ut3**2)
+    ut = (1-gamma)/2 * np.sum(ut1**2 + ut2**2 + ut3**2)
 
-    dkadk1dk1 = (kappa-1) * ( (1-zeta)**2*(k1a)**(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k1a)**(-kappa+1))
+    dkadk1dk1 = (kappa-1) * ((1-zeta)**2*(k1a)**(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k1a)**(-kappa+1))
     dkadk1dk2 = (kappa-1) * zeta*(1-zeta)*(k1a)**(-kappa+1)*(k2a)**(-kappa+1) 
     dkadk2dk2 = (kappa-1) * (zeta**2*(k2a)**(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k2a)**(-kappa+1))
 
-    eta1 = -0.5* np.sum(sigma_1**2)
-    eta2 = -0.5* np.sum(sigma_2**2)
     A = np.zeros(W1_mat.shape)
-    B_1 = phi2 - phi1 + (beta2-beta1)*W2_mat - eta2*np.ones(W1_mat.shape) + eta1*np.ones(W1_mat.shape) - 1/2*(np.sum(sigma_2**2)-np.sum(sigma_1**2))*np.ones(W1_mat.shape)
+    B_1 = Phi2 - Phi1 + (beta2-beta1)*W2_mat - eta2*np.ones(W1_mat.shape) + eta1*np.ones(W1_mat.shape) - 1/2*(np.sum(sigma_2**2)-np.sum(sigma_1**2))*np.ones(W1_mat.shape)
     B_2 = -a11*W2_mat
     B_3 = np.zeros(W1_mat.shape)
     C_1 = np.sum((sigma_2-sigma_1)**2)/2
     C_2 = np.sum((sigma_z1)**2)/2 
     C_3 = np.zeros(W1_mat.shape)
-    C_12 = 2*np.sum(sigma_z1*(sigma_2-sigma_1))
+    C_12 = np.sum(sigma_z1*(sigma_2-sigma_1))
     C_23 = np.zeros(W1_mat.shape)
     C_31 = np.zeros(W1_mat.shape)
     D = delta/(1-rho) * (c**(1-rho)*np.exp((rho-1)*V0) - 1) 
-    D += (1-zeta)*k1a**(1-kappa)*(phi1+beta1*W2_mat-eta1) + zeta*k2a**(1-kappa)*(phi2+beta2*W2_mat-eta2)
-    D += 1/2*(np.sum(sigma_1**2)*dkadk1dk1 + np.sum(sigma_2**2)*dkadk2dk2 + np.sum(sigma_1*sigma_2)*dkadk1dk2)
+    D += (1-zeta)*k1a**(1-kappa)*(Phi1+beta1*W2_mat-eta1*np.ones(W1_mat.shape)) 
+    D += zeta*k2a**(1-kappa)*(Phi2+beta2*W2_mat-eta2*np.ones(W1_mat.shape))
+    D += 1/2*(np.sum(sigma_1**2)*dkadk1dk1 + np.sum(sigma_2**2)*dkadk2dk2 + 2*np.sum(sigma_1*sigma_2)*dkadk1dk2)
     D += ut
     
     start_ksp = time.time()
