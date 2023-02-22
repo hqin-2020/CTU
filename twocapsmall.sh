@@ -13,7 +13,7 @@ fractionarray=(0.01)
 
 actiontime=1
 
-python_name="twocapsmall.py"
+python_name="twocapsmalll.py"
 
 maxiter=50000
 
