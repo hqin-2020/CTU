@@ -32,34 +32,15 @@ args = parser.parse_args()
 #    PARAMETERS
 #==============================================================================#
 
-
-# (1) Baseline model
-# alpha_z_hat = 0.0
-# kappa_hat = 0.014
-# alpha_k_hat = -0.88       # -1.279
-# alpha_c_hat = 0.484      
-# beta_hat = 1.0
-# sigma_c = np.array([0.477, 0.0 ])   # consumption exposure (= exposure of single capital)
-# sigma_z = np.array([0.011, 0.025])
-# rho = args.rho
-# delta = 0.0025 # 0.0025
-# A_cap = 0.0288 # 0.0288
 phi = 28.0
-# theta1 = 1/88
-# theta2 = 88
-# # ell=0.05
-# ell = 3.82
-# zmax = 0.05
-# zmin = -zmax
 
 scale = 1.32
 sigma_1 = scale * np.array([.0048, 0, 0])
 sigma_2 = scale * np.array([ 0, .0048, 0])
-sigma_z1 = np.array([ .011*np.sqrt(5), .011*np.sqrt(5) , .025])
+sigma_z = np.array([ .011*np.sqrt(5), .011*np.sqrt(5) , .025])
 
 delta = 0.002
-A1_cap = 0.0288 # 0.05 
-A2_cap = 0.0288 # 0.05
+alpha = 0.05
 phi1 = 28.0
 phi2 = 28.0
 
@@ -70,36 +51,37 @@ kappa_hat = 0.014
 rho = args.rho
 ell = 3.82
 
-##################################################
-ymin = -18
-ymax = 18
 
-z1min = -1
-z1max = 1
+lmin = -18
+lmax = 18
 
-z2min = -1
-z2max = 1
+zmin = -0.0225
+zmax = -zmin
 
-W1_min = ymin
-W1_max = ymax
+
+W1_min = lmin
+W1_max = lmax
 hW1 = 0.1
 W1 = np.arange(W1_min, W1_max+hW1, hW1)
 nW1 = len(W1)
 
-W2_min = z1min
-W2_max = z1max
-hW2 = 0.1
+W2_min = zmin
+W2_max = zmax
+hW2 = 0.001
 W2 = np.arange(W2_min, W2_max+hW2, hW2)
 nW2 = len(W2)
 
-W3_min = z2min
-W3_max = z2max
+
+W3_min = 0.0
+W3_max = 1.0
 hW3 = 0.5
 W3 = np.arange(W3_min, W3_max+hW3, hW3)
 nW3 = len(W3)
 
 (W1_mat, W2_mat, W3_mat) = np.meshgrid(W1, W2, W3, indexing='ij')
-stateSpace = np.hstack([W1_mat.reshape(-1, 1, order='F'), W2_mat.reshape(-1, 1, order='F'), W3_mat.reshape(-1, 1, order='F')])
+stateSpace = np.hstack([W1_mat.reshape(-1, 1, order='F'),
+                       W2_mat.reshape(-1, 1, order='F'), W3_mat.reshape(-1, 1, order='F')])
+
 
 W1_mat_1d = W1_mat.ravel(order='F')
 W2_mat_1d = W2_mat.ravel(order='F')
@@ -111,10 +93,8 @@ upperLims = np.array([W1.max(), W2.max(), W3.max()], dtype=np.float64)
 print("Grid dimension: [{}, {}, {}]\n".format(nW1, nW2, nW3))
 print("Grid step: [{}, {}, {}]\n".format(hW1, hW2, hW3))
 
-# V0 = -(W1_mat)**2 +2
-# V0 = W1_mat**2 +W2_mat**2 +5
 V0 = W2_mat**2 + 5
-# V0 = -W1_mat**2
+
 
 r_mat = np.exp(W1_mat)/(1+np.exp(W1_mat))
 
@@ -124,11 +104,15 @@ h1_star = -0.025*np.zeros(W1_mat.shape)
 h2_star = -0.025*np.zeros(W1_mat.shape)
 hz_star = -0.025*np.zeros(W1_mat.shape)
 
+
+
 dVec = np.array([hW1, hW2, hW3])
 increVec = np.array([1, nW1, nW1*nW2], dtype=np.int32)
+# increVec = np.array([1, nW1_short, nW1_short*nW2], dtype=np.int32)
 
 petsc_mat = PETSc.Mat().create()
 petsc_mat.setType('aij')
+# petsc_mat.setSizes([nW1_short * nW2 * nW3, nW1_short * nW2 * nW3])
 petsc_mat.setSizes([nW1 * nW2 * nW3, nW1 * nW2 * nW3])
 petsc_mat.setPreallocationNNZ(13)
 petsc_mat.setUp()
@@ -142,6 +126,7 @@ FC_Err = 1
 epoch = 0
 max_iter = args.maxiter
 tol = 1e-6
+
 fraction = args.fraction
 epsilon = args.epsilon
 
@@ -151,42 +136,35 @@ while FC_Err > tol and epoch < max_iter:
     dVdW1= finiteDiff_3D2(V0, 0, 1, hW1)
     ddVddW1= finiteDiff_3D2(V0, 0, 2, hW1)
 
-    dVdW2 = finiteDiff_3D2(V0, 1, 1, hW2)
-    ddVddW2 = finiteDiff_3D2(V0, 1, 2, hW2)
-
-    dVdW3 = finiteDiff_3D2(V0, 1, 1, hW3)
-    ddVddW3 = finiteDiff_3D2(V0, 1, 2, hW3)
+    dVdW2 = finiteDiff_3D(V0, 1, 1, hW2)
+    ddVddW2 = finiteDiff_3D(V0, 1, 2, hW2)
     
     ddVdW1dW2 = finiteDiff_3D2(dVdW1, 1, 1, hW2)
-    ddVdW1dW3 = finiteDiff_3D2(dVdW1, 1, 1, hW3)
-    ddVdW2dW3 = finiteDiff_3D2(dVdW2, 1, 1, hW3)
 
-    # need to change the control optimizatio completely due to corner solution of c
-
-    # if np.any(dVdW1+ddVddW1 * r * sigma**2 >= 0):
-    #     print("warning\n")
-    
 ##########################investment-capital ratio#############
-    d1_star[d1_star>=A1_cap] = A1_cap-0.001
-    d2_star[d2_star>=A2_cap] = A2_cap-0.001
+    d1_star[d1_star>=alpha] = alpha-0.001
+    d2_star[d2_star>=alpha] = alpha-0.001
     
-    mc = (delta*np.exp(V0)**(rho-1))   /  ( (1-r_mat)*(A1_cap-d1_star) + (r_mat)*(A2_cap-d2_star) )**(rho)
-    
-    # mc[mc<=1]=1+1e-16
-    
-    d1_new = mc / (1-r_mat-dVdW1)
-    d1_new = d1_new -1
-    d1_new = d1_new/(-phi1)
+    zeta = 0.5
+    kappa = 0
+    k1a = ((1-zeta) + zeta*np.exp(W1_mat)**(1-kappa))**(1/(kappa-1))
+    k2a = ((1-zeta)*np.exp(W1_mat)**(kappa-1) + zeta)**(1/(kappa-1))
+    c = alpha - d1_star*k1a - d2_star*k2a
 
-    d2_new = mc / (r_mat+dVdW1)
-    d2_new = d2_new -1
-    d2_new = d2_new/(-phi2)
+    mc = (delta*np.exp(V0)**(rho-1))   /  (c )**(rho)
+    
+    d1_new = ((1-zeta)*k1a**(1-kappa) - dVdW1) / (mc*k1a) - 1
+    d1_new = d1_new/phi1
+
+    d2_new = (zeta*k2a**(1-kappa)+ dVdW1)/(mc*k2a) -1 
+    d2_new = d2_new/(phi2)
     
 ########################## distortion #############
 
-    h1_new = -(.01*(sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)+.01*dVdW1*(sigma_2[0]-sigma_1[0])+sigma_z[0]*dVdW2)/ell
-    h2_new = -(.01*(sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)+.01*dVdW1*(sigma_2[1]-sigma_1[1])+sigma_z[1]*dVdW2)/ell
-    hz_new = -(.01*(sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)+.01*dVdW1*(sigma_2[2]-sigma_1[2])+sigma_z[2]*dVdW2)/ell
+    gamma = 8
+    h1_new =  (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z[0] *dVdW2
+    h2_new =  (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z[1] *dVdW2
+    hz_new =  (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z[2] *dVdW2
     # c_new[c_new<=1e-16] = 1e-16
 
     d1 = d1_new * fraction + d1_star*(1-fraction)
@@ -195,45 +173,33 @@ while FC_Err > tol and epoch < max_iter:
     h2 = h2_new * fraction + h2_star*(1-fraction)
     hz = hz_new * fraction + hz_star*(1-fraction)
 
-    d1[d1>=A1_cap] = A1_cap-0.001
-    d2[d2>=A2_cap] = A2_cap-0.001
+    d1[d1>=alpha] = alpha-0.001
+    d2[d2>=alpha] = alpha-0.001
     
     
     h1[h1>=-1e-16] = -1e-16
     h2[h2>=-1e-16] = -1e-16
     hz[hz>=-1e-16] = -1e-16
 
-
-    # psi1 = d1 - phi1/2*d1**2+(alpha_z_hat+beta_hat*W2_mat)
-    # psi2 = d2 - phi2/2*d2**2+(alpha_z_hat+beta_hat*W2_mat)
-
-    psi1 = 1/phi*np.log(1+phi*i1)
-    psi2 = 1/phi*np.log(1+phi*i2)+beta_hat*W2_mat
-    k1a = ((1-zeta)+zeta*y**(1-kappa))**(1/kappa-1)
-    k2a = ((1-zeta)*y**(kappa-1)+zeta)**(1/kappa-1)
-    c = alpha - i1*k1a-i2*k2a
-
-    dkadk1dk1 = -kappa*(1-zeta)*(k1a)**(-kappa-1)*(ka)**(kappa-1)+(kappa-1)*(1-zeta)**2*(k1a)**(-2*kappa)
-    dkadk1dk2 = (kappa-1)*zeta*(1-zeta)*(k1a)**(-kappa-1)*(k2a)**(-kappa-1)
-    dkadk2dk2 = -kappa*zeta*(k2a)**(-kappa-1)+(kappa-1)*zeta**2*(k2a)**(-2*kappa)
-
-    A = np.zeros(W1_mat.shape)
-    B_1 = psi2-psi1 + (beta2-beta1)*W2_mat - eta2 +eta1 - W3_mat/2*(np.sum(sigma_2**2)-np.sum(sigma_1**2))
-    B_2 = muz1*np.ones(W1_mat.shape)
-    B_3 = muz2*np.ones(W1_mat.shape)
-    C_1 = np.sum((sigma_2-sigma_1)**2)/2*W3_mat
-    C_2 = np.sum((sigma_z1)**2 )/2*W3_mat
-    C_3 = np.sum((sigma_z2)**2 )/2*W3_mat
-    C_12 = 2*sigma_z1*(sigma_2-sigma_1)
-    C_23 = 2*sigma_z1*sigma_z2
-    C_31 = 2*sigma_z2*(sigma_2-sigma_1)
-    D = delta/(1-rho) * (c**(1-rho)*np.exp((rho-1)*V0) - 1) 
-    D += (1-zeta)*k1a**(1-kappa)*(psi1+beta1*W2mat-eta1) + zeta*k2a**(1-kappa)*(psi2+beta2*W2mat-eta2)
-    D += W3_mat/2*()
+    psi1 = 1/phi1 * np.log(1+phi1*d1_star) + beta_hat*W2_mat
+    psi2 = 1/phi2 * np.log(1+phi2*d2_star) + beta_hat*W2_mat
     
-    +psi2*r_mat - (.01)**2/2 * (  (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)**2  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)**2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)**2     )
-    D += .01*( (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)*h1  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)*h2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)*hz       )
-    D += ell * ( h1**2 + h2**2 +hz**2 )/2
+    A = np.zeros(W1_mat.shape)
+    B_1 = psi2-psi1 -1/2 * (np.sum(sigma_2**2)-np.sum(sigma_1**2))
+    # B_1 += .01*( ((1-r_mat)*sigma_1[0]+ r_mat*sigma_2[0])*h1  + ((1-r_mat)*sigma_1[1]+ r_mat*sigma_2[1])*h2 + ((1-r_mat)*sigma_1[2]+ r_mat*sigma_2[2])*hz)
+    B_2 = -kappa_hat*W2_mat #+ sigma_z[0]*h1 + sigma_z[1]*h2 + sigma_z[2]*hz
+    B_3 = np.zeros(W1_mat.shape)
+    C_1 = np.sum( (sigma_2-sigma_1)**2 )*np.ones(W1_mat.shape)/2
+    C_2 = np.sum( (sigma_z)**2 )*np.ones(W1_mat.shape)/2
+    C_3 = np.zeros(W1_mat.shape)
+    C_12 = np.sum( (sigma_2-sigma_1)*sigma_z)*np.ones(W1_mat.shape)
+    # C_12 = np.zeros(W1_mat.shape)
+    C_23 = np.zeros(W1_mat.shape)
+    C_31 = np.zeros(W1_mat.shape)
+    D = delta/(1-rho) * (c**(1-rho)*np.exp((rho-1)*V0) - 1) 
+    # D += psi1*(1-r_mat) +psi2*r_mat - 1/2* (  (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)**2  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)**2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)**2     )
+    # D += .01*( (sigma_1[0]*(1-r_mat)+sigma_2[0]*r_mat)*h1  + (sigma_1[1]*(1-r_mat)+sigma_2[1]*r_mat)*h2 + (sigma_1[2]*(1-r_mat)+sigma_2[2]*r_mat)*hz       )
+    # D +=  (1-gamma)*( h1**2 + h2**2 +hz**2 )/2
     
     start_ksp = time.time()
 
