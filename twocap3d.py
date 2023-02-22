@@ -178,7 +178,6 @@ while FC_Err > tol and epoch < max_iter:
     C_2 = np.sum((sigma_z1)**2)/2 
     C_3 = np.zeros(W1_mat.shape)
     C_12 = np.sum(sigma_z1*(sigma_2-sigma_1))
-    C_12 = np.zeros(W1_mat.shape)
     C_23 = np.zeros(W1_mat.shape)
     C_31 = np.zeros(W1_mat.shape)
     D = delta/(1-rho) * (c**(1-rho)*np.exp((rho-1)*V0) - 1) 
@@ -203,11 +202,11 @@ while FC_Err > tol and epoch < max_iter:
     petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff(W1_mat_1d, W2_mat_1d, W3_mat_1d, A_1d, B_1_1d, B_2_1d,
                                        B_3_1d, C_1_1d, C_2_1d, C_3_1d, C_12_1d, C_23_1d, C_31_1d, epsilon, lowerLims, upperLims, dVec, increVec, petsc_mat)
     V0_1d = V0.ravel(order='F')
-    # b = V0_1d / epsilon + D_1d 
+    b = V0_1d / epsilon + D_1d 
     # petsclinearsystemXDiff.formLinearSystem(W1_mat_1d, W2_mat_1d, W3_mat_1d, A_1d, B_1_1d, B_2_1d,
     #                                    B_3_1d, C_1_1d, C_2_1d, C_3_1d, epsilon, lowerLims, upperLims, dVec, increVec, petsc_mat)
     # V0_1d = V0.ravel(order='F')
-    b = V0_1d  + D_1d *epsilon
+    # b = V0_1d  + D_1d *epsilon
     petsc_rhs = PETSc.Vec().createWithArray(b)
     x = petsc_mat.createVecRight()
 
