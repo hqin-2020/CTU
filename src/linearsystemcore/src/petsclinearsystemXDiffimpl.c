@@ -90,11 +90,13 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
   // case 1: corner point  // top right 
 
     vals[center] += -(  crossCoefE/(4*dVecX*dVecY) ); 
+    vals[center+2+4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
     vals[center-2-4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
     vals[center-4-4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
 
     vals[center+4+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
     
+    cols[center+2+4*jX] = i - incVec[jX];
     cols[center-2-4*jX] = i - incVec[jX];
     cols[center-4-4*jX] = i - incVec[jY];
     cols[center+4+4*jX] = i - incVec[jX]-incVec[jY];
