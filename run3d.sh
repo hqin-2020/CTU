@@ -9,7 +9,7 @@ python_name="twocap3d.py"
 
 maxiter=500000
 
-rhoarray=(1.00001 1.1)
+rhoarray=(1.00001)
 
 gammaarray=(8.0)
 for epsilon in ${epsilonarray[@]}; do
