@@ -229,6 +229,7 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
 
     vals[center+1+4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
     vals[center+2+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
+    printf(center+3+4*jX)
     vals[center+3+4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
     // vals[center+4+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
     
@@ -276,8 +277,8 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
   PetscInt       cols[13];
   PetscScalar    vals[13];
 
-  // PetscInt       colsXDiff[25];
-  // PetscScalar    valsXDiff[25];
+  PetscInt       colsXDiff[25];
+  PetscScalar    valsXDiff[25];
 
 
   PetscFunctionBegin;
@@ -293,9 +294,6 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
 
     PetscCall(MatSetValues(petsc_mat,1,&i,3*4+1,cols,vals,INSERT_VALUES));
   }
-  
-    PetscInt       colsXDiff[25];
-    PetscScalar    valsXDiff[25];
 
     PetscCall(MatAssemblyBegin(petsc_mat,MAT_FLUSH_ASSEMBLY));
     PetscCall(MatAssemblyEnd(petsc_mat,MAT_FLUSH_ASSEMBLY));
