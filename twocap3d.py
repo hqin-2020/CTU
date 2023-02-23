@@ -60,8 +60,8 @@ beta2 = 0.01
 ymin = -np.log(20)
 ymax = np.log(20)
 
-zmin = -0.0225
-zmax = 0.0225
+zmin = -0.1
+zmax = 0.1
 
 kamin = -1
 kamax = 1
