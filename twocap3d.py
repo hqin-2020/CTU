@@ -50,8 +50,8 @@ sigma_1 = scale * np.array([.0048, 0, 0])
 sigma_2 = scale * np.array([ 0, .0048, 0])
 sigma_z1 = np.array([ .011*np.sqrt(5), .011*np.sqrt(5) , .025])
 
-beta1 = 0.1
-beta2 = 0.1
+beta1 = 0.01
+beta2 = 0.01
 
 #==============================================================================#
 #    Grids
@@ -175,9 +175,9 @@ while FC_Err > tol and epoch < max_iter:
     # h2 = -h2_new
     # hz = -hz_new
 
-    h1 = h1 * fraction + h1_star*(1-fraction)
-    h2 = h2 * fraction + h2_star*(1-fraction)
-    hz = hz * fraction + hz_star*(1-fraction)
+    h1 = h1_new * fraction + h1_star*(1-fraction)
+    h2 = h2_new * fraction + h2_star*(1-fraction)
+    hz = hz_new * fraction + hz_star*(1-fraction)
 
     h1 = -h1
     h2 = -h2
