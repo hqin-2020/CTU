@@ -276,8 +276,8 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
 {
   PetscErrorCode ierr;
   PetscInt       i, center, centerXDiff;
-  PetscInt       cols[7];
-  PetscScalar    vals[7];
+  PetscInt       cols[13];
+  PetscScalar    vals[13];
 
   PetscInt       colsXDiff[25];
   PetscScalar    valsXDiff[25];
