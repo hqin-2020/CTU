@@ -147,9 +147,9 @@ while FC_Err > tol and epoch < max_iter:
     i1_star[i1_star>=alpha] = alpha-0.001
     i2_star[i2_star>=alpha] = alpha-0.001
 
-    c = alpha - i1_star*k1a - i2_star*k2a
+    c_star= alpha - i1_star*k1a - i2_star*k2a
     
-    mc = delta * np.exp((rho-1)*V0) * c**(-rho)
+    mc = delta * np.exp((rho-1)*V0) * c_star**(-rho)
     
     i1_new = ((1-zeta)*k1a**(1-kappa) - dVdW1) / (mc*k1a) - 1
     i1_new = i1_new/phi1
@@ -160,10 +160,10 @@ while FC_Err > tol and epoch < max_iter:
     i1 = i1_new * fraction + i1_star*(1-fraction)
     i2 = i2_new * fraction + i2_star*(1-fraction)
 
-    i1[i1>=alpha/2] = alpha/2-0.001
-    i2[i2>=alpha/2] = alpha/2-0.001
+    i1[i1>=alpha] = alpha-0.001
+    i2[i2>=alpha] = alpha-0.001
 
-    # c = alpha - i1*k1a - i2*k2a
+    c = alpha - i1*k1a - i2*k2a
 
 ########################## distortion #############
 
@@ -171,9 +171,6 @@ while FC_Err > tol and epoch < max_iter:
     h2_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
     hz_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
 
-    # h1 = -h1_new
-    # h2 = -h2_new
-    # hz = -hz_new
 
     h1 = h1_new * fraction + h1_star*(1-fraction)
     h2 = h2_new * fraction + h2_star*(1-fraction)
