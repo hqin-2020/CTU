@@ -279,8 +279,8 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     PetscCall(MatSetValues(petsc_mat,1,&i,3*4+1,cols,vals,INSERT_VALUES));
   }
 
-    PetscCall(MatAssemblyBegin(petsc_mat,MAT_FLUSH_ASSEMBLY));
-    PetscCall(MatAssemblyEnd(petsc_mat,MAT_FLUSH_ASSEMBLY));
+    PetscCall(MatAssemblyBegin(petsc_mat,MAT_FINAL_ASSEMBLY));
+    PetscCall(MatAssemblyEnd(petsc_mat,MAT_FINAL_ASSEMBLY));
 
     for (i = 0; i < n; ++i) {
 
