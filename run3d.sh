@@ -42,7 +42,7 @@ for epsilon in ${epsilonarray[@]}; do
 
 #SBATCH --account=pi-lhansen
 #SBATCH --partition=caslake
-#SBATCH --cpus-per-task=1
+#SBATCH --cpus-per-task=2
 #SBATCH --mem=1G
 #SBATCH --time=12:00:00
 
