@@ -41,7 +41,7 @@ eta2 = 0.0
 a11 = 0.014
 alpha = 0.05
 zeta = 0.5
-kappa = 0.
+kappa = 0.0
 
 delta = 0.002 
 
@@ -123,9 +123,9 @@ V0 = W2_mat**2 + 5
 
 i1_star = 0.0025*np.ones(W1_mat.shape)
 i2_star = 0.0025*np.ones(W1_mat.shape)
-ut1_star = -0.025*np.zeros(W1_mat.shape)
-ut2_star = -0.025*np.zeros(W1_mat.shape)
-ut3_star = -0.025*np.zeros(W1_mat.shape)
+h1_star = -0.025*np.ones(W1_mat.shape)
+h2_star = -0.025*np.ones(W1_mat.shape)
+hz_star = -0.025*np.ones(W1_mat.shape)
 
 while FC_Err > tol and epoch < max_iter:
     
@@ -141,14 +141,15 @@ while FC_Err > tol and epoch < max_iter:
 
 ##########################investment-capital ratio#############
 
+    k1a = ((1-zeta) + zeta*np.exp(W1_mat)**(1-kappa))**(1/(kappa-1))
+    k2a = ((1-zeta)*np.exp(W1_mat)**(kappa-1) + zeta)**(1/(kappa-1))
+
     i1_star[i1_star>=alpha] = alpha-0.001
     i2_star[i2_star>=alpha] = alpha-0.001
 
-    k1a = ((1-zeta) + zeta*np.exp(W1_mat)**(1-kappa))**(1/(kappa-1))
-    k2a = ((1-zeta)*np.exp(W1_mat)**(kappa-1) + zeta)**(1/(kappa-1))
-    c = alpha - i1_star*k1a - i2_star*k2a
+    c_star = alpha - i1_star*k1a - i2_star*k2a
     
-    mc = delta * np.exp((rho-1)*V0) * c**(-rho)
+    mc = delta * np.exp((rho-1)*V0) * c_star**(-rho)
     
     i1_new = ((1-zeta)*k1a**(1-kappa) - dVdW1) / (mc*k1a) - 1
     i1_new = i1_new/phi1
@@ -159,26 +160,30 @@ while FC_Err > tol and epoch < max_iter:
     i1 = i1_new * fraction + i1_star*(1-fraction)
     i2 = i2_new * fraction + i2_star*(1-fraction)
 
-    i1[i1>=alpha/2] = alpha/2-0.001
-    i2[i2>=alpha/2] = alpha/2-0.001
+    i1[i1>=alpha] = alpha-0.001
+    i2[i2>=alpha] = alpha-0.001
 
-    ut1 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z1[0] *dVdW2
-    ut2 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
-    ut3 = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
+    c = alpha - i1*k1a - i2*k2a
 
-    ut1 = ut1 * fraction + ut1_star*(1-fraction)
-    ut2 = ut2 * fraction + ut2_star*(1-fraction)
-    ut3 = ut3 * fraction + ut3_star*(1-fraction)
+########################## distortion #############
 
-    ut1 = -ut1
-    ut2 = -ut2
-    ut3 = -ut3
+    h1_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z1[0] *dVdW2
+    h2_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
+    hz_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
 
-    ut1[ut1>=-1e-16] = -1e-16
-    ut2[ut2>=-1e-16] = -1e-16
-    ut3[ut3>=-1e-16] = -1e-16
+    h1 = -h1_new
+    h2 = -h2_new
+    hz = -hz_new
 
-    ut = (1-gamma)/2 * np.sum(ut1**2 + ut2**2 + ut3**2)
+    h1 = h1 * fraction + h1_star*(1-fraction)
+    h2 = h2 * fraction + h2_star*(1-fraction)
+    hz = hz * fraction + hz_star*(1-fraction)
+
+    h1[h1>=-1e-16] = -1e-16
+    h2[h2>=-1e-16] = -1e-16
+    hz[hz>=-1e-16] = -1e-16
+
+########################## FDM #############
 
     dkadk1dk1 = (kappa-1) * ((1-zeta)**2*(k1a)**(-2*kappa+2) - kappa/(kappa-1)*(1-zeta)*(k1a)**(-kappa+1))
     dkadk1dk2 = (kappa-1) * zeta*(1-zeta)*(k1a)**(-kappa+1)*(k2a)**(-kappa+1) 
@@ -201,7 +206,7 @@ while FC_Err > tol and epoch < max_iter:
     D += (1-zeta)*k1a**(1-kappa)*(Phi1+beta1*W2_mat-eta1*np.ones(W1_mat.shape)) 
     D += zeta*k2a**(1-kappa)*(Phi2+beta2*W2_mat-eta2*np.ones(W1_mat.shape))
     D += 1/2*(np.sum(sigma_1**2)*dkadk1dk1 + np.sum(sigma_2**2)*dkadk2dk2 + 2*np.sum(sigma_1*sigma_2)*dkadk1dk2)
-    D += ut
+    D += (1-gamma)/2 * np.sum(h1**2 + h2**2 + hz**2)
     
     start_ksp = time.time()
 
@@ -246,9 +251,9 @@ while FC_Err > tol and epoch < max_iter:
 
     i1_star = i1
     i2_star = i2
-    ut1_star = ut1
-    ut2_star = ut2
-    ut3_star = ut3
+    h1_star = h1
+    h2_star = h2
+    hz_star = hz
 
     epoch += 1
     
@@ -256,6 +261,9 @@ while FC_Err > tol and epoch < max_iter:
     print("D_max,min={},{}".format(D.max() , D.min()))
     print("i1_max,min={},{}".format(i1.max() , i1.min()))
     print("i2_max,min={},{}".format(i2.max() , i2.min()))
+    print("h1_max,min={},{}".format(h1.max() , h1.min()))
+    print("h2_max,min={},{}".format(h2.max() , h2.min()))
+    print("hz_max,min={},{}".format(hz.max() , hz.min()))
     print("petsc total: {:.3f}s".format(end_ksp - start_ksp))
     print("PETSc preconditioned residual norm is {:g} iterations: {}".format(
         ksp.getResidualNorm(), ksp.getIterationNumber()))
@@ -267,6 +275,9 @@ res = {
     "V0": V0,
     "i1_star": i1_star,
     "i2_star": i2_star,
+    "h1_star": h1_star,
+    "h2_star": h2_star,
+    "hz_star": hz_star,
     "FC_Err": FC_Err,
     "W1": W1,
     "W2": W2,
