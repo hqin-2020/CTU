@@ -23,7 +23,7 @@ parser.add_argument("--maxiter", type=float)
 parser.add_argument("--dataname",type=str)
 parser.add_argument("--figname",type=str)
 parser.add_argument("--A1cap",type=float)
-parser.add_argument("--A2cap",type=float)
+# parser.add_argument("--A2cap",type=float)
 
 args = parser.parse_args()
 
@@ -35,7 +35,7 @@ args = parser.parse_args()
 rho = args.rho
 gamma = args.gamma
 A1cap = args.A1cap
-A2cap = args.A2cap
+A2cap = A1cap
 
 phi1 = 28.0
 phi2 = 28.0
@@ -153,7 +153,7 @@ while FC_Err > tol and epoch < max_iter:
     # i2_star[i2_star>=alpha] = alpha-0.001
     i1_star = i1_star*(~((i1_star*k1a)>=(alpha*A1cap))) + alpha*A1cap*((i1_star*k1a)>=(alpha*A1cap))-0.01
     i2_star = i2_star*(~((i2_star*k1a)>=(alpha*A2cap))) + alpha*A2cap*((i2_star*k1a)>=(alpha*A2cap))-0.01
-    
+
     c_star= alpha - i1_star*k1a - i2_star*k2a
     
     mc = delta * np.exp((rho-1)*V0) * c_star**(-rho)

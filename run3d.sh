@@ -22,7 +22,7 @@ for epsilon in ${epsilonarray[@]}; do
         for rho in "${rhoarray[@]}"; do
             for gamma in "${gammaarray[@]}"; do
                 for A1cap in "${Acaparray[@]}"; do
-                    for A2cap in "${Acaparray[@]}"; do
+                    # for A2cap in "${Acaparray[@]}"; do
                         count=0
 
                         action_name="TwoCapital_small_grid_Acap"
@@ -62,7 +62,7 @@ echo "Program starts \$(date)"
 start_time=\$(date +%s)
 # perform a task
 
-python3 -u /project/lhansen/CTU/$python_name  --rho ${rho} --gamma ${gamma}  --A1cap ${A1cap} --A2cap ${A2cap} --epsilon ${epsilon}  --fraction ${fraction}   --maxiter ${maxiter} --dataname ${dataname} --figname ${dataname}
+python3 -u /project/lhansen/CTU/$python_name  --rho ${rho} --gamma ${gamma}  --A1cap ${A1cap} --epsilon ${epsilon}  --fraction ${fraction}   --maxiter ${maxiter} --dataname ${dataname} --figname ${dataname}
 echo "Program ends \$(date)"
 end_time=\$(date +%s)
 
@@ -74,7 +74,7 @@ eval "echo Elapsed time: \$(date -ud "@\$elapsed" +'\$((%s/3600/24)) days %H hr 
 EOF
                         count=$(($count + 1))
                         sbatch ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.sh
-                    done
+                    # done
                 done
             done
         done
