@@ -171,13 +171,17 @@ while FC_Err > tol and epoch < max_iter:
     h2_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
     hz_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
 
-    h1 = -h1_new
-    h2 = -h2_new
-    hz = -hz_new
+    # h1 = -h1_new
+    # h2 = -h2_new
+    # hz = -hz_new
 
     h1 = h1 * fraction + h1_star*(1-fraction)
     h2 = h2 * fraction + h2_star*(1-fraction)
     hz = hz * fraction + hz_star*(1-fraction)
+
+    h1 = -h1
+    h2 = -h2
+    hz = -hz
 
     h1[h1>=-1e-16] = -1e-16
     h2[h2>=-1e-16] = -1e-16
