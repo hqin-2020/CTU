@@ -211,10 +211,10 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
 /************************************************/
   // case 3: interior
 /************************************************/
-    vals[center+1+4*jX] = -(  -crossCoefE/(4*dVecX*dVecY) );
-    vals[center+2+4*jX] = -(  crossCoefE/(4*dVecX*dVecY) );
-    vals[center+3+4*jX] = -(  -crossCoefE/(4*dVecX*dVecY) );
-    vals[center+4+4*jX] = -(  crossCoefE/(4*dVecX*dVecY) );
+    vals[center+1+4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
+    vals[center+2+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
+    vals[center+3+4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
+    vals[center+4+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
     
     cols[center+1+4*jX] = i - incVec[jX] + incVec[jY] ;
     cols[center+2+4*jX] = i + incVec[jX] + incVec[jY];
@@ -283,12 +283,12 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     PetscCall(MatAssemblyEnd(petsc_mat,MAT_FLUSH_ASSEMBLY));
 
     for (i = 0; i < n; ++i) {
-
+    
     centerXDiff = 3*8/2;
     memset(valsXDiff,0,25*sizeof(PetscScalar));
     memset(colsXDiff,-1,25*sizeof(PetscInt));
     colsXDiff[center] = i;
-    valsXDiff[center] = 1.0 - dt * A[i];
+    valsXDiff[center] = 1.0/dt - A[i];
 
     fill_mat_values_CrossDiff(R,F, i,centerXDiff,0, 1 ,lowerLims,upperLims,dVec,incVec,n,C_rf,dt,colsXDiff,valsXDiff);
     fill_mat_values_CrossDiff(F,K, i,centerXDiff,1, 2 ,lowerLims,upperLims,dVec,incVec,n,C_fk,dt,colsXDiff,valsXDiff);
