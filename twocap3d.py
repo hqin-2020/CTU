@@ -123,9 +123,9 @@ V0 = W2_mat**2 + 5
 
 i1_star = 0.0025*np.ones(W1_mat.shape)
 i2_star = 0.0025*np.ones(W1_mat.shape)
-h1_star = -0.025*np.ones(W1_mat.shape)
-h2_star = -0.025*np.ones(W1_mat.shape)
-hz_star = -0.025*np.ones(W1_mat.shape)
+h1_star = -0.025*np.zeros(W1_mat.shape)
+h2_star = -0.025*np.zeros(W1_mat.shape)
+hz_star = -0.025*np.zeros(W1_mat.shape)
 
 while FC_Err > tol and epoch < max_iter:
     
