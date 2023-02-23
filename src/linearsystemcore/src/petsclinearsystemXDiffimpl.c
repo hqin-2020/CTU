@@ -304,7 +304,7 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     memset(valsXDiff,0,25*sizeof(PetscScalar));
     memset(colsXDiff,-1,25*sizeof(PetscInt));
     colsXDiff[center] = i;
-    valsXDiff[center] = 1.0 -  A[i]*dt;
+    valsXDiff[center] = 1.0/dt -  A[i];
 
     fill_mat_values_CrossDiff(R,F, i,centerXDiff,0, 1 ,lowerLims,upperLims,dVec,incVec,n,C_rf,dt,colsXDiff,valsXDiff);
     fill_mat_values_CrossDiff(F,K, i,centerXDiff,1, 2 ,lowerLims,upperLims,dVec,incVec,n,C_fk,dt,colsXDiff,valsXDiff);
