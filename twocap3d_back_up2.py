@@ -22,8 +22,6 @@ parser.add_argument("--fraction", type=float)
 parser.add_argument("--maxiter", type=float)
 parser.add_argument("--dataname",type=str)
 parser.add_argument("--figname",type=str)
-parser.add_argument("--A1cap",type=float)
-# parser.add_argument("--A2cap",type=float)
 
 args = parser.parse_args()
 
@@ -34,8 +32,6 @@ args = parser.parse_args()
 
 rho = args.rho
 gamma = args.gamma
-A1cap = args.A1cap
-A2cap = A1cap
 
 phi1 = 28.0
 phi2 = 28.0
@@ -57,7 +53,6 @@ sigma_z1 = np.array([ .011*np.sqrt(5), .011*np.sqrt(5) , .025])
 beta1 = 0.01
 beta2 = 0.01
 
-
 #==============================================================================#
 #    Grids
 #==============================================================================#
@@ -73,13 +68,13 @@ kamax = 1
 
 W1_min = ymin
 W1_max = ymax
-hW1 = 0.05
+hW1 = 0.1
 W1 = np.arange(W1_min, W1_max+hW1, hW1)
 nW1 = len(W1)
 
 W2_min = zmin
 W2_max = zmax
-hW2 = 0.0005
+hW2 = 0.001
 W2 = np.arange(W2_min, W2_max+hW2, hW2)
 nW2 = len(W2)
 
@@ -151,8 +146,6 @@ while FC_Err > tol and epoch < max_iter:
 
     i1_star[i1_star>=alpha/3] = alpha/3-0.001
     i2_star[i2_star>=alpha/3] = alpha/3-0.001
-    # i1_star = i1_star*(~((i1_star*k1a)>=(alpha*A1cap))) + alpha*A1cap*((i1_star*k1a)>=(alpha*A1cap))-0.01
-    # i2_star = i2_star*(~((i2_star*k1a)>=(alpha*A2cap))) + alpha*A2cap*((i2_star*k1a)>=(alpha*A2cap))-0.01
 
     c_star= alpha - i1_star*k1a - i2_star*k2a
     
@@ -169,8 +162,6 @@ while FC_Err > tol and epoch < max_iter:
 
     i1[i1>=alpha/3] = alpha/3-0.001
     i2[i2>=alpha/3] = alpha/3-0.001
-    # i1 = i1*(~((i1*k1a)>=(alpha*A1cap))) + alpha*A1cap*((i1*k1a)>=(alpha*A1cap))-0.01
-    # i2 = i2*(~((i2*k1a)>=(alpha*A2cap))) + alpha*A2cap*((i2*k1a)>=(alpha*A2cap))-0.01
 
     c = alpha - i1*k1a - i2*k2a
 
@@ -179,6 +170,7 @@ while FC_Err > tol and epoch < max_iter:
     h1_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z1[0] *dVdW2
     h2_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
     hz_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
+
 
     h1 = h1_new * fraction + h1_star*(1-fraction)
     h2 = h2_new * fraction + h2_star*(1-fraction)
@@ -296,6 +288,6 @@ res = {
 Data_Dir = "./data/"+args.dataname+"/"
 os.makedirs(Data_Dir, exist_ok=True)
 
-with open(Data_Dir + "result_rho_{}_eps_{}_frac_{}_A1cap_{}_A2cap_{}".format(rho,epsilon,fraction,A1cap,A2cap), "wb") as f:
+with open(Data_Dir + "result_rho_{}_eps_{}_frac_{}".format(rho,epsilon,fraction), "wb") as f:
     pickle.dump(res, f)
 
