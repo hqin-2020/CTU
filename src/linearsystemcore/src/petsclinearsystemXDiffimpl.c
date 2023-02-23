@@ -220,10 +220,6 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
     cols[center+2+4*jX] = i + incVec[jX] + incVec[jY];
     cols[center+3+4*jX] = i + incVec[jX] - incVec[jY];
     cols[center+4+4*jX] = i - incVec[jX] - incVec[jY];
-    
-    // if (i + incVec[jX] - incVec[jY] >122 && i + incVec[jX] - incVec[jY] < maxcols) cols[center+3+4*jX] = i + incVec[jX] - incVec[jY];
-    // if (i - incVec[jX] - incVec[jY] > 0 ) cols[center+4+4*jX] = i - incVec[jX] - incVec[jY];
-
 
   }
 

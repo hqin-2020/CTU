@@ -12,33 +12,40 @@ maxiter=500000
 rhoarray=(1.00001)
 
 gammaarray=(8.0)
+Acaparray=(0.5 0.55 0.6 0.65 0.7 0.75 0.8)
+A1caparray=(0.5 0.6 0.7)
+A2caparray=(0.5 0.6 0.7)
+
+
 for epsilon in ${epsilonarray[@]}; do
     for fraction in "${fractionarray[@]}"; do
         for rho in "${rhoarray[@]}"; do
             for gamma in "${gammaarray[@]}"; do
-                count=0
+                for A1cap in "${Acaparray[@]}"; do
+                    for A2cap in "${Acaparray[@]}"; do
+                        count=0
 
-                action_name="TwoCapital_small_grid"
+                        action_name="TwoCapital_small_grid_Acap"
 
-                dataname="${action_name}_${epsilon}_frac_${fraction}"
+                        dataname="${action_name}_${epsilon}_frac_${fraction}"
 
-                mkdir -p ./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/
+                        mkdir -p ./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/
 
-                if [ -f ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}.sh ]; then
-                    rm ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}.sh
-                fi
+                        if [ -f ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.sh ]; then
+                            rm ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.sh
+                        fi
 
-                mkdir -p ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/
+                        mkdir -p ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/
 
-                touch ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}.sh
+                        touch ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.sh
 
-                tee -a ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}.sh <<EOF
+                        tee -a ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.sh <<EOF
 #! /bin/bash
 
 ######## login
 #SBATCH --job-name=${rho}_${gamma}
-#SBATCH --output=./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}.out
-#SBATCH --error=./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}.err
+#SBATCH --output=./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.out
+#SBATCH --error=./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.err
 
 #SBATCH --account=pi-lhansen
 #SBATCH --partition=caslake
@@ -55,7 +62,7 @@ echo "Program starts \$(date)"
 start_time=\$(date +%s)
 # perform a task
 
-python3 -u /project/lhansen/CTU/$python_name  --rho ${rho} --gamma ${gamma} --epsilon ${epsilon}  --fraction ${fraction}   --maxiter ${maxiter} --dataname ${dataname} --figname ${dataname}
+python3 -u /project/lhansen/CTU/$python_name  --rho ${rho} --gamma ${gamma}  --A1cap ${A1cap} --A2cap ${A2cap} --epsilon ${epsilon}  --fraction ${fraction}   --maxiter ${maxiter} --dataname ${dataname} --figname ${dataname}
 echo "Program ends \$(date)"
 end_time=\$(date +%s)
 
@@ -66,7 +73,7 @@ eval "echo Elapsed time: \$(date -ud "@\$elapsed" +'\$((%s/3600/24)) days %H hr 
 
 EOF
                 count=$(($count + 1))
-                sbatch ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}.sh
+                sbatch ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.sh
             done
         done
     done

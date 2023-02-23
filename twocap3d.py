@@ -22,6 +22,8 @@ parser.add_argument("--fraction", type=float)
 parser.add_argument("--maxiter", type=float)
 parser.add_argument("--dataname",type=str)
 parser.add_argument("--figname",type=str)
+parser.add_argument("--A1cap",type=float)
+parser.add_argument("--A2cap",type=float)
 
 args = parser.parse_args()
 
@@ -32,6 +34,8 @@ args = parser.parse_args()
 
 rho = args.rho
 gamma = args.gamma
+A1cap = args.A1cap
+A2cap = args.A2cap
 
 phi1 = 28.0
 phi2 = 28.0
@@ -52,6 +56,7 @@ sigma_z1 = np.array([ .011*np.sqrt(5), .011*np.sqrt(5) , .025])
 
 beta1 = 0.01
 beta2 = 0.01
+
 
 #==============================================================================#
 #    Grids
@@ -144,8 +149,10 @@ while FC_Err > tol and epoch < max_iter:
     k1a = ((1-zeta) + zeta*np.exp(W1_mat)**(1-kappa))**(1/(kappa-1))
     k2a = ((1-zeta)*np.exp(W1_mat)**(kappa-1) + zeta)**(1/(kappa-1))
 
-    i1_star[i1_star>=alpha] = alpha-0.001
-    i2_star[i2_star>=alpha] = alpha-0.001
+    # i1_star[i1_star>=alpha] = alpha-0.001
+    # i2_star[i2_star>=alpha] = alpha-0.001
+    i1_star[(i1_star*k1a)>=alpha*A1cap] = alpha*A1cap/k1a-0.001
+    i2_star[(i2_star*k2a)>=alpha*A2cap] = alpha*A2cap/k2a-0.001
 
     c_star= alpha - i1_star*k1a - i2_star*k2a
     
@@ -160,8 +167,8 @@ while FC_Err > tol and epoch < max_iter:
     i1 = i1_new * fraction + i1_star*(1-fraction)
     i2 = i2_new * fraction + i2_star*(1-fraction)
 
-    i1[i1>=alpha] = alpha-0.001
-    i2[i2>=alpha] = alpha-0.001
+    i1[(i1*k1a)>=alpha*A1cap] = alpha*A1cap/k1a-0.001
+    i2[(i2*k2a)>=alpha*A2cap] = alpha*A2cap/k2a-0.001
 
     c = alpha - i1*k1a - i2*k2a
 
@@ -170,7 +177,6 @@ while FC_Err > tol and epoch < max_iter:
     h1_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z1[0] *dVdW2
     h2_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[1] + zeta*(k2a)**(1-kappa)*sigma_2[1] + (sigma_2-sigma_1)[1]*dVdW1 + sigma_z1[1] *dVdW2
     hz_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[2] + zeta*(k2a)**(1-kappa)*sigma_2[2] + (sigma_2-sigma_1)[2]*dVdW1 + sigma_z1[2] *dVdW2
-
 
     h1 = h1_new * fraction + h1_star*(1-fraction)
     h2 = h2_new * fraction + h2_star*(1-fraction)
@@ -288,6 +294,6 @@ res = {
 Data_Dir = "./data/"+args.dataname+"/"
 os.makedirs(Data_Dir, exist_ok=True)
 
-with open(Data_Dir + "result_rho_{}_eps_{}_frac_{}".format(rho,epsilon,fraction), "wb") as f:
+with open(Data_Dir + "result_rho_{}_eps_{}_frac_{}_A1cap_{}_A2cap_{}".format(rho,epsilon,fraction,A1cap,A2cap), "wb") as f:
     pickle.dump(res, f)
 
