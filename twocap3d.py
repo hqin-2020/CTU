@@ -68,13 +68,13 @@ kamax = 1
 
 W1_min = ymin
 W1_max = ymax
-hW1 = 0.05
+hW1 = 0.1
 W1 = np.arange(W1_min, W1_max+hW1, hW1)
 nW1 = len(W1)
 
 W2_min = zmin
 W2_max = zmax
-hW2 = 0.0005
+hW2 = 0.001
 W2 = np.arange(W2_min, W2_max+hW2, hW2)
 nW2 = len(W2)
 
