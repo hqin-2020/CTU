@@ -1,7 +1,7 @@
 #! /bin/bash
 
 epsilonarray=(0.1)
-fractionarray=(0.1)
+fractionarray=(0.05 0.1 0.15 0.2 0.25)
 
 actiontime=1
 
@@ -12,7 +12,7 @@ maxiter=500000
 rhoarray=(1.00001)
 
 gammaarray=(8.0)
-Acaparray=(0.1 0.2 0.3 0.4 0.5 0.55 0.6 0.65 0.7 0.75 0.8)
+Acaparray=(0.33 0.334 0.34 0.35 0.36)
 A1caparray=(0.5 0.6 0.7)
 A2caparray=(0.5 0.6 0.7)
 
