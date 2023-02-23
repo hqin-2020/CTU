@@ -258,8 +258,8 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
 {
   PetscErrorCode ierr;
   PetscInt       i, center, centerXDiff;
-  PetscInt       cols[13];
-  PetscScalar    vals[13];
+  PetscInt       cols[7];
+  PetscScalar    vals[7];
 
   PetscInt       colsXDiff[25];
   PetscScalar    valsXDiff[25];
@@ -267,16 +267,16 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
 
   PetscFunctionBegin;
   for (i = 0; i < n; ++i) {
-    center = 3*4/2;
-    memset(vals,0,13*sizeof(PetscScalar));
-    memset(cols,-1,13*sizeof(PetscInt));
+    center = 3*2/2;
+    memset(vals,0,7*sizeof(PetscScalar));
+    memset(cols,-1,7*sizeof(PetscInt));
     cols[center] = i;
-    vals[center] = 1.0 - dt*A[i];
-    fill_mat_values(R,i,center,0,lowerLims,upperLims,dVec,incVec,n,B_r,C_rr,dt,cols,vals);
-    fill_mat_values(F,i,center,1,lowerLims,upperLims,dVec,incVec,n,B_f,C_ff,dt,cols,vals);
-    fill_mat_values(K,i,center,2,lowerLims,upperLims,dVec,incVec,n,B_k,C_kk,dt,cols,vals);
+    vals[center] = 1.0/dt - A[i];
+    fill_mat_values_DirectDiff(R,i,center,0,lowerLims,upperLims,dVec,incVec,n,B_r,C_rr,dt,cols,vals);
+    fill_mat_values_DirectDiff(F,i,center,1,lowerLims,upperLims,dVec,incVec,n,B_f,C_ff,dt,cols,vals);
+    fill_mat_values_DirectDiff(K,i,center,2,lowerLims,upperLims,dVec,incVec,n,B_k,C_kk,dt,cols,vals);
 
-    PetscCall(MatSetValues(petsc_mat,1,&i,3*4+1,cols,vals,INSERT_VALUES));
+    PetscCall(MatSetValues(petsc_mat,1,&i,3*2+1,cols,vals,INSERT_VALUES));
   }
 
     PetscCall(MatAssemblyBegin(petsc_mat,MAT_FLUSH_ASSEMBLY));
