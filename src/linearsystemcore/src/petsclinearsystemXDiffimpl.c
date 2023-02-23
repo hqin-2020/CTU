@@ -230,12 +230,12 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
     vals[center+1+4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
     vals[center+2+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
     vals[center+3+4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
-    // vals[center+4+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
+    vals[center+4+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
     
     cols[center+1+4*jX] = i - incVec[jX] + incVec[jY] ;
     cols[center+2+4*jX] = i + incVec[jX] + incVec[jY];
     cols[center+3+4*jX] = i + incVec[jX] - incVec[jY];
-    // cols[center+4+4*jX] = i - incVec[jX] - incVec[jY];
+    cols[center+4+4*jX] = i - incVec[jX] - incVec[jY];
 
 
   }
@@ -269,12 +269,13 @@ PetscErrorCode FormLinearSystem_C(PetscScalar *R, PetscScalar *F, PetscScalar *K
 }
 
 
+
 PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F, PetscScalar *K, PetscScalar *A, PetscScalar *B_r, PetscScalar *B_f, PetscScalar *B_k, PetscScalar *C_rr, PetscScalar *C_ff, PetscScalar *C_kk, PetscScalar *C_rf, PetscScalar *C_fk, PetscScalar *C_kr, PetscScalar dt, PetscScalar *lowerLims, PetscScalar *upperLims, PetscScalar *dVec, PetscInt *incVec, PetscInt n, Mat petsc_mat)
 {
   PetscErrorCode ierr;
   PetscInt       i, center, centerXDiff;
-  PetscInt       cols[25];
-  PetscScalar    vals[25];
+  PetscInt       cols[13];
+  PetscScalar    vals[13];
 
   PetscInt       colsXDiff[25];
   PetscScalar    valsXDiff[25];
@@ -282,16 +283,16 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
 
   PetscFunctionBegin;
   for (i = 0; i < n; ++i) {
-    center = 3*8/2;
-    memset(vals,0,25*sizeof(PetscScalar));
-    memset(cols,-1,25*sizeof(PetscInt));
+    center = 3*4/2;
+    memset(vals,0,13*sizeof(PetscScalar));
+    memset(cols,-1,13*sizeof(PetscInt));
     cols[center] = i;
     vals[center] = 1.0/dt - A[i];
     fill_mat_values(R,i,center,0,lowerLims,upperLims,dVec,incVec,n,B_r,C_rr,dt,cols,vals);
     fill_mat_values(F,i,center,1,lowerLims,upperLims,dVec,incVec,n,B_f,C_ff,dt,cols,vals);
     fill_mat_values(K,i,center,2,lowerLims,upperLims,dVec,incVec,n,B_k,C_kk,dt,cols,vals);
 
-    PetscCall(MatSetValues(petsc_mat,1,&i,3*8+1,cols,vals,INSERT_VALUES));
+    PetscCall(MatSetValues(petsc_mat,1,&i,3*4+1,cols,vals,INSERT_VALUES));
   }
 
     PetscCall(MatAssemblyBegin(petsc_mat,MAT_FLUSH_ASSEMBLY));
@@ -316,52 +317,4 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
   ierr = MatAssemblyEnd(petsc_mat,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
   PetscFunctionReturn(0);
 }
-
-// PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F, PetscScalar *K, PetscScalar *A, PetscScalar *B_r, PetscScalar *B_f, PetscScalar *B_k, PetscScalar *C_rr, PetscScalar *C_ff, PetscScalar *C_kk, PetscScalar *C_rf, PetscScalar *C_fk, PetscScalar *C_kr, PetscScalar dt, PetscScalar *lowerLims, PetscScalar *upperLims, PetscScalar *dVec, PetscInt *incVec, PetscInt n, Mat petsc_mat)
-// {
-//   PetscErrorCode ierr;
-//   PetscInt       i, center, centerXDiff;
-//   PetscInt       cols[13];
-//   PetscScalar    vals[13];
-
-//   PetscInt       colsXDiff[25];
-//   PetscScalar    valsXDiff[25];
-
-
-//   PetscFunctionBegin;
-//   for (i = 0; i < n; ++i) {
-//     center = 3*4/2;
-//     memset(vals,0,13*sizeof(PetscScalar));
-//     memset(cols,-1,13*sizeof(PetscInt));
-//     cols[center] = i;
-//     vals[center] = 1.0/dt - A[i];
-//     fill_mat_values(R,i,center,0,lowerLims,upperLims,dVec,incVec,n,B_r,C_rr,dt,cols,vals);
-//     fill_mat_values(F,i,center,1,lowerLims,upperLims,dVec,incVec,n,B_f,C_ff,dt,cols,vals);
-//     fill_mat_values(K,i,center,2,lowerLims,upperLims,dVec,incVec,n,B_k,C_kk,dt,cols,vals);
-
-//     PetscCall(MatSetValues(petsc_mat,1,&i,3*4+1,cols,vals,INSERT_VALUES));
-//   }
-
-//     PetscCall(MatAssemblyBegin(petsc_mat,MAT_FLUSH_ASSEMBLY));
-//     PetscCall(MatAssemblyEnd(petsc_mat,MAT_FLUSH_ASSEMBLY));
-
-//     for (i = 0; i < n; ++i) {
-
-//     centerXDiff = 3*8/2;
-//     memset(valsXDiff,0,25*sizeof(PetscScalar));
-//     memset(colsXDiff,-1,25*sizeof(PetscInt));
-//     colsXDiff[center] = i;
-//     valsXDiff[center] = 1.0 - dt * A[i];
-
-//     fill_mat_values_CrossDiff(R,F, i,centerXDiff,0, 1 ,lowerLims,upperLims,dVec,incVec,n,C_rf,dt,colsXDiff,valsXDiff);
-//     fill_mat_values_CrossDiff(F,K, i,centerXDiff,1, 2 ,lowerLims,upperLims,dVec,incVec,n,C_fk,dt,colsXDiff,valsXDiff);
-//     fill_mat_values_CrossDiff(K,R, i,centerXDiff,2, 0 ,lowerLims,upperLims,dVec,incVec,n,C_kr,dt,colsXDiff,valsXDiff);
-//     PetscCall(MatSetValues(petsc_mat,1,&i,3*8+1,colsXDiff,valsXDiff,ADD_VALUES));
-
-//   }
-
-//   ierr = MatAssemblyBegin(petsc_mat,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
-//   ierr = MatAssemblyEnd(petsc_mat,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
-//   PetscFunctionReturn(0);
-// }
 
