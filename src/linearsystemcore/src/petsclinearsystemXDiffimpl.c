@@ -225,7 +225,6 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
 
 
   // if (  PetscAbs(StateX[i]-lowerLims[jX]) < dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) < dVecY /2.0 &&PetscAbs(StateY[i]-lowerLims[jY]) < dVecY /2.0 )  {
-
   if (  PetscAbs(StateX[i]-lowerLims[jX]) > dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) > dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) > dVecY /2.0 &&PetscAbs(StateY[i]-lowerLims[jY]) > dVecY /2.0 )  {
 
 
@@ -307,7 +306,7 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     memset(valsXDiff,0,25*sizeof(PetscScalar));
     memset(colsXDiff,-1,25*sizeof(PetscInt));
     colsXDiff[center] = i;
-    // valsXDiff[center] = 1.0 - dt * A[i];
+    valsXDiff[center] = 1.0 - dt * A[i];
 
     fill_mat_values_CrossDiff(R,F, i,centerXDiff,0, 1 ,lowerLims,upperLims,dVec,incVec,n,C_rf,dt,colsXDiff,valsXDiff);
     fill_mat_values_CrossDiff(F,K, i,centerXDiff,1, 2 ,lowerLims,upperLims,dVec,incVec,n,C_fk,dt,colsXDiff,valsXDiff);
