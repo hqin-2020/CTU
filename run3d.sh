@@ -12,7 +12,7 @@ maxiter=500000
 rhoarray=(1.00001)
 
 gammaarray=(8.0)
-Acaparray=(0.5 0.55 0.6 0.65 0.7 0.75 0.8)
+Acaparray=(0.1 0.2 0.3 0.4 0.5 0.55 0.6 0.65 0.7 0.75 0.8)
 A1caparray=(0.5 0.6 0.7)
 A2caparray=(0.5 0.6 0.7)
 
