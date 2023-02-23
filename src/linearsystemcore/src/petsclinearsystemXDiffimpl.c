@@ -224,8 +224,8 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
 /************************************************/
 
 
-  if (  PetscAbs(StateX[i]-lowerLims[jX]) < dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) < dVecY /2.0 &&PetscAbs(StateY[i]-lowerLims[jY]) < dVecY /2.0 )  {
-  // if (  PetscAbs(StateX[i]-lowerLims[jX]) > dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) > dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) > dVecY /2.0 &&PetscAbs(StateY[i]-lowerLims[jY]) > dVecY /2.0 )  {
+  // if (  PetscAbs(StateX[i]-lowerLims[jX]) < dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) < dVecY /2.0 &&PetscAbs(StateY[i]-lowerLims[jY]) < dVecY /2.0 )  {
+  if (  PetscAbs(StateX[i]-lowerLims[jX]) > dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) > dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) > dVecY /2.0 &&PetscAbs(StateY[i]-lowerLims[jY]) > dVecY /2.0 )  {
 
 
 
