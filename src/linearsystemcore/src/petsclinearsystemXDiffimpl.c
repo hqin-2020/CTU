@@ -285,7 +285,7 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     
     centerXDiff = 3*8/2;
     memset(valsXDiff,0,25*sizeof(PetscScalar));
-    memset(colsXDiff,-1,25*sizeof(PetscInt));
+    memset(colsXDiff,-2,25*sizeof(PetscInt));
     colsXDiff[center] = i;
     valsXDiff[center] = 1.0 - A[i]*dt;
 
