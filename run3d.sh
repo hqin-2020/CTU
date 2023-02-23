@@ -43,7 +43,7 @@ for epsilon in ${epsilonarray[@]}; do
 #! /bin/bash
 
 ######## login
-#SBATCH --job-name=${rho}_${gamma}
+#SBATCH --job-name=${A1cap}_${rho}_${gamma}
 #SBATCH --output=./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.out
 #SBATCH --error=./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.err
 
@@ -72,8 +72,10 @@ elapsed=\$((end_time - start_time))
 eval "echo Elapsed time: \$(date -ud "@\$elapsed" +'\$((%s/3600/24)) days %H hr %M min %S sec')"
 
 EOF
-                count=$(($count + 1))
-                sbatch ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.sh
+                        count=$(($count + 1))
+                        sbatch ./bash/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.sh
+                    done
+                done
             done
         done
     done
