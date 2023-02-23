@@ -12,7 +12,7 @@ maxiter=500000
 rhoarray=(1.00001)
 
 gammaarray=(8.0)
-Acaparray=(0.33 0.334 0.34 0.35 0.36)
+Acaparray=(0.3 0.33 0.334 0.34 0.35 0.36)
 A1caparray=(0.5 0.6 0.7)
 A2caparray=(0.5 0.6 0.7)
 
@@ -25,7 +25,7 @@ for epsilon in ${epsilonarray[@]}; do
                     # for A2cap in "${Acaparray[@]}"; do
                         count=0
 
-                        action_name="TwoCapital_small_grid_Acap"
+                        action_name="TwoCapital_small_grid_Acap_init3"
 
                         dataname="${action_name}_${epsilon}_frac_${fraction}"
 
