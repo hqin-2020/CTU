@@ -229,13 +229,13 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
 
     vals[center+1+4*jX] = -(  -crossCoefE/(4*dVecX*dVecY) );
     vals[center+2+4*jX] = -(  crossCoefE/(4*dVecX*dVecY) );
-    // vals[center+3+4*jX] = -(  -crossCoefE/(4*dVecX*dVecY) );
-    // vals[center+4+4*jX] = -(  crossCoefE/(4*dVecX*dVecY) );
+    vals[center+3+4*jX] = -(  -crossCoefE/(4*dVecX*dVecY) );
+    vals[center+4+4*jX] = -(  crossCoefE/(4*dVecX*dVecY) );
     
     cols[center+1+4*jX] = i - incVec[jX] + incVec[jY] ;
     cols[center+2+4*jX] = i + incVec[jX] + incVec[jY];
-    // cols[center+3+4*jX] = i + incVec[jX] - incVec[jY];
-    // cols[center+4+4*jX] = i - incVec[jX] - incVec[jY];
+    cols[center+3+4*jX] = i + incVec[jX] - incVec[jY];
+    cols[center+4+4*jX] = i - incVec[jX] - incVec[jY];
 
 
   }
@@ -307,8 +307,8 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     valsXDiff[center] = 1.0/dt -  A[i];
 
     fill_mat_values_CrossDiff(R,F, i,centerXDiff,0, 1 ,lowerLims,upperLims,dVec,incVec,n,C_rf,dt,colsXDiff,valsXDiff);
-    fill_mat_values_CrossDiff(F,K, i,centerXDiff,1, 2 ,lowerLims,upperLims,dVec,incVec,n,C_fk,dt,colsXDiff,valsXDiff);
-    fill_mat_values_CrossDiff(K,R, i,centerXDiff,2, 0 ,lowerLims,upperLims,dVec,incVec,n,C_kr,dt,colsXDiff,valsXDiff);
+    // fill_mat_values_CrossDiff(F,K, i,centerXDiff,1, 2 ,lowerLims,upperLims,dVec,incVec,n,C_fk,dt,colsXDiff,valsXDiff);
+    // fill_mat_values_CrossDiff(K,R, i,centerXDiff,2, 0 ,lowerLims,upperLims,dVec,incVec,n,C_kr,dt,colsXDiff,valsXDiff);
     PetscCall(MatSetValues(petsc_mat,1,&i,3*8+1,colsXDiff,valsXDiff,ADD_VALUES));
 
   }
