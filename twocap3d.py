@@ -68,13 +68,13 @@ kamax = 1
 
 W1_min = ymin
 W1_max = ymax
-hW1 = 0.1
+hW1 = 0.05
 W1 = np.arange(W1_min, W1_max+hW1, hW1)
 nW1 = len(W1)
 
 W2_min = zmin
 W2_max = zmax
-hW2 = 0.001
+hW2 = 0.0005
 W2 = np.arange(W2_min, W2_max+hW2, hW2)
 nW2 = len(W2)
 
@@ -144,8 +144,8 @@ while FC_Err > tol and epoch < max_iter:
     k1a = ((1-zeta) + zeta*np.exp(W1_mat)**(1-kappa))**(1/(kappa-1))
     k2a = ((1-zeta)*np.exp(W1_mat)**(kappa-1) + zeta)**(1/(kappa-1))
 
-    i1_star[i1_star>=alpha] = alpha-0.001
-    i2_star[i2_star>=alpha] = alpha-0.001
+    i1_star[i1_star>=alpha/2] = alpha/2-0.001
+    i2_star[i2_star>=alpha/2] = alpha/2-0.001
 
     c_star= alpha - i1_star*k1a - i2_star*k2a
     
