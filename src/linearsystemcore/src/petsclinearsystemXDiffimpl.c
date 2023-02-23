@@ -300,8 +300,8 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     for (i = 0; i < n; ++i) {
 
     centerXDiff = 3*8/2;
-    memset(valsXDiff,0,50*sizeof(PetscScalar));
-    memset(colsXDiff,-1,50*sizeof(PetscInt));
+    memset(valsXDiff,0,25*sizeof(PetscScalar));
+    memset(colsXDiff,-1,25*sizeof(PetscInt));
     colsXDiff[center] = i;
     valsXDiff[center] = 1.0 - dt * A[i];
 
