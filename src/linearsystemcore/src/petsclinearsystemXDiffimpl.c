@@ -229,7 +229,7 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
 
     vals[center+1+4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
     vals[center+2+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
-    printf(center+3+4*jX)
+    printf(center+3+4*jX);
     vals[center+3+4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
     // vals[center+4+4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
     
