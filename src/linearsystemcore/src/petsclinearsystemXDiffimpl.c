@@ -290,8 +290,8 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     valsXDiff[center] = 1.0 - A[i]*dt;
 
     fill_mat_values_CrossDiff(R,F, i,centerXDiff,0, 1 ,lowerLims,upperLims,dVec,incVec,n,C_rf,dt,colsXDiff,valsXDiff);
-    // fill_mat_values_CrossDiff(F,K, i,centerXDiff,1, 2 ,lowerLims,upperLims,dVec,incVec,n,C_fk,dt,colsXDiff,valsXDiff);
-    // fill_mat_values_CrossDiff(K,R, i,centerXDiff,2, 0 ,lowerLims,upperLims,dVec,incVec,n,C_kr,dt,colsXDiff,valsXDiff);
+    fill_mat_values_CrossDiff(F,K, i,centerXDiff,1, 2 ,lowerLims,upperLims,dVec,incVec,n,C_fk,dt,colsXDiff,valsXDiff);
+    fill_mat_values_CrossDiff(K,R, i,centerXDiff,2, 0 ,lowerLims,upperLims,dVec,incVec,n,C_kr,dt,colsXDiff,valsXDiff);
     PetscCall(MatSetValues(petsc_mat,1,&i,3*8+1,colsXDiff,valsXDiff,ADD_VALUES));
 
   }
