@@ -144,8 +144,8 @@ while FC_Err > tol and epoch < max_iter:
     k1a = ((1-zeta) + zeta*np.exp(W1_mat)**(1-kappa))**(1/(kappa-1))
     k2a = ((1-zeta)*np.exp(W1_mat)**(kappa-1) + zeta)**(1/(kappa-1))
 
-    i1_star[i1_star>=alpha] = alpha-0.001
-    i2_star[i2_star>=alpha] = alpha-0.001
+    i1_star[i1_star>=alpha/2] = alpha/2-0.001
+    i2_star[i2_star>=alpha/2] = alpha/2-0.001
 
     c_star= alpha - i1_star*k1a - i2_star*k2a
     
