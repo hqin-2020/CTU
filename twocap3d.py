@@ -147,9 +147,9 @@ while FC_Err > tol and epoch < max_iter:
     i1_star[i1_star>=alpha] = alpha-0.001
     i2_star[i2_star>=alpha] = alpha-0.001
 
-    c_star= alpha - i1_star*k1a - i2_star*k2a
+    c= alpha - i1_star*k1a - i2_star*k2a
     
-    mc = delta * np.exp((rho-1)*V0) * c_star**(-rho)
+    mc = delta * np.exp((rho-1)*V0) * c**(-rho)
     
     i1_new = ((1-zeta)*k1a**(1-kappa) - dVdW1) / (mc*k1a) - 1
     i1_new = i1_new/phi1
@@ -163,7 +163,7 @@ while FC_Err > tol and epoch < max_iter:
     i1[i1>=alpha] = alpha-0.001
     i2[i2>=alpha] = alpha-0.001
 
-    c = alpha - i1*k1a - i2*k2a
+    # c = alpha - i1*k1a - i2*k2a
 
 ########################## distortion #############
 
