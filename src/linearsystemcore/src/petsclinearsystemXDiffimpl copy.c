@@ -143,11 +143,18 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
     cols[center-3-4*jX] = i + incVec[jX];
     cols[center+2+4*jX] = i +incVec[jY] + incVec[jX] ;
 
-  } else if (  PetscAbs(StateX[i]-lowerLims[jX]) > dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) > dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) < dVecY /2.0 )  {
-  // case 2: top
+  }
+  
+
+
 /************************************************/
   // case 2: edge line
 /************************************************/
+
+  if (  PetscAbs(StateX[i]-lowerLims[jX]) < dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) < dVecY /2.0 )  {
+  // if (  PetscAbs(StateX[i]-lowerLims[jX]) > dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) > dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) < dVecY /2.0 )  {
+  // case 2: top
+
 
     vals[center-2-4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
     vals[center-3-4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
@@ -161,7 +168,8 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
     cols[center+4+4*jX] = i - incVec[jX]-incVec[jY];
 
 
-  } else if (  PetscAbs(StateX[i]-lowerLims[jX]) > dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) > dVecX/2.0 && PetscAbs(StateY[i]-lowerLims[jY]) < dVecY /2.0 )  {
+  } else if (  PetscAbs(StateX[i]-lowerLims[jX]) < dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-lowerLims[jY]) < dVecY /2.0 )  {
+  // } else if (  PetscAbs(StateX[i]-lowerLims[jX]) > dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) > dVecX/2.0 && PetscAbs(StateY[i]-lowerLims[jY]) < dVecY /2.0 )  {
   // case 2: bottom
 
     vals[center-2-4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
@@ -178,7 +186,8 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
 
 
 
-  } else if (  PetscAbs(StateX[i]-lowerLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) > dVecY /2.0  && PetscAbs(StateY[i]-lowerLims[jY]) > dVecY /2.0) {
+  } else if (  PetscAbs(StateX[i]-lowerLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) < dVecY /2.0  && PetscAbs(StateY[i]-lowerLims[jY]) < dVecY /2.0) {
+  // } else if (  PetscAbs(StateX[i]-lowerLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) > dVecY /2.0  && PetscAbs(StateY[i]-lowerLims[jY]) > dVecY /2.0) {
   // case 2: left
 
     vals[center-1-4*jX] += -(  -crossCoefE/(4*dVecX*dVecY) );
@@ -192,7 +201,8 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
     cols[center+2+4*jX] = i + incVec[jX]+incVec[jY];
     cols[center+3+4*jX] = i + incVec[jX]-incVec[jY];
 
-  } else if (  PetscAbs(StateX[i]-upperLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) > dVecY /2.0  && PetscAbs(StateY[i]-lowerLims[jY]) > dVecY /2.0) {
+  } else if (  PetscAbs(StateX[i]-upperLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) < dVecY /2.0  && PetscAbs(StateY[i]-lowerLims[jY]) < dVecY /2.0) {
+  // } else if (  PetscAbs(StateX[i]-upperLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) > dVecY /2.0  && PetscAbs(StateY[i]-lowerLims[jY]) > dVecY /2.0) {
   // case 2: right
 
     vals[center-1-4*jX] += -(  crossCoefE/(4*dVecX*dVecY) );
@@ -207,10 +217,16 @@ static inline void fill_mat_values_CrossDiff(PetscScalar *StateX, PetscScalar *S
     // cols[center+2+4*jX] = i + incVec[jX]+incVec[jY];
     cols[center+4+4*jX] = i - incVec[jX]-incVec[jY];
 
-  } else if (  PetscAbs(StateX[i]-lowerLims[jX]) > dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) > dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) > dVecY /2.0 &&PetscAbs(StateY[i]-lowerLims[jY]) > dVecY /2.0 )  {
+  }
+  
 /************************************************/
   // case 3: interior
 /************************************************/
+
+
+  if (  PetscAbs(StateX[i]-lowerLims[jX]) < dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) < dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) < dVecY /2.0 &&PetscAbs(StateY[i]-lowerLims[jY]) < dVecY /2.0 )  {
+  // if (  PetscAbs(StateX[i]-lowerLims[jX]) > dVecX/2.0  && PetscAbs(StateX[i]-upperLims[jX]) > dVecX/2.0 && PetscAbs(StateY[i]-upperLims[jY]) > dVecY /2.0 &&PetscAbs(StateY[i]-lowerLims[jY]) > dVecY /2.0 )  {
+
     vals[center+1+4*jX] = -(  -crossCoefE/(4*dVecX*dVecY) );
     vals[center+2+4*jX] = -(  crossCoefE/(4*dVecX*dVecY) );
     vals[center+3+4*jX] = -(  -crossCoefE/(4*dVecX*dVecY) );
