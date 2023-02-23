@@ -271,7 +271,7 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     memset(vals,0,13*sizeof(PetscScalar));
     memset(cols,-1,13*sizeof(PetscInt));
     cols[center] = i;
-    vals[center] = 1.0/dt - A[i];
+    vals[center] = 1.0 - dt*A[i];
     fill_mat_values(R,i,center,0,lowerLims,upperLims,dVec,incVec,n,B_r,C_rr,dt,cols,vals);
     fill_mat_values(F,i,center,1,lowerLims,upperLims,dVec,incVec,n,B_f,C_ff,dt,cols,vals);
     fill_mat_values(K,i,center,2,lowerLims,upperLims,dVec,incVec,n,B_k,C_kk,dt,cols,vals);
@@ -288,7 +288,7 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_C(PetscScalar *R, PetscScalar *F
     memset(valsXDiff,0,25*sizeof(PetscScalar));
     memset(colsXDiff,-1,25*sizeof(PetscInt));
     colsXDiff[center] = i;
-    valsXDiff[center] = 1.0/dt - A[i];
+    valsXDiff[center] = 1.0 - dt*A[i];
 
     fill_mat_values_CrossDiff(R,F, i,centerXDiff,0, 1 ,lowerLims,upperLims,dVec,incVec,n,C_rf,dt,colsXDiff,valsXDiff);
     fill_mat_values_CrossDiff(F,K, i,centerXDiff,1, 2 ,lowerLims,upperLims,dVec,incVec,n,C_fk,dt,colsXDiff,valsXDiff);
