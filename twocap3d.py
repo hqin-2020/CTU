@@ -154,7 +154,7 @@ while FC_Err > tol and epoch < max_iter:
     i1_star[i1_star<=0] = 0.001
     i2_star[i2_star<=0] = 0.001
     i1_star = i1_star*(~((i1_star*k1a)>=(alpha*A1cap))) + alpha*A1cap*((i1_star*k1a)>=(alpha*A1cap))-0.001
-    i2_star = i2_star*(~((i2_star*k1a)>=(alpha*A2cap))) + alpha*A2cap*((i2_star*k1a)>=(alpha*A2cap))-0.001
+    i2_star = i2_star*(~((i2_star*k2a)>=(alpha*A2cap))) + alpha*A2cap*((i2_star*k2a)>=(alpha*A2cap))-0.001
     i1_star[i1_star<=0] = 0.001
     i2_star[i2_star<=0] = 0.001
     c_star= alpha - i1_star*k1a - i2_star*k2a
@@ -175,7 +175,7 @@ while FC_Err > tol and epoch < max_iter:
     i1[i1<=0] = 0.001
     i2[i2<=0] = 0.001
     i1 = i1*(~((i1*k1a)>=(alpha*A1cap))) + alpha*A1cap*((i1*k1a)>=(alpha*A1cap))-0.001
-    i2 = i2*(~((i2*k1a)>=(alpha*A2cap))) + alpha*A2cap*((i2*k1a)>=(alpha*A2cap))-0.001
+    i2 = i2*(~((i2*k2a)>=(alpha*A2cap))) + alpha*A2cap*((i2*k2a)>=(alpha*A2cap))-0.001
     i1[i1<=0] = 0.001
     i2[i2<=0] = 0.001
 
