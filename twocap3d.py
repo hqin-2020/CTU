@@ -160,8 +160,8 @@ while FC_Err > tol and epoch < max_iter:
     i1 = i1_new * fraction + i1_star*(1-fraction)
     i2 = i2_new * fraction + i2_star*(1-fraction)
 
-    i1[i1>=alpha/2] = alpha*4/5-0.001
-    i2[i2>=alpha/2] = alpha*4/5-0.001
+    i1[i1>=alpha/2] = alpha/2-0.001
+    i2[i2>=alpha/2] = alpha/2-0.001
 
     c = alpha - i1*k1a - i2*k2a
 
