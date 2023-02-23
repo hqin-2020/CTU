@@ -1,6 +1,6 @@
 #! /bin/bash
 
-epsilonarray=(0.01)
+epsilonarray=(0.1)
 fractionarray=(0.1)
 
 actiontime=1
