@@ -37,8 +37,8 @@ gamma = args.gamma
 A1cap = args.A1cap
 A2cap = A1cap
 
-phi1 = 28.0
-phi2 = 28.0
+phi1 = 28.0/2
+phi2 = 28.0/2
 eta1 = 0.013
 eta2 = 0.013
 
