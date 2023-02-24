@@ -155,12 +155,12 @@ while FC_Err > tol and epoch < max_iter:
     # i2_star[i2_star>=alpha/3] = alpha/3-0.001
     i1_star[i1_star<=0] = 0.001
     i2_star[i2_star<=0] = 0.001
-    i1_star = i1_star*(~((i1_star*k1a)>=(alpha*A1cap))) + alpha*A1cap*((i1_star*k1a)>=(alpha*A1cap))-0.001
-    i2_star = i2_star*(~((i2_star*k2a)>=(alpha*A2cap))) + alpha*A2cap*((i2_star*k2a)>=(alpha*A2cap))-0.001
-    i1_star[i1_star<=0] = 0.001
-    i2_star[i2_star<=0] = 0.001
+    # i1_star = i1_star*(~((i1_star*k1a)>=(alpha*A1cap))) + alpha*A1cap*((i1_star*k1a)>=(alpha*A1cap))-0.001
+    # i2_star = i2_star*(~((i2_star*k2a)>=(alpha*A2cap))) + alpha*A2cap*((i2_star*k2a)>=(alpha*A2cap))-0.001
+    # i1_star[i1_star<=0] = 0.001
+    # i2_star[i2_star<=0] = 0.001
     c_star= alpha - i1_star*k1a - i2_star*k2a
-    
+    c_star[c_star<=0] = 0.001
     mc = delta * np.exp((rho-1)*V0) * c_star**(-rho)
     
     i1_new = ((1-zeta)*k1a**(1-kappa) - dVdW1) / (mc*k1a) - 1
@@ -174,15 +174,15 @@ while FC_Err > tol and epoch < max_iter:
 
     # i1[i1>=alpha/3] = alpha/3-0.001
     # i2[i2>=alpha/3] = alpha/3-0.001
-    i1[i1<=0] = 0.001
-    i2[i2<=0] = 0.001
-    i1 = i1*(~((i1*k1a)>=(alpha*A1cap))) + alpha*A1cap*((i1*k1a)>=(alpha*A1cap))-0.001
-    i2 = i2*(~((i2*k2a)>=(alpha*A2cap))) + alpha*A2cap*((i2*k2a)>=(alpha*A2cap))-0.001
+    # i1[i1<=0] = 0.001
+    # i2[i2<=0] = 0.001
+    # i1 = i1*(~((i1*k1a)>=(alpha*A1cap))) + alpha*A1cap*((i1*k1a)>=(alpha*A1cap))-0.001
+    # i2 = i2*(~((i2*k2a)>=(alpha*A2cap))) + alpha*A2cap*((i2*k2a)>=(alpha*A2cap))-0.001
     i1[i1<=0] = 0.001
     i2[i2<=0] = 0.001
 
     c = alpha - i1*k1a - i2*k2a
-
+    c[c<=0] = 0.001
 ########################## distortion #############
 
     h1_new = (1-zeta)*(k1a)**(1-kappa)*sigma_1[0] + zeta*(k2a)**(1-kappa)*sigma_2[0] + (sigma_2-sigma_1)[0]*dVdW1 + sigma_z1[0] *dVdW2
