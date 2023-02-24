@@ -145,6 +145,7 @@ i2_star = res["i2_star"]
 h1_star = res["h1_star"]
 h2_star = res["h2_star"]
 hz_star = res["hz_star"]
+FC_Err = res["FC_Err"]
 V0 = res["V0"]
 
 Fig_Dir = "./figure/"+args.dataname+"/"
@@ -206,7 +207,7 @@ plt.close()
 plt.plot(W1,V0[:,int(len(W2)/2),0],label="$V$")
 plt.legend()
 plt.xlabel('y')
-plt.title('Value Function')  
+plt.title('Value Function, '+str(FC_Err))  
 # plt.xlim([-0.02, 0.02])
 # plt.ylim([0.015,0.040])
 plt.savefig(Fig_Dir+"Vy_eps_{}_frac_{}.png".format(epsilon,fraction))
@@ -215,7 +216,7 @@ plt.close()
 plt.plot(W2,V0[int(len(W1)/2),:,0],label="$V$")
 plt.legend()
 plt.xlabel('z')
-plt.title('Value function')  
+plt.title('Value function, '+str(FC_Err))  
 # plt.xlim([-0.02, 0.02])
 # plt.ylim([0.015,0.040])
 plt.savefig(Fig_Dir+"Vz_eps_{}_frac_{}.png".format(epsilon,fraction))
