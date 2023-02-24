@@ -3,6 +3,9 @@
 epsilonarray=(0.001 0.0005 0.0001 0.00005 0.00001)
 fractionarray=(0.05 0.01 0.005 0.001 0.0005)
 
+epsilonarray=(0.1)
+fractionarray=(0.1)
+
 actiontime=1
 
 python_name="twocap3d.py"
@@ -26,7 +29,8 @@ for epsilon in ${epsilonarray[@]}; do
                     # for A2cap in "${Acaparray[@]}"; do
                         count=0
 
-                        action_name="TwoCapital_small_grid_Acap_smallerepsilon"
+                        # action_name="TwoCapital_small_grid_Acap_smallerepsilon"
+                        action_name="oldtest"
 
                         dataname="${action_name}_${epsilon}_frac_${fraction}"
 
