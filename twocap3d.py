@@ -138,13 +138,13 @@ while FC_Err > tol and epoch < max_iter:
     
     start_eps = time.time()
 
-    dVdW1= finiteDiff_3D2(V0, 0, 1, hW1)
-    ddVddW1= finiteDiff_3D2(V0, 0, 2, hW1)
+    dVdW1= finiteDiff_3D(V0, 0, 1, hW1)
+    ddVddW1= finiteDiff_3D(V0, 0, 2, hW1)
 
     dVdW2 = finiteDiff_3D(V0, 1, 1, hW2)
     ddVddW2 = finiteDiff_3D(V0, 1, 2, hW2)
     
-    ddVdW1dW2 = finiteDiff_3D2(dVdW1, 1, 1, hW2)
+    ddVdW1dW2 = finiteDiff_3D(dVdW1, 1, 1, hW2)
 
 ##########################investment-capital ratio#############
 
@@ -260,6 +260,14 @@ while FC_Err > tol and epoch < max_iter:
     out_comp = np.array(ksp.getSolution()).reshape(A.shape, order="F")
     end_ksp = time.time()
     num_iter = ksp.getIterationNumber()
+
+    dVdW1= finiteDiff_3D(out_comp, 0, 1, hW1)
+    ddVddW1= finiteDiff_3D(out_comp, 0, 2, hW1)
+
+    dVdW2 = finiteDiff_3D(out_comp, 1, 1, hW2)
+    ddVddW2 = finiteDiff_3D(out_comp, 1, 2, hW2)
+    
+    ddVdW1dW2 = finiteDiff_3D(dVdW1, 1, 1, hW2)
 
     PDE_rhs = A * V0 + B_1 * dVdW1 + B_2 * dVdW2 + C_1 * ddVddW1 + C_2 * ddVddW2 + C_12 * ddVdW1dW2 + D
     PDE_Err = np.max(abs(PDE_rhs))
