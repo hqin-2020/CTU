@@ -3,9 +3,6 @@
 epsilonarray=(0.1 0.01 0.005 0.001)
 fractionarray=(0.1 0.01 0.005 0.001)
 
-epsilonarray=(0.1)
-fractionarray=(0.1)
-
 actiontime=1
 
 python_name="twocap3d.py"
