@@ -1,7 +1,7 @@
 #! /bin/bash
 
-epsilonarray=(0.1)
-fractionarray=(0.05 0.1 0.15 0.2 0.25)
+epsilonarray=(0.1 0.05 0.01)
+fractionarray=(0.1 0.05 0.01)
 
 actiontime=1
 
@@ -25,7 +25,7 @@ for epsilon in ${epsilonarray[@]}; do
                     # for A2cap in "${Acaparray[@]}"; do
                         count=0
 
-                        action_name="TwoCapital_small_grid_Acap_init3"
+                        action_name="TwoCapital_small_grid_Acap_smallepsilon"
 
                         dataname="${action_name}_${epsilon}_frac_${fraction}"
 

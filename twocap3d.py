@@ -39,8 +39,8 @@ A2cap = A1cap
 
 phi1 = 28.0
 phi2 = 28.0
-eta1 = 0.0
-eta2 = 0.0
+eta1 = 0.013
+eta2 = 0.013
 
 a11 = 0.014
 alpha = 0.05
@@ -73,13 +73,13 @@ kamax = 1
 
 W1_min = ymin
 W1_max = ymax
-hW1 = 0.1
+hW1 = 0.06
 W1 = np.arange(W1_min, W1_max+hW1, hW1)
 nW1 = len(W1)
 
 W2_min = zmin
 W2_max = zmax
-hW2 = 0.001
+hW2 = 0.002
 W2 = np.arange(W2_min, W2_max+hW2, hW2)
 nW2 = len(W2)
 
