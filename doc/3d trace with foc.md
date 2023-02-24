@@ -313,8 +313,6 @@ $$
 
 
 
-
-
 $$
 \begin{aligned}
 [(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}][(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}]\frac{1}{1+\phi i_1} =\delta \exp [(\rho-1) v] c^{-\rho}(\frac{k_1}{k_a}) 
@@ -326,3 +324,31 @@ $$
 [\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}+\frac{\partial v}{\partial \hat{y}}][\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}+\frac{\partial v}{\partial \hat{y}}]\frac{1}{1+\phi i_2} = \delta \exp [(\rho-1) v]c^{-\rho}(\frac{k_2}{k_a}) 
 \end{aligned}
 $$
+
+
+
+
+$$
+\begin{aligned}
+\frac{(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}}{\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}+\frac{\partial v}{\partial \hat{y}}}\frac{1+\phi i_2}{1+\phi i_1} =\frac{k_1}{k_a}\frac{k_a}{k_2}
+\end{aligned}
+$$
+
+$$
+\begin{aligned}\phi i_2=\frac{k_1}{k_a}\frac{k_a}{k_2}(1+\phi i_1)\frac{\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}+\frac{\partial v}{\partial \hat{y}}}{(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}}-1
+\end{aligned}
+$$
+
+
+
+
+$$
+c = \alpha-i_1\left(\frac{k_1}{k_a}\right)-\frac{\frac{k_1}{k_a}\frac{k_a}{k_2}(1+\phi i_1)\frac{\zeta\left(\frac{k_2}{k_a}\right)^{1-\kappa}+\frac{\partial v}{\partial \hat{y}}}{(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}}-1}{\phi}\left(\frac{k_2}{k_a}\right)
+$$
+
+$$
+\begin{aligned}
+[(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}][(1-\zeta)\left(\frac{k_1}{k_a}\right)^{1-\kappa}-\frac{\partial v}{\partial \hat{y}}]\frac{1}{1+\phi i_1} =\delta \exp [(\rho-1) v] c^{-\rho}(\frac{k_1}{k_a}) 
+\end{aligned}
+$$
+
