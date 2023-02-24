@@ -243,7 +243,7 @@ plt.savefig(Fig_Dir+"Vz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
 
-plt.plot(W1,PDE_rhs[:,int(len(W2)/2),0],label="$PDE error$")
+plt.plot(W1,PDE_rhs[:,0,0],label="$PDE error$")
 plt.legend()
 plt.xlabel('y')
 plt.title('PDE error')  
@@ -252,7 +252,7 @@ plt.xlim([-np.log(20), np.log(20)])
 plt.savefig(Fig_Dir+"ey_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
-plt.plot(W2,PDE_rhs[int(len(W1)/2),:,0],label="$PDE error$")
+plt.plot(W2,PDE_rhs[0,:,0],label="$PDE error$")
 plt.legend()
 plt.xlabel('z')
 plt.title('PDE error')  
