@@ -294,6 +294,7 @@ res = {
     "V0": V0,
     "i1_star": i1_star,
     "i2_star": i2_star,
+    "c": c,
     "k1a":k1a,
     "k2a":k2a,
     "h1_star": h1_star,
