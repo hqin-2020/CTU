@@ -99,6 +99,7 @@ W3_mat_1d = W3_mat.ravel(order='F')
 lowerLims = np.array([W1.min(), W2.min(), W3.min()], dtype=np.float64)
 upperLims = np.array([W1.max(), W2.max(), W3.max()], dtype=np.float64)
 
+
 print("Grid dimension: [{}, {}, {}]\n".format(nW1, nW2, nW3))
 print("Grid step: [{}, {}, {}]\n".format(hW1, hW2, hW3))
 
@@ -122,7 +123,8 @@ max_iter = args.maxiter
 tol = 1e-6
 fraction = args.fraction
 epsilon = args.epsilon
-
+print(epsilon)
+print(fraction)
 ############ Initialization ############
 V0 = W2_mat**2 + 5
 

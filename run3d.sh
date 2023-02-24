@@ -1,7 +1,7 @@
 #! /bin/bash
 
-epsilonarray=(0.001 0.0005 0.0001 0.00005 0.00001)
-fractionarray=(0.05 0.01 0.005 0.001 0.0005)
+epsilonarray=(0.1 0.01 0.005 0.001)
+fractionarray=(0.1 0.01 0.005 0.001)
 
 epsilonarray=(0.1)
 fractionarray=(0.1)
@@ -15,8 +15,8 @@ maxiter=5000000
 rhoarray=(1.00001)
 
 gammaarray=(8.0)
-# Acaparray=(0.3 0.33 0.334 0.34 0.35 0.36)
-Acaparray=(0.37 0.38 0.4)
+Acaparray=(0.2 0.3 0.35 0.4 0.45 0.5 0.6 0.7 0.8 0.9 1.0)
+# Acaparray=(0.37 0.38 0.4)
 A1caparray=(0.5 0.6 0.7)
 A2caparray=(0.5 0.6 0.7)
 
@@ -29,8 +29,8 @@ for epsilon in ${epsilonarray[@]}; do
                     # for A2cap in "${Acaparray[@]}"; do
                         count=0
 
-                        # action_name="TwoCapital_small_grid_Acap_smallerepsilon"
-                        action_name="newtestpe3"
+                        action_name="TwoCapital_ep_epsilon"
+                        # action_name="newtestpe3"
 
                         dataname="${action_name}_${epsilon}_frac_${fraction}"
 
@@ -48,7 +48,7 @@ for epsilon in ${epsilonarray[@]}; do
 #! /bin/bash
 
 ######## login
-#SBATCH --job-name=${A1cap}_${rho}_${gamma}
+#SBATCH --job-name=${A1cap}_${epsilon}_${fraction}
 #SBATCH --output=./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.out
 #SBATCH --error=./job-outs/${action_name}/eps_${epsilon}_frac_${fraction}/rho_${rho}_gamma_${gamma}_Acap_${A1cap}.err
 
