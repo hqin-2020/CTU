@@ -148,7 +148,7 @@ hz_star = res["hz_star"]
 FC_Err = res["FC_Err"]
 V0 = res["V0"]
 
-Fig_Dir = "./figure/"+args.dataname+"/A1cap_{}_A2cap_{}".format(A1cap,A2cap)+"/"
+Fig_Dir = "./figure/eps_{}".format(epsilon)+"/frac_{}".format(fraction)+"/A1cap_{}_A2cap_{}".format(A1cap,A2cap)+"/"
 
 os.makedirs(Fig_Dir, exist_ok=True)
 
