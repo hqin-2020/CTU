@@ -30,7 +30,7 @@ for epsilon in ${epsilonarray[@]}; do
                         count=0
 
                         # action_name="TwoCapital_small_grid_Acap_smallerepsilon"
-                        action_name="oldtest"
+                        action_name="newtest"
 
                         dataname="${action_name}_${epsilon}_frac_${fraction}"
 
