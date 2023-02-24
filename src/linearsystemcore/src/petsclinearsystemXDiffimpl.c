@@ -7,21 +7,21 @@ static inline void fill_mat_values(PetscScalar *State, PetscInt i, PetscInt cent
   //check whether it's at upper or lower boundary
   if (PetscAbs(State[i]-upperLims[j]) < dVec[j]/2.0) {//upper boundary
     vals[center] += -dt*(firstCoefE/dVec[j] + secondCoefE/PetscPowReal(dVec[j],2));
-    vals[center-1-2*j] = -dt*(-firstCoefE/dVec[j] - 2.0*secondCoefE/PetscPowReal(dVec[j],2));
-    vals[center-2-2*j] = -dt*(secondCoefE/PetscPowReal(dVec[j],2));
+    vals[center-1-2*j] += -dt*(-firstCoefE/dVec[j] - 2.0*secondCoefE/PetscPowReal(dVec[j],2));
+    vals[center-2-2*j] += -dt*(secondCoefE/PetscPowReal(dVec[j],2));
     cols[center-1-2*j] = i - incVec[j];
     cols[center-2-2*j] = i - 2*incVec[j];
   } else if (PetscAbs(State[i]-lowerLims[j]) < dVec[j]/2.0) {//lower boundary
     vals[center] += -dt*(-firstCoefE/dVec[j] + secondCoefE/PetscPowReal(dVec[j],2));
-    vals[center+1+2*j] = -dt*(firstCoefE/dVec[j] - 2.0*secondCoefE/PetscPowReal(dVec[j],2));
-    vals[center+2+2*j] = -dt*(secondCoefE/PetscPowReal(dVec[j],2));
+    vals[center+1+2*j] += -dt*(firstCoefE/dVec[j] - 2.0*secondCoefE/PetscPowReal(dVec[j],2));
+    vals[center+2+2*j] += -dt*(secondCoefE/PetscPowReal(dVec[j],2));
     if (i + incVec[j] < maxcols) cols[center+1+2*j] = i + incVec[j]; // ignore out of bound entries
     if (i + 2*incVec[j] < maxcols) cols[center+2+2*j] = i + 2*incVec[j];
   } else {
     //first derivative
     vals[center] += -dt*(-firstCoefE*(firstCoefE > 0) + firstCoefE*( firstCoefE<0))/dVec[j] - dt*(-2)*secondCoefE/(PetscPowReal(dVec[j],2));
-    vals[center+1+2*j] = -dt*firstCoefE*(firstCoefE > 0)/dVec[j] - dt* secondCoefE/(PetscPowReal(dVec[j],2));
-    vals[center-1-2*j] = -dt*-firstCoefE*(firstCoefE < 0)/dVec[j] - dt*secondCoefE/(PetscPowReal(dVec[j],2));
+    vals[center+1+2*j] += -dt*firstCoefE*(firstCoefE > 0)/dVec[j] - dt* secondCoefE/(PetscPowReal(dVec[j],2));
+    vals[center-1-2*j] += -dt*-firstCoefE*(firstCoefE < 0)/dVec[j] - dt*secondCoefE/(PetscPowReal(dVec[j],2));
     cols[center-1-2*j] = i - incVec[j];
     if (i + incVec[j] < maxcols) cols[center+1+2*j] = i + incVec[j]; // ignore out of bound entries
   }
