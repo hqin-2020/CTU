@@ -27,7 +27,7 @@ for epsilon in ${epsilonarray[@]}; do
                     # for A2cap in "${Acaparray[@]}"; do
                         count=0
 
-                        action_name="TwoCapital_c_constrains"
+                        action_name="TwoCapital_ep_epsilon"
                         # action_name="newtestpe3"
 
                         dataname="${action_name}_${epsilon}_frac_${fraction}"

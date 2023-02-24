@@ -150,7 +150,7 @@ PDE_rhs = res["PDE_rhs"]
 V0 = res["V0"]
 c = res["c"]
 
-Fig_Dir = "./figure/eps_{}".format(epsilon)+"/frac_{}".format(fraction)+"/A1cap_{}_A2cap_{}".format(A1cap,A2cap)+"/"
+Fig_Dir = "./figure/"+args.figname+"/eps_{}".format(epsilon)+"/frac_{}".format(fraction)+"/A1cap_{}_A2cap_{}".format(A1cap,A2cap)+"/"
 
 os.makedirs(Fig_Dir, exist_ok=True)
 
