@@ -12,8 +12,8 @@ maxiter=5000000
 rhoarray=(1.00001)
 
 gammaarray=(8.0)
-# Acaparray=(0.0)
-Acaparray=(0.2 0.3 0.35 0.4 0.45 0.5 0.6 0.7 0.8 0.9 1.0)
+Acaparray=(0.0)
+# Acaparray=(0.2 0.3 0.35 0.4 0.45 0.5 0.6 0.7 0.8 0.9 1.0)
 # Acaparray=(0.37 0.38 0.4)
 A1caparray=(0.5 0.6 0.7)
 A2caparray=(0.5 0.6 0.7)
@@ -27,7 +27,7 @@ for epsilon in ${epsilonarray[@]}; do
                     # for A2cap in "${Acaparray[@]}"; do
                         count=0
 
-                        action_name="TwoCapital_ep_epsilon"
+                        action_name="TwoCapital_c_constrains"
                         # action_name="newtestpe3"
 
                         dataname="${action_name}_${epsilon}_frac_${fraction}"
