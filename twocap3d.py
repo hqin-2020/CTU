@@ -37,8 +37,8 @@ gamma = args.gamma
 A1cap = args.A1cap
 A2cap = A1cap
 
-phi1 = 28.0/2
-phi2 = 28.0/2
+phi1 = 28.0
+phi2 = 28.0
 eta1 = 0.013
 eta2 = 0.013
 
@@ -65,8 +65,8 @@ beta2 = 0.01
 ymin = -np.log(20)
 ymax = np.log(20)
 
-zmin = -0.1
-zmax = 0.1
+zmin = -0.75
+zmax = 0.75
 
 kamin = -1
 kamax = 1
@@ -79,7 +79,7 @@ nW1 = len(W1)
 
 W2_min = zmin
 W2_max = zmax
-hW2 = 0.002
+hW2 = 0.0015
 W2 = np.arange(W2_min, W2_max+hW2, hW2)
 nW2 = len(W2)
 
@@ -109,7 +109,7 @@ increVec = np.array([1, nW1, nW1*nW2], dtype=np.int32)
 petsc_mat = PETSc.Mat().create()
 petsc_mat.setType('aij')
 petsc_mat.setSizes([nW1 * nW2 * nW3, nW1 * nW2 * nW3])
-petsc_mat.setPreallocationNNZ(25)
+petsc_mat.setPreallocationNNZ(49)
 petsc_mat.setUp()
 ksp = PETSc.KSP()
 ksp.create(PETSc.COMM_WORLD)
@@ -239,7 +239,7 @@ while FC_Err > tol and epoch < max_iter:
     C_23_1d = C_23.ravel(order='F')
     C_31_1d = C_31.ravel(order='F')
     D_1d = D.ravel(order='F')
-    petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff(W1_mat_1d, W2_mat_1d, W3_mat_1d, A_1d, B_1_1d, B_2_1d,
+    petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff_Natural(W1_mat_1d, W2_mat_1d, W3_mat_1d, A_1d, B_1_1d, B_2_1d,
                                        B_3_1d, C_1_1d, C_2_1d, C_3_1d, C_12_1d, C_23_1d, C_31_1d, epsilon, lowerLims, upperLims, dVec, increVec, petsc_mat)
     V0_1d = V0.ravel(order='F')
     # b = V0_1d / epsilon + D_1d 
