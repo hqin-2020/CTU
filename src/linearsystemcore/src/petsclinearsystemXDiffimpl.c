@@ -380,8 +380,7 @@ static inline void fill_mat_values_CrossDiff_Natural(PetscScalar *StateX, PetscS
 
 }
 
-
-PetscErrorCode FormLinearSystem_C(PetscScalar *R, PetscScalar *F, PetscScalar *K, PetscScalar *A, PetscScalar *B_r, PetscScalar *B_f, PetscScalar *B_k, PetscScalar *C_rr, PetscScalar *C_ff, PetscScalar *C_kk, PetscScalar dt, PetscScalar *lowerLims, PetscScalar *upperLims, PetscScalar *dVec, PetscInt *incVec, PetscInt n, Mat petsc_mat)
+PetscErrorCode FormLinearSystem_Direct_Natural(PetscScalar *R, PetscScalar *F, PetscScalar *K, PetscScalar *A, PetscScalar *B_r, PetscScalar *B_f, PetscScalar *B_k, PetscScalar *C_rr, PetscScalar *C_ff, PetscScalar *C_kk, PetscScalar dt, PetscScalar *lowerLims, PetscScalar *upperLims, PetscScalar *dVec, PetscInt *incVec, PetscInt n, Mat petsc_mat)
 {
   PetscErrorCode ierr;
   PetscInt       i, center;
@@ -406,8 +405,32 @@ PetscErrorCode FormLinearSystem_C(PetscScalar *R, PetscScalar *F, PetscScalar *K
 }
 
 
+PetscErrorCode FormLinearSystem_Direct_Neumann(PetscScalar *R, PetscScalar *F, PetscScalar *K, PetscScalar *A, PetscScalar *B_r, PetscScalar *B_f, PetscScalar *B_k, PetscScalar *C_rr, PetscScalar *C_ff, PetscScalar *C_kk, PetscScalar dt, PetscScalar *lowerLims, PetscScalar *upperLims, PetscScalar *dVec, PetscInt *incVec, PetscInt n, Mat petsc_mat)
+{
+  PetscErrorCode ierr;
+  PetscInt       i, center;
+  PetscInt       cols[7];
+  PetscScalar    vals[7];
 
-PetscErrorCode FormLinearSystem_DirectCrossDiff_Mix(PetscScalar *R, PetscScalar *F, PetscScalar *K, PetscScalar *A, PetscScalar *B_r, PetscScalar *B_f, PetscScalar *B_k, PetscScalar *C_rr, PetscScalar *C_ff, PetscScalar *C_kk, PetscScalar *C_rf, PetscScalar *C_fk, PetscScalar *C_kr, PetscScalar dt, PetscScalar *lowerLims, PetscScalar *upperLims, PetscScalar *dVec, PetscInt *incVec, PetscInt n, Mat petsc_mat)
+  PetscFunctionBegin;
+  for (i = 0; i < n; ++i) {
+    center = 3*2/2;
+    memset(vals,0,7*sizeof(PetscScalar));
+    memset(cols,-1,7*sizeof(PetscInt));
+    cols[center] = i;
+    vals[center] = 1.0 - dt * A[i];
+    fill_mat_values_direct_Neumann(R,i,center,0,lowerLims,upperLims,dVec,incVec,n,B_r,C_rr,dt,cols,vals);
+    fill_mat_values_direct_Neumann(F,i,center,1,lowerLims,upperLims,dVec,incVec,n,B_f,C_ff,dt,cols,vals);
+    fill_mat_values_direct_Neumann(K,i,center,2,lowerLims,upperLims,dVec,incVec,n,B_k,C_kk,dt,cols,vals);
+    ierr = MatSetValues(petsc_mat,1,&i,3*2+1,cols,vals,INSERT_VALUES);CHKERRQ(ierr);
+  }
+  ierr = MatAssemblyBegin(petsc_mat,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
+  ierr = MatAssemblyEnd(petsc_mat,MAT_FINAL_ASSEMBLY);CHKERRQ(ierr);
+  PetscFunctionReturn(0);
+}
+
+
+PetscErrorCode FormLinearSystem_DirectCrossDiff_Neumann(PetscScalar *R, PetscScalar *F, PetscScalar *K, PetscScalar *A, PetscScalar *B_r, PetscScalar *B_f, PetscScalar *B_k, PetscScalar *C_rr, PetscScalar *C_ff, PetscScalar *C_kk, PetscScalar *C_rf, PetscScalar *C_fk, PetscScalar *C_kr, PetscScalar dt, PetscScalar *lowerLims, PetscScalar *upperLims, PetscScalar *dVec, PetscInt *incVec, PetscInt n, Mat petsc_mat)
 {
   PetscErrorCode ierr;
   PetscInt       i, iXDiff, center, centerXDiff;
@@ -455,7 +478,7 @@ PetscErrorCode FormLinearSystem_DirectCrossDiff_Mix(PetscScalar *R, PetscScalar 
 }
 
 
-PetscErrorCode FormLinearSystem_DirectCrossDiff_Neumann(PetscScalar *R, PetscScalar *F, PetscScalar *K, PetscScalar *A, PetscScalar *B_r, PetscScalar *B_f, PetscScalar *B_k, PetscScalar *C_rr, PetscScalar *C_ff, PetscScalar *C_kk, PetscScalar *C_rf, PetscScalar *C_fk, PetscScalar *C_kr, PetscScalar dt, PetscScalar *lowerLims, PetscScalar *upperLims, PetscScalar *dVec, PetscInt *incVec, PetscInt n, Mat petsc_mat)
+PetscErrorCode FormLinearSystem_DirectCrossDiff_Mix(PetscScalar *R, PetscScalar *F, PetscScalar *K, PetscScalar *A, PetscScalar *B_r, PetscScalar *B_f, PetscScalar *B_k, PetscScalar *C_rr, PetscScalar *C_ff, PetscScalar *C_kk, PetscScalar *C_rf, PetscScalar *C_fk, PetscScalar *C_kr, PetscScalar dt, PetscScalar *lowerLims, PetscScalar *upperLims, PetscScalar *dVec, PetscInt *incVec, PetscInt n, Mat petsc_mat)
 {
   PetscErrorCode ierr;
   PetscInt       i, iXDiff, center, centerXDiff;
