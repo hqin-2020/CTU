@@ -301,6 +301,7 @@ res = {
     "h2_star": h2_star,
     "hz_star": hz_star,
     "FC_Err": FC_Err,
+    "PDE_Err":PDE_Err,
     "W1": W1,
     "W2": W2,
     "W3": W3,

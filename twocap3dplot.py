@@ -147,6 +147,7 @@ h2_star = res["h2_star"]
 hz_star = res["hz_star"]
 FC_Err = res["FC_Err"]
 V0 = res["V0"]
+c = res["c"]
 
 Fig_Dir = "./figure/eps_{}".format(epsilon)+"/frac_{}".format(fraction)+"/A1cap_{}_A2cap_{}".format(A1cap,A2cap)+"/"
 
@@ -161,8 +162,8 @@ plt.plot(W1,i2_star[:,int(len(W2)/2),0],label="$i2$, max = "+str(round(np.max(i2
 plt.legend()
 plt.xlabel('y')
 plt.title('Investment-Capital Ratio, '+str(FC_Err))  
-# plt.xlim([-0.02, 0.02])
-# plt.ylim([0.015,0.040])
+plt.xlim([-np.log(20), np.log(20)])
+plt.ylim([-0.01,0.05])
 plt.savefig(Fig_Dir+"iy_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
@@ -172,11 +173,28 @@ plt.plot(W2,i2_star[int(len(W1)/2),:,0],label="$i2$, max = "+str(round(np.max(i2
 plt.legend()
 plt.xlabel('z')
 plt.title('Investment-Capital Ratio, '+str(FC_Err))  
-# plt.xlim([-0.02, 0.02])
-# plt.ylim([0.015,0.040])
+plt.xlim([-0.1, 0.1])
+plt.ylim([-0.01,0.05])
 plt.savefig(Fig_Dir+"iz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
+plt.plot(W1,c[:,int(len(W2)/2),0],label="$c$, max = "+str(round(np.max(c[:,int(len(W2)/2),0]),5))+", min = "+str(round(np.min(c[:,int(len(W2)/2),0]),5)))
+plt.legend()
+plt.xlabel('y')
+plt.title('Consumption-Capital Ratio, '+str(FC_Err))  
+plt.xlim([-np.log(20), np.log(20)])
+plt.ylim([-0.01,0.05])
+plt.savefig(Fig_Dir+"cy_eps_{}_frac_{}.png".format(epsilon,fraction))
+plt.close()
+
+plt.plot(W2,c[int(len(W1)/2),:,0],label="$c$, max = "+str(round(np.max(c[int(len(W1)/2),:,0]),5))+", min = "+str(round(np.min(c[int(len(W1)/2),:,0]),5)))
+plt.legend()
+plt.xlabel('z')
+plt.title('Consumption-Capital Ratio, '+str(FC_Err))  
+plt.xlim([-0.1, 0.1])
+plt.ylim([-0.01,0.05])
+plt.savefig(Fig_Dir+"cz_eps_{}_frac_{}.png".format(epsilon,fraction))
+plt.close()
 
 
 plt.plot(W1,h1_star[:,int(len(W2)/2),0],label="$h1$")
@@ -202,14 +220,12 @@ plt.savefig(Fig_Dir+"hz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
 
-
-
 plt.plot(W1,V0[:,int(len(W2)/2),0],label="$V$")
 plt.legend()
 plt.xlabel('y')
 plt.title('Value Function, '+str(FC_Err))  
-# plt.xlim([-0.02, 0.02])
-# plt.ylim([0.015,0.040])
+plt.xlim([-np.log(20), np.log(20)])
+plt.ylim([-0.01,0.0])
 plt.savefig(Fig_Dir+"Vy_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
@@ -217,8 +233,8 @@ plt.plot(W2,V0[int(len(W1)/2),:,0],label="$V$")
 plt.legend()
 plt.xlabel('z')
 plt.title('Value function, '+str(FC_Err))  
-# plt.xlim([-0.02, 0.02])
-# plt.ylim([0.015,0.040])
+plt.xlim([-0.1, 0.1])
+plt.ylim([-0.01,0.0])
 plt.savefig(Fig_Dir+"Vz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
