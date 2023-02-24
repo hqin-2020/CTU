@@ -218,7 +218,7 @@ plt.xlabel('z')
 plt.title('Value function')  
 # plt.xlim([-0.02, 0.02])
 # plt.ylim([0.015,0.040])
-plt.savefig(Fig_Dir+"hz_eps_{}_frac_{}.png".format(epsilon,fraction))
+plt.savefig(Fig_Dir+"Vz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
 
