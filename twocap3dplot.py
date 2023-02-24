@@ -155,6 +155,9 @@ Fig_Dir = "./figure/eps_{}".format(epsilon)+"/frac_{}".format(fraction)+"/A1cap_
 os.makedirs(Fig_Dir, exist_ok=True)
 
 print("max,min={},{}".format(i1_star[:,:,0].max(),i2_star[:,:,0].min()))
+print("max PDE error over whole state space ",np.max(abs(PDE_rhs)))
+print("max PDE error over inner state space ",np.max(abs(PDE_rhs[20:-20,20:-20,0])))
+
 # print("d0={}".format(d_star[int(len(W1)/2),2,2]))
 # print("V0={}".format(V0[int(len(W1)/2),2,2]))
 
