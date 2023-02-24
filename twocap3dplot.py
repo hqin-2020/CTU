@@ -146,6 +146,7 @@ h1_star = res["h1_star"]
 h2_star = res["h2_star"]
 hz_star = res["hz_star"]
 FC_Err = res["FC_Err"]
+PDE_rhs = res["PDE_rhs"]
 V0 = res["V0"]
 c = res["c"]
 
@@ -238,4 +239,22 @@ plt.ylim([-0.01,0.0])
 plt.savefig(Fig_Dir+"Vz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
+
+plt.plot(W1,PDE_rhs[:,int(len(W2)/2),0],label="$PDE error$")
+plt.legend()
+plt.xlabel('y')
+plt.title('PDE error')  
+plt.xlim([-np.log(20), np.log(20)])
+# plt.ylim([-0.01,0.0])
+plt.savefig(Fig_Dir+"ey_eps_{}_frac_{}.png".format(epsilon,fraction))
+plt.close()
+
+plt.plot(W2,PDE_rhs[int(len(W1)/2),:,0],label="$PDE error$")
+plt.legend()
+plt.xlabel('z')
+plt.title('PDE error')  
+plt.xlim([-0.1, 0.1])
+# plt.ylim([-0.01,0.0])
+plt.savefig(Fig_Dir+"ez_eps_{}_frac_{}.png".format(epsilon,fraction))
+plt.close()
 
