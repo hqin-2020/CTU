@@ -32,6 +32,7 @@ parser.add_argument("--epsilon", type=float)
 parser.add_argument("--fraction", type=float)
 parser.add_argument("--maxiter", type=float)
 parser.add_argument("--dataname",type=str)
+parser.add_argument("--figname",type=str)
 parser.add_argument("--A1cap",type=float)
 # parser.add_argument("--A2cap",type=float)
 
