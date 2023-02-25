@@ -2622,6 +2622,7 @@ static const char __pyx_k_formLinearSystem_DirectCrossDiff[] = "formLinearSystem
 static const char __pyx_k_numpy_core_umath_failed_to_impor[] = "numpy.core.umath failed to import";
 static const char __pyx_k_formLinearSystem_DirectCrossDiff_2[] = "formLinearSystem_DirectCrossDiff_Mix";
 static const char __pyx_k_formLinearSystem_DirectCrossDiff_3[] = "formLinearSystem_DirectCrossDiff_Natural";
+static const char __pyx_k_formLinearSystem_DirectCrossDiff_4[] = "formLinearSystem_DirectCrossDiff_Natural_Two_Dimension";
 static PyObject *__pyx_n_s_A;
 static PyObject *__pyx_n_s_B_f;
 static PyObject *__pyx_n_s_B_k;
@@ -2643,6 +2644,7 @@ static PyObject *__pyx_n_s_dt;
 static PyObject *__pyx_n_s_formLinearSystem_DirectCrossDiff;
 static PyObject *__pyx_n_s_formLinearSystem_DirectCrossDiff_2;
 static PyObject *__pyx_n_s_formLinearSystem_DirectCrossDiff_3;
+static PyObject *__pyx_n_s_formLinearSystem_DirectCrossDiff_4;
 static PyObject *__pyx_n_s_formLinearSystem_Direct_Natural;
 static PyObject *__pyx_n_s_formLinearSystem_Direct_Neumann;
 static PyObject *__pyx_n_s_ierr;
@@ -2666,6 +2668,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_2formLinearSystem_Direct_Neum
 static PyObject *__pyx_pf_22petsclinearsystemXDiff_4formLinearSystem_DirectCrossDiff_Neumann(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_R, PyArrayObject *__pyx_v_F, PyArrayObject *__pyx_v_K, PyArrayObject *__pyx_v_A, PyArrayObject *__pyx_v_B_r, PyArrayObject *__pyx_v_B_f, PyArrayObject *__pyx_v_B_k, PyArrayObject *__pyx_v_C_rr, PyArrayObject *__pyx_v_C_ff, PyArrayObject *__pyx_v_C_kk, PyArrayObject *__pyx_v_C_rf, PyArrayObject *__pyx_v_C_fk, PyArrayObject *__pyx_v_C_kr, double __pyx_v_dt, PyArrayObject *__pyx_v_lowerLims, PyArrayObject *__pyx_v_upperLims, PyArrayObject *__pyx_v_dVec, PyArrayObject *__pyx_v_incVec, struct PyPetscMatObject *__pyx_v_pymat); /* proto */
 static PyObject *__pyx_pf_22petsclinearsystemXDiff_6formLinearSystem_DirectCrossDiff_Mix(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_R, PyArrayObject *__pyx_v_F, PyArrayObject *__pyx_v_K, PyArrayObject *__pyx_v_A, PyArrayObject *__pyx_v_B_r, PyArrayObject *__pyx_v_B_f, PyArrayObject *__pyx_v_B_k, PyArrayObject *__pyx_v_C_rr, PyArrayObject *__pyx_v_C_ff, PyArrayObject *__pyx_v_C_kk, PyArrayObject *__pyx_v_C_rf, PyArrayObject *__pyx_v_C_fk, PyArrayObject *__pyx_v_C_kr, double __pyx_v_dt, PyArrayObject *__pyx_v_lowerLims, PyArrayObject *__pyx_v_upperLims, PyArrayObject *__pyx_v_dVec, PyArrayObject *__pyx_v_incVec, struct PyPetscMatObject *__pyx_v_pymat); /* proto */
 static PyObject *__pyx_pf_22petsclinearsystemXDiff_8formLinearSystem_DirectCrossDiff_Natural(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_R, PyArrayObject *__pyx_v_F, PyArrayObject *__pyx_v_K, PyArrayObject *__pyx_v_A, PyArrayObject *__pyx_v_B_r, PyArrayObject *__pyx_v_B_f, PyArrayObject *__pyx_v_B_k, PyArrayObject *__pyx_v_C_rr, PyArrayObject *__pyx_v_C_ff, PyArrayObject *__pyx_v_C_kk, PyArrayObject *__pyx_v_C_rf, PyArrayObject *__pyx_v_C_fk, PyArrayObject *__pyx_v_C_kr, double __pyx_v_dt, PyArrayObject *__pyx_v_lowerLims, PyArrayObject *__pyx_v_upperLims, PyArrayObject *__pyx_v_dVec, PyArrayObject *__pyx_v_incVec, struct PyPetscMatObject *__pyx_v_pymat); /* proto */
+static PyObject *__pyx_pf_22petsclinearsystemXDiff_10formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_R, PyArrayObject *__pyx_v_F, PyArrayObject *__pyx_v_K, PyArrayObject *__pyx_v_A, PyArrayObject *__pyx_v_B_r, PyArrayObject *__pyx_v_B_f, PyArrayObject *__pyx_v_B_k, PyArrayObject *__pyx_v_C_rr, PyArrayObject *__pyx_v_C_ff, PyArrayObject *__pyx_v_C_kk, PyArrayObject *__pyx_v_C_rf, PyArrayObject *__pyx_v_C_fk, PyArrayObject *__pyx_v_C_kr, double __pyx_v_dt, PyArrayObject *__pyx_v_lowerLims, PyArrayObject *__pyx_v_upperLims, PyArrayObject *__pyx_v_dVec, PyArrayObject *__pyx_v_incVec, struct PyPetscMatObject *__pyx_v_pymat); /* proto */
 static PyObject *__pyx_tuple_;
 static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
@@ -2673,15 +2676,17 @@ static PyObject *__pyx_tuple__5;
 static PyObject *__pyx_tuple__7;
 static PyObject *__pyx_tuple__9;
 static PyObject *__pyx_tuple__11;
+static PyObject *__pyx_tuple__13;
 static PyObject *__pyx_codeobj__4;
 static PyObject *__pyx_codeobj__6;
 static PyObject *__pyx_codeobj__8;
 static PyObject *__pyx_codeobj__10;
 static PyObject *__pyx_codeobj__12;
+static PyObject *__pyx_codeobj__14;
 /* Late includes */
 
-/* "petsclinearsystemXDiff.pyx":15
- *     int FormLinearSystem_DirectCrossDiff_Natural(double *R, double *F, double *K, double *A, double *B_r, double *B_f_k, double *B_k, double *C_rr, double *C_ff, double *C_kk, double *C_rf, double *C_fk, double *C_kr, double dt, double *lowerLims, double *upperLims, double *dVec, int *incVec, int n, PetscMat petsc_mat)
+/* "petsclinearsystemXDiff.pyx":16
+ *     int FormLinearSystem_DirectCrossDiff_Natural_Two_Dimension(double *R, double *F, double *K, double *A, double *B_r, double *B_f_k, double *B_k, double *C_rr, double *C_ff, double *C_kk, double *C_rf, double *C_fk, double *C_kr, double dt, double *lowerLims, double *upperLims, double *dVec, int *incVec, int n, PetscMat petsc_mat)
  * 
  * def formLinearSystem_Direct_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
@@ -2765,95 +2770,95 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_1formLinearSystem_Direct_Natu
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_F)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 1); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 1); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 2); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 2); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_A)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 3); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 3); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_r)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 4); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 4); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_f)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 5); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 5); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_k)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 6); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 6); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 7); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 7); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_ff)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 8); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 8); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kk)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 9); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 9); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dt)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 10); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 10); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
         if (likely((values[11] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lowerLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 11); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 11); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
         if (likely((values[12] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_upperLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 12); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 12); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
         if (likely((values[13] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 13); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 13); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
         if (likely((values[14] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_incVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 14); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 14); __PYX_ERR(0, 16, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 15:
         if (likely((values[15] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pymat)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 15); __PYX_ERR(0, 15, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, 15); __PYX_ERR(0, 16, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_Direct_Natural") < 0)) __PYX_ERR(0, 15, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_Direct_Natural") < 0)) __PYX_ERR(0, 16, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 16) {
       goto __pyx_L5_argtuple_error;
@@ -2885,7 +2890,7 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_1formLinearSystem_Direct_Natu
     __pyx_v_C_rr = ((PyArrayObject *)values[7]);
     __pyx_v_C_ff = ((PyArrayObject *)values[8]);
     __pyx_v_C_kk = ((PyArrayObject *)values[9]);
-    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[10]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 15, __pyx_L3_error)
+    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[10]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 16, __pyx_L3_error)
     __pyx_v_lowerLims = ((PyArrayObject *)values[11]);
     __pyx_v_upperLims = ((PyArrayObject *)values[12]);
     __pyx_v_dVec = ((PyArrayObject *)values[13]);
@@ -2894,27 +2899,27 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_1formLinearSystem_Direct_Natu
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 15, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Natural", 1, 16, 16, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 16, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("petsclinearsystemXDiff.formLinearSystem_Direct_Natural", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 16, __pyx_L1_error)
   __pyx_r = __pyx_pf_22petsclinearsystemXDiff_formLinearSystem_Direct_Natural(__pyx_self, __pyx_v_R, __pyx_v_F, __pyx_v_K, __pyx_v_A, __pyx_v_B_r, __pyx_v_B_f, __pyx_v_B_k, __pyx_v_C_rr, __pyx_v_C_ff, __pyx_v_C_kk, __pyx_v_dt, __pyx_v_lowerLims, __pyx_v_upperLims, __pyx_v_dVec, __pyx_v_incVec, __pyx_v_pymat);
 
   /* function exit code */
@@ -2942,7 +2947,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_formLinearSystem_Direct_Natur
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("formLinearSystem_Direct_Natural", 0);
 
-  /* "petsclinearsystemXDiff.pyx":16
+  /* "petsclinearsystemXDiff.pyx":17
  * 
  * def formLinearSystem_Direct_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0             # <<<<<<<<<<<<<<
@@ -2951,17 +2956,17 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_formLinearSystem_Direct_Natur
  */
   __pyx_v_ierr = 0;
 
-  /* "petsclinearsystemXDiff.pyx":17
+  /* "petsclinearsystemXDiff.pyx":18
  * def formLinearSystem_Direct_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0
  *     cdef int n = len(A)             # <<<<<<<<<<<<<<
  * 
  *     ierr = FormLinearSystem_Direct_Natural(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  */
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 18, __pyx_L1_error)
   __pyx_v_n = __pyx_t_1;
 
-  /* "petsclinearsystemXDiff.pyx":19
+  /* "petsclinearsystemXDiff.pyx":20
  *     cdef int n = len(A)
  * 
  *     ierr = FormLinearSystem_Direct_Natural(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)             # <<<<<<<<<<<<<<
@@ -2970,7 +2975,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_formLinearSystem_Direct_Natur
  */
   __pyx_v_ierr = FormLinearSystem_Direct_Natural(((double *)__pyx_v_R->data), ((double *)__pyx_v_F->data), ((double *)__pyx_v_K->data), ((double *)__pyx_v_A->data), ((double *)__pyx_v_B_r->data), ((double *)__pyx_v_B_f->data), ((double *)__pyx_v_B_k->data), ((double *)__pyx_v_C_rr->data), ((double *)__pyx_v_C_ff->data), ((double *)__pyx_v_C_kk->data), __pyx_v_dt, ((double *)__pyx_v_lowerLims->data), ((double *)__pyx_v_upperLims->data), ((double *)__pyx_v_dVec->data), ((int *)__pyx_v_incVec->data), __pyx_v_n, __pyx_v_pymat->mat);
 
-  /* "petsclinearsystemXDiff.pyx":20
+  /* "petsclinearsystemXDiff.pyx":21
  * 
  *     ierr = FormLinearSystem_Direct_Natural(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)             # <<<<<<<<<<<<<<
@@ -2979,9 +2984,9 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_formLinearSystem_Direct_Natur
  */
   __pyx_t_2 = ((__pyx_v_ierr != 0) != 0);
   if (unlikely(__pyx_t_2)) {
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 20, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -2996,15 +3001,15 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_formLinearSystem_Direct_Natur
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 20, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 21, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 20, __pyx_L1_error)
+    __PYX_ERR(0, 21, __pyx_L1_error)
   }
 
-  /* "petsclinearsystemXDiff.pyx":21
+  /* "petsclinearsystemXDiff.pyx":22
  *     ierr = FormLinearSystem_Direct_Natural(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)
  *     return pymat             # <<<<<<<<<<<<<<
@@ -3016,8 +3021,8 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_formLinearSystem_Direct_Natur
   __pyx_r = ((PyObject *)__pyx_v_pymat);
   goto __pyx_L0;
 
-  /* "petsclinearsystemXDiff.pyx":15
- *     int FormLinearSystem_DirectCrossDiff_Natural(double *R, double *F, double *K, double *A, double *B_r, double *B_f_k, double *B_k, double *C_rr, double *C_ff, double *C_kk, double *C_rf, double *C_fk, double *C_kr, double dt, double *lowerLims, double *upperLims, double *dVec, int *incVec, int n, PetscMat petsc_mat)
+  /* "petsclinearsystemXDiff.pyx":16
+ *     int FormLinearSystem_DirectCrossDiff_Natural_Two_Dimension(double *R, double *F, double *K, double *A, double *B_r, double *B_f_k, double *B_k, double *C_rr, double *C_ff, double *C_kk, double *C_rf, double *C_fk, double *C_kr, double dt, double *lowerLims, double *upperLims, double *dVec, int *incVec, int n, PetscMat petsc_mat)
  * 
  * def formLinearSystem_Direct_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
@@ -3038,7 +3043,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_formLinearSystem_Direct_Natur
   return __pyx_r;
 }
 
-/* "petsclinearsystemXDiff.pyx":23
+/* "petsclinearsystemXDiff.pyx":24
  *     return pymat
  * 
  * def formLinearSystem_Direct_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
@@ -3123,95 +3128,95 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_3formLinearSystem_Direct_Neum
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_F)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 1); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 1); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 2); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 2); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_A)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 3); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 3); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_r)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 4); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 4); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_f)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 5); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 5); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_k)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 6); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 6); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 7); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 7); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_ff)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 8); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 8); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kk)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 9); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 9); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dt)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 10); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 10); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
         if (likely((values[11] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lowerLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 11); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 11); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
         if (likely((values[12] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_upperLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 12); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 12); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
         if (likely((values[13] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 13); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 13); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
         if (likely((values[14] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_incVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 14); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 14); __PYX_ERR(0, 24, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 15:
         if (likely((values[15] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pymat)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 15); __PYX_ERR(0, 23, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, 15); __PYX_ERR(0, 24, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_Direct_Neumann") < 0)) __PYX_ERR(0, 23, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_Direct_Neumann") < 0)) __PYX_ERR(0, 24, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 16) {
       goto __pyx_L5_argtuple_error;
@@ -3243,7 +3248,7 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_3formLinearSystem_Direct_Neum
     __pyx_v_C_rr = ((PyArrayObject *)values[7]);
     __pyx_v_C_ff = ((PyArrayObject *)values[8]);
     __pyx_v_C_kk = ((PyArrayObject *)values[9]);
-    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[10]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 23, __pyx_L3_error)
+    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[10]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 24, __pyx_L3_error)
     __pyx_v_lowerLims = ((PyArrayObject *)values[11]);
     __pyx_v_upperLims = ((PyArrayObject *)values[12]);
     __pyx_v_dVec = ((PyArrayObject *)values[13]);
@@ -3252,27 +3257,27 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_3formLinearSystem_Direct_Neum
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 23, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("formLinearSystem_Direct_Neumann", 1, 16, 16, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 24, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("petsclinearsystemXDiff.formLinearSystem_Direct_Neumann", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 24, __pyx_L1_error)
   __pyx_r = __pyx_pf_22petsclinearsystemXDiff_2formLinearSystem_Direct_Neumann(__pyx_self, __pyx_v_R, __pyx_v_F, __pyx_v_K, __pyx_v_A, __pyx_v_B_r, __pyx_v_B_f, __pyx_v_B_k, __pyx_v_C_rr, __pyx_v_C_ff, __pyx_v_C_kk, __pyx_v_dt, __pyx_v_lowerLims, __pyx_v_upperLims, __pyx_v_dVec, __pyx_v_incVec, __pyx_v_pymat);
 
   /* function exit code */
@@ -3300,7 +3305,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_2formLinearSystem_Direct_Neum
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("formLinearSystem_Direct_Neumann", 0);
 
-  /* "petsclinearsystemXDiff.pyx":24
+  /* "petsclinearsystemXDiff.pyx":25
  * 
  * def formLinearSystem_Direct_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0             # <<<<<<<<<<<<<<
@@ -3309,17 +3314,17 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_2formLinearSystem_Direct_Neum
  */
   __pyx_v_ierr = 0;
 
-  /* "petsclinearsystemXDiff.pyx":25
+  /* "petsclinearsystemXDiff.pyx":26
  * def formLinearSystem_Direct_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0
  *     cdef int n = len(A)             # <<<<<<<<<<<<<<
  * 
  *     ierr = FormLinearSystem_Direct_Neumann(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  */
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 26, __pyx_L1_error)
   __pyx_v_n = __pyx_t_1;
 
-  /* "petsclinearsystemXDiff.pyx":27
+  /* "petsclinearsystemXDiff.pyx":28
  *     cdef int n = len(A)
  * 
  *     ierr = FormLinearSystem_Direct_Neumann(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)             # <<<<<<<<<<<<<<
@@ -3328,7 +3333,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_2formLinearSystem_Direct_Neum
  */
   __pyx_v_ierr = FormLinearSystem_Direct_Neumann(((double *)__pyx_v_R->data), ((double *)__pyx_v_F->data), ((double *)__pyx_v_K->data), ((double *)__pyx_v_A->data), ((double *)__pyx_v_B_r->data), ((double *)__pyx_v_B_f->data), ((double *)__pyx_v_B_k->data), ((double *)__pyx_v_C_rr->data), ((double *)__pyx_v_C_ff->data), ((double *)__pyx_v_C_kk->data), __pyx_v_dt, ((double *)__pyx_v_lowerLims->data), ((double *)__pyx_v_upperLims->data), ((double *)__pyx_v_dVec->data), ((int *)__pyx_v_incVec->data), __pyx_v_n, __pyx_v_pymat->mat);
 
-  /* "petsclinearsystemXDiff.pyx":28
+  /* "petsclinearsystemXDiff.pyx":29
  * 
  *     ierr = FormLinearSystem_Direct_Neumann(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)             # <<<<<<<<<<<<<<
@@ -3337,9 +3342,9 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_2formLinearSystem_Direct_Neum
  */
   __pyx_t_2 = ((__pyx_v_ierr != 0) != 0);
   if (unlikely(__pyx_t_2)) {
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 28, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -3354,15 +3359,15 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_2formLinearSystem_Direct_Neum
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 28, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 29, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 28, __pyx_L1_error)
+    __PYX_ERR(0, 29, __pyx_L1_error)
   }
 
-  /* "petsclinearsystemXDiff.pyx":29
+  /* "petsclinearsystemXDiff.pyx":30
  *     ierr = FormLinearSystem_Direct_Neumann(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)
  *     return pymat             # <<<<<<<<<<<<<<
@@ -3374,7 +3379,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_2formLinearSystem_Direct_Neum
   __pyx_r = ((PyObject *)__pyx_v_pymat);
   goto __pyx_L0;
 
-  /* "petsclinearsystemXDiff.pyx":23
+  /* "petsclinearsystemXDiff.pyx":24
  *     return pymat
  * 
  * def formLinearSystem_Direct_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
@@ -3396,7 +3401,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_2formLinearSystem_Direct_Neum
   return __pyx_r;
 }
 
-/* "petsclinearsystemXDiff.pyx":31
+/* "petsclinearsystemXDiff.pyx":32
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
@@ -3490,113 +3495,113 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_5formLinearSystem_DirectCross
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_F)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 1); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 1); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 2); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 2); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_A)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 3); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 3); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_r)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 4); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 4); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_f)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 5); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 5); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_k)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 6); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 6); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 7); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 7); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_ff)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 8); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 8); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kk)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 9); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 9); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rf)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 10); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 10); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
         if (likely((values[11] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_fk)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 11); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 11); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
         if (likely((values[12] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 12); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 12); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
         if (likely((values[13] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dt)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 13); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 13); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
         if (likely((values[14] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lowerLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 14); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 14); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 15:
         if (likely((values[15] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_upperLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 15); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 15); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 16:
         if (likely((values[16] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 16); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 16); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 17:
         if (likely((values[17] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_incVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 17); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 17); __PYX_ERR(0, 32, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 18:
         if (likely((values[18] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pymat)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 18); __PYX_ERR(0, 31, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, 18); __PYX_ERR(0, 32, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_DirectCrossDiff_Neumann") < 0)) __PYX_ERR(0, 31, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_DirectCrossDiff_Neumann") < 0)) __PYX_ERR(0, 32, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 19) {
       goto __pyx_L5_argtuple_error;
@@ -3634,7 +3639,7 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_5formLinearSystem_DirectCross
     __pyx_v_C_rf = ((PyArrayObject *)values[10]);
     __pyx_v_C_fk = ((PyArrayObject *)values[11]);
     __pyx_v_C_kr = ((PyArrayObject *)values[12]);
-    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 31, __pyx_L3_error)
+    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 32, __pyx_L3_error)
     __pyx_v_lowerLims = ((PyArrayObject *)values[14]);
     __pyx_v_upperLims = ((PyArrayObject *)values[15]);
     __pyx_v_dVec = ((PyArrayObject *)values[16]);
@@ -3643,30 +3648,30 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_5formLinearSystem_DirectCross
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 31, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Neumann", 1, 19, 19, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 32, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff_Neumann", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rf), __pyx_ptype_5numpy_ndarray, 1, "C_rf", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_fk), __pyx_ptype_5numpy_ndarray, 1, "C_fk", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kr), __pyx_ptype_5numpy_ndarray, 1, "C_kr", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rf), __pyx_ptype_5numpy_ndarray, 1, "C_rf", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_fk), __pyx_ptype_5numpy_ndarray, 1, "C_fk", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kr), __pyx_ptype_5numpy_ndarray, 1, "C_kr", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 32, __pyx_L1_error)
   __pyx_r = __pyx_pf_22petsclinearsystemXDiff_4formLinearSystem_DirectCrossDiff_Neumann(__pyx_self, __pyx_v_R, __pyx_v_F, __pyx_v_K, __pyx_v_A, __pyx_v_B_r, __pyx_v_B_f, __pyx_v_B_k, __pyx_v_C_rr, __pyx_v_C_ff, __pyx_v_C_kk, __pyx_v_C_rf, __pyx_v_C_fk, __pyx_v_C_kr, __pyx_v_dt, __pyx_v_lowerLims, __pyx_v_upperLims, __pyx_v_dVec, __pyx_v_incVec, __pyx_v_pymat);
 
   /* function exit code */
@@ -3694,7 +3699,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_4formLinearSystem_DirectCross
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("formLinearSystem_DirectCrossDiff_Neumann", 0);
 
-  /* "petsclinearsystemXDiff.pyx":32
+  /* "petsclinearsystemXDiff.pyx":33
  * 
  * def formLinearSystem_DirectCrossDiff_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0             # <<<<<<<<<<<<<<
@@ -3703,17 +3708,17 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_4formLinearSystem_DirectCross
  */
   __pyx_v_ierr = 0;
 
-  /* "petsclinearsystemXDiff.pyx":33
+  /* "petsclinearsystemXDiff.pyx":34
  * def formLinearSystem_DirectCrossDiff_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0
  *     cdef int n = len(A)             # <<<<<<<<<<<<<<
  * 
  *     ierr = FormLinearSystem_DirectCrossDiff_Neumann(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  */
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 34, __pyx_L1_error)
   __pyx_v_n = __pyx_t_1;
 
-  /* "petsclinearsystemXDiff.pyx":35
+  /* "petsclinearsystemXDiff.pyx":36
  *     cdef int n = len(A)
  * 
  *     ierr = FormLinearSystem_DirectCrossDiff_Neumann(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)             # <<<<<<<<<<<<<<
@@ -3722,7 +3727,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_4formLinearSystem_DirectCross
  */
   __pyx_v_ierr = FormLinearSystem_DirectCrossDiff_Neumann(((double *)__pyx_v_R->data), ((double *)__pyx_v_F->data), ((double *)__pyx_v_K->data), ((double *)__pyx_v_A->data), ((double *)__pyx_v_B_r->data), ((double *)__pyx_v_B_f->data), ((double *)__pyx_v_B_k->data), ((double *)__pyx_v_C_rr->data), ((double *)__pyx_v_C_ff->data), ((double *)__pyx_v_C_kk->data), ((double *)__pyx_v_C_rf->data), ((double *)__pyx_v_C_fk->data), ((double *)__pyx_v_C_kr->data), __pyx_v_dt, ((double *)__pyx_v_lowerLims->data), ((double *)__pyx_v_upperLims->data), ((double *)__pyx_v_dVec->data), ((int *)__pyx_v_incVec->data), __pyx_v_n, __pyx_v_pymat->mat);
 
-  /* "petsclinearsystemXDiff.pyx":36
+  /* "petsclinearsystemXDiff.pyx":37
  * 
  *     ierr = FormLinearSystem_DirectCrossDiff_Neumann(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)             # <<<<<<<<<<<<<<
@@ -3731,9 +3736,9 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_4formLinearSystem_DirectCross
  */
   __pyx_t_2 = ((__pyx_v_ierr != 0) != 0);
   if (unlikely(__pyx_t_2)) {
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 37, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 36, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 37, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -3748,15 +3753,15 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_4formLinearSystem_DirectCross
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 36, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 37, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 36, __pyx_L1_error)
+    __PYX_ERR(0, 37, __pyx_L1_error)
   }
 
-  /* "petsclinearsystemXDiff.pyx":37
+  /* "petsclinearsystemXDiff.pyx":38
  *     ierr = FormLinearSystem_DirectCrossDiff_Neumann(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)
  *     return pymat             # <<<<<<<<<<<<<<
@@ -3768,7 +3773,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_4formLinearSystem_DirectCross
   __pyx_r = ((PyObject *)__pyx_v_pymat);
   goto __pyx_L0;
 
-  /* "petsclinearsystemXDiff.pyx":31
+  /* "petsclinearsystemXDiff.pyx":32
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
@@ -3790,7 +3795,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_4formLinearSystem_DirectCross
   return __pyx_r;
 }
 
-/* "petsclinearsystemXDiff.pyx":39
+/* "petsclinearsystemXDiff.pyx":40
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Mix(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
@@ -3884,113 +3889,113 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_7formLinearSystem_DirectCross
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_F)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 1); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 1); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 2); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 2); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_A)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 3); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 3); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_r)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 4); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 4); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_f)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 5); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 5); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_k)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 6); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 6); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 7); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 7); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_ff)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 8); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 8); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kk)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 9); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 9); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rf)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 10); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 10); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
         if (likely((values[11] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_fk)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 11); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 11); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
         if (likely((values[12] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 12); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 12); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
         if (likely((values[13] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dt)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 13); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 13); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
         if (likely((values[14] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lowerLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 14); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 14); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 15:
         if (likely((values[15] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_upperLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 15); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 15); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 16:
         if (likely((values[16] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 16); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 16); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 17:
         if (likely((values[17] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_incVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 17); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 17); __PYX_ERR(0, 40, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 18:
         if (likely((values[18] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pymat)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 18); __PYX_ERR(0, 39, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, 18); __PYX_ERR(0, 40, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_DirectCrossDiff_Mix") < 0)) __PYX_ERR(0, 39, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_DirectCrossDiff_Mix") < 0)) __PYX_ERR(0, 40, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 19) {
       goto __pyx_L5_argtuple_error;
@@ -4028,7 +4033,7 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_7formLinearSystem_DirectCross
     __pyx_v_C_rf = ((PyArrayObject *)values[10]);
     __pyx_v_C_fk = ((PyArrayObject *)values[11]);
     __pyx_v_C_kr = ((PyArrayObject *)values[12]);
-    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 39, __pyx_L3_error)
+    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 40, __pyx_L3_error)
     __pyx_v_lowerLims = ((PyArrayObject *)values[14]);
     __pyx_v_upperLims = ((PyArrayObject *)values[15]);
     __pyx_v_dVec = ((PyArrayObject *)values[16]);
@@ -4037,30 +4042,30 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_7formLinearSystem_DirectCross
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 39, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Mix", 1, 19, 19, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 40, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff_Mix", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rf), __pyx_ptype_5numpy_ndarray, 1, "C_rf", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_fk), __pyx_ptype_5numpy_ndarray, 1, "C_fk", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kr), __pyx_ptype_5numpy_ndarray, 1, "C_kr", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 39, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rf), __pyx_ptype_5numpy_ndarray, 1, "C_rf", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_fk), __pyx_ptype_5numpy_ndarray, 1, "C_fk", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kr), __pyx_ptype_5numpy_ndarray, 1, "C_kr", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 40, __pyx_L1_error)
   __pyx_r = __pyx_pf_22petsclinearsystemXDiff_6formLinearSystem_DirectCrossDiff_Mix(__pyx_self, __pyx_v_R, __pyx_v_F, __pyx_v_K, __pyx_v_A, __pyx_v_B_r, __pyx_v_B_f, __pyx_v_B_k, __pyx_v_C_rr, __pyx_v_C_ff, __pyx_v_C_kk, __pyx_v_C_rf, __pyx_v_C_fk, __pyx_v_C_kr, __pyx_v_dt, __pyx_v_lowerLims, __pyx_v_upperLims, __pyx_v_dVec, __pyx_v_incVec, __pyx_v_pymat);
 
   /* function exit code */
@@ -4088,7 +4093,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_6formLinearSystem_DirectCross
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("formLinearSystem_DirectCrossDiff_Mix", 0);
 
-  /* "petsclinearsystemXDiff.pyx":40
+  /* "petsclinearsystemXDiff.pyx":41
  * 
  * def formLinearSystem_DirectCrossDiff_Mix(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0             # <<<<<<<<<<<<<<
@@ -4097,17 +4102,17 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_6formLinearSystem_DirectCross
  */
   __pyx_v_ierr = 0;
 
-  /* "petsclinearsystemXDiff.pyx":41
+  /* "petsclinearsystemXDiff.pyx":42
  * def formLinearSystem_DirectCrossDiff_Mix(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0
  *     cdef int n = len(A)             # <<<<<<<<<<<<<<
  * 
  *     ierr = FormLinearSystem_DirectCrossDiff_Mix(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  */
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 41, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 42, __pyx_L1_error)
   __pyx_v_n = __pyx_t_1;
 
-  /* "petsclinearsystemXDiff.pyx":43
+  /* "petsclinearsystemXDiff.pyx":44
  *     cdef int n = len(A)
  * 
  *     ierr = FormLinearSystem_DirectCrossDiff_Mix(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)             # <<<<<<<<<<<<<<
@@ -4116,7 +4121,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_6formLinearSystem_DirectCross
  */
   __pyx_v_ierr = FormLinearSystem_DirectCrossDiff_Mix(((double *)__pyx_v_R->data), ((double *)__pyx_v_F->data), ((double *)__pyx_v_K->data), ((double *)__pyx_v_A->data), ((double *)__pyx_v_B_r->data), ((double *)__pyx_v_B_f->data), ((double *)__pyx_v_B_k->data), ((double *)__pyx_v_C_rr->data), ((double *)__pyx_v_C_ff->data), ((double *)__pyx_v_C_kk->data), ((double *)__pyx_v_C_rf->data), ((double *)__pyx_v_C_fk->data), ((double *)__pyx_v_C_kr->data), __pyx_v_dt, ((double *)__pyx_v_lowerLims->data), ((double *)__pyx_v_upperLims->data), ((double *)__pyx_v_dVec->data), ((int *)__pyx_v_incVec->data), __pyx_v_n, __pyx_v_pymat->mat);
 
-  /* "petsclinearsystemXDiff.pyx":44
+  /* "petsclinearsystemXDiff.pyx":45
  * 
  *     ierr = FormLinearSystem_DirectCrossDiff_Mix(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)             # <<<<<<<<<<<<<<
@@ -4125,9 +4130,9 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_6formLinearSystem_DirectCross
  */
   __pyx_t_2 = ((__pyx_v_ierr != 0) != 0);
   if (unlikely(__pyx_t_2)) {
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 44, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -4142,15 +4147,15 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_6formLinearSystem_DirectCross
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 44, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 45, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 44, __pyx_L1_error)
+    __PYX_ERR(0, 45, __pyx_L1_error)
   }
 
-  /* "petsclinearsystemXDiff.pyx":45
+  /* "petsclinearsystemXDiff.pyx":46
  *     ierr = FormLinearSystem_DirectCrossDiff_Mix(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)
  *     return pymat             # <<<<<<<<<<<<<<
@@ -4162,7 +4167,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_6formLinearSystem_DirectCross
   __pyx_r = ((PyObject *)__pyx_v_pymat);
   goto __pyx_L0;
 
-  /* "petsclinearsystemXDiff.pyx":39
+  /* "petsclinearsystemXDiff.pyx":40
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Mix(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
@@ -4184,7 +4189,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_6formLinearSystem_DirectCross
   return __pyx_r;
 }
 
-/* "petsclinearsystemXDiff.pyx":47
+/* "petsclinearsystemXDiff.pyx":48
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
@@ -4278,113 +4283,113 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_9formLinearSystem_DirectCross
         case  1:
         if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_F)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 1); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 1); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  2:
         if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 2); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 2); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  3:
         if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_A)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 3); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 3); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  4:
         if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_r)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 4); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 4); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  5:
         if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_f)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 5); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 5); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  6:
         if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_k)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 6); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 6); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  7:
         if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 7); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 7); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  8:
         if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_ff)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 8); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 8); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case  9:
         if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kk)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 9); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 9); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 10:
         if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rf)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 10); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 10); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 11:
         if (likely((values[11] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_fk)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 11); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 11); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 12:
         if (likely((values[12] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kr)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 12); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 12); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 13:
         if (likely((values[13] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dt)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 13); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 13); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 14:
         if (likely((values[14] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lowerLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 14); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 14); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 15:
         if (likely((values[15] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_upperLims)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 15); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 15); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 16:
         if (likely((values[16] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 16); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 16); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 17:
         if (likely((values[17] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_incVec)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 17); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 17); __PYX_ERR(0, 48, __pyx_L3_error)
         }
         CYTHON_FALLTHROUGH;
         case 18:
         if (likely((values[18] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pymat)) != 0)) kw_args--;
         else {
-          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 18); __PYX_ERR(0, 47, __pyx_L3_error)
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, 18); __PYX_ERR(0, 48, __pyx_L3_error)
         }
       }
       if (unlikely(kw_args > 0)) {
-        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_DirectCrossDiff_Natural") < 0)) __PYX_ERR(0, 47, __pyx_L3_error)
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_DirectCrossDiff_Natural") < 0)) __PYX_ERR(0, 48, __pyx_L3_error)
       }
     } else if (PyTuple_GET_SIZE(__pyx_args) != 19) {
       goto __pyx_L5_argtuple_error;
@@ -4422,7 +4427,7 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_9formLinearSystem_DirectCross
     __pyx_v_C_rf = ((PyArrayObject *)values[10]);
     __pyx_v_C_fk = ((PyArrayObject *)values[11]);
     __pyx_v_C_kr = ((PyArrayObject *)values[12]);
-    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 47, __pyx_L3_error)
+    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 48, __pyx_L3_error)
     __pyx_v_lowerLims = ((PyArrayObject *)values[14]);
     __pyx_v_upperLims = ((PyArrayObject *)values[15]);
     __pyx_v_dVec = ((PyArrayObject *)values[16]);
@@ -4431,30 +4436,30 @@ static PyObject *__pyx_pw_22petsclinearsystemXDiff_9formLinearSystem_DirectCross
   }
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 47, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural", 1, 19, 19, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 48, __pyx_L3_error)
   __pyx_L3_error:;
   __Pyx_AddTraceback("petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff_Natural", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __Pyx_RefNannyFinishContext();
   return NULL;
   __pyx_L4_argument_unpacking_done:;
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rf), __pyx_ptype_5numpy_ndarray, 1, "C_rf", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_fk), __pyx_ptype_5numpy_ndarray, 1, "C_fk", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kr), __pyx_ptype_5numpy_ndarray, 1, "C_kr", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
-  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rf), __pyx_ptype_5numpy_ndarray, 1, "C_rf", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_fk), __pyx_ptype_5numpy_ndarray, 1, "C_fk", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kr), __pyx_ptype_5numpy_ndarray, 1, "C_kr", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 48, __pyx_L1_error)
   __pyx_r = __pyx_pf_22petsclinearsystemXDiff_8formLinearSystem_DirectCrossDiff_Natural(__pyx_self, __pyx_v_R, __pyx_v_F, __pyx_v_K, __pyx_v_A, __pyx_v_B_r, __pyx_v_B_f, __pyx_v_B_k, __pyx_v_C_rr, __pyx_v_C_ff, __pyx_v_C_kk, __pyx_v_C_rf, __pyx_v_C_fk, __pyx_v_C_kr, __pyx_v_dt, __pyx_v_lowerLims, __pyx_v_upperLims, __pyx_v_dVec, __pyx_v_incVec, __pyx_v_pymat);
 
   /* function exit code */
@@ -4482,7 +4487,7 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_8formLinearSystem_DirectCross
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("formLinearSystem_DirectCrossDiff_Natural", 0);
 
-  /* "petsclinearsystemXDiff.pyx":48
+  /* "petsclinearsystemXDiff.pyx":49
  * 
  * def formLinearSystem_DirectCrossDiff_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0             # <<<<<<<<<<<<<<
@@ -4491,17 +4496,17 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_8formLinearSystem_DirectCross
  */
   __pyx_v_ierr = 0;
 
-  /* "petsclinearsystemXDiff.pyx":49
+  /* "petsclinearsystemXDiff.pyx":50
  * def formLinearSystem_DirectCrossDiff_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  *     cdef int ierr = 0
  *     cdef int n = len(A)             # <<<<<<<<<<<<<<
  * 
  *     ierr = FormLinearSystem_DirectCrossDiff_Natural(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  */
-  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 49, __pyx_L1_error)
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 50, __pyx_L1_error)
   __pyx_v_n = __pyx_t_1;
 
-  /* "petsclinearsystemXDiff.pyx":51
+  /* "petsclinearsystemXDiff.pyx":52
  *     cdef int n = len(A)
  * 
  *     ierr = FormLinearSystem_DirectCrossDiff_Natural(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)             # <<<<<<<<<<<<<<
@@ -4510,17 +4515,18 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_8formLinearSystem_DirectCross
  */
   __pyx_v_ierr = FormLinearSystem_DirectCrossDiff_Natural(((double *)__pyx_v_R->data), ((double *)__pyx_v_F->data), ((double *)__pyx_v_K->data), ((double *)__pyx_v_A->data), ((double *)__pyx_v_B_r->data), ((double *)__pyx_v_B_f->data), ((double *)__pyx_v_B_k->data), ((double *)__pyx_v_C_rr->data), ((double *)__pyx_v_C_ff->data), ((double *)__pyx_v_C_kk->data), ((double *)__pyx_v_C_rf->data), ((double *)__pyx_v_C_fk->data), ((double *)__pyx_v_C_kr->data), __pyx_v_dt, ((double *)__pyx_v_lowerLims->data), ((double *)__pyx_v_upperLims->data), ((double *)__pyx_v_dVec->data), ((int *)__pyx_v_incVec->data), __pyx_v_n, __pyx_v_pymat->mat);
 
-  /* "petsclinearsystemXDiff.pyx":52
+  /* "petsclinearsystemXDiff.pyx":53
  * 
  *     ierr = FormLinearSystem_DirectCrossDiff_Natural(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)             # <<<<<<<<<<<<<<
  *     return pymat
+ * 
  */
   __pyx_t_2 = ((__pyx_v_ierr != 0) != 0);
   if (unlikely(__pyx_t_2)) {
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 53, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 52, __pyx_L1_error)
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 53, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_5);
     __pyx_t_6 = NULL;
     if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
@@ -4535,25 +4541,27 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_8formLinearSystem_DirectCross
     __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
     __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
     __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 52, __pyx_L1_error)
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 53, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
     __Pyx_Raise(__pyx_t_3, 0, 0, 0);
     __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
-    __PYX_ERR(0, 52, __pyx_L1_error)
+    __PYX_ERR(0, 53, __pyx_L1_error)
   }
 
-  /* "petsclinearsystemXDiff.pyx":53
+  /* "petsclinearsystemXDiff.pyx":54
  *     ierr = FormLinearSystem_DirectCrossDiff_Natural(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
  *     if ierr != 0: raise Error(ierr)
  *     return pymat             # <<<<<<<<<<<<<<
+ * 
+ * def formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
  */
   __Pyx_XDECREF(__pyx_r);
   __Pyx_INCREF(((PyObject *)__pyx_v_pymat));
   __pyx_r = ((PyObject *)__pyx_v_pymat);
   goto __pyx_L0;
 
-  /* "petsclinearsystemXDiff.pyx":47
+  /* "petsclinearsystemXDiff.pyx":48
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
@@ -4568,6 +4576,397 @@ static PyObject *__pyx_pf_22petsclinearsystemXDiff_8formLinearSystem_DirectCross
   __Pyx_XDECREF(__pyx_t_5);
   __Pyx_XDECREF(__pyx_t_6);
   __Pyx_AddTraceback("petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff_Natural", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "petsclinearsystemXDiff.pyx":56
+ *     return pymat
+ * 
+ * def formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
+ *     cdef int ierr = 0
+ *     cdef int n = len(A)
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_22petsclinearsystemXDiff_11formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
+static PyMethodDef __pyx_mdef_22petsclinearsystemXDiff_11formLinearSystem_DirectCrossDiff_Natural_Two_Dimension = {"formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", (PyCFunction)(void*)(PyCFunctionWithKeywords)__pyx_pw_22petsclinearsystemXDiff_11formLinearSystem_DirectCrossDiff_Natural_Two_Dimension, METH_VARARGS|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_22petsclinearsystemXDiff_11formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(PyObject *__pyx_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
+  PyArrayObject *__pyx_v_R = 0;
+  PyArrayObject *__pyx_v_F = 0;
+  PyArrayObject *__pyx_v_K = 0;
+  PyArrayObject *__pyx_v_A = 0;
+  PyArrayObject *__pyx_v_B_r = 0;
+  PyArrayObject *__pyx_v_B_f = 0;
+  PyArrayObject *__pyx_v_B_k = 0;
+  PyArrayObject *__pyx_v_C_rr = 0;
+  PyArrayObject *__pyx_v_C_ff = 0;
+  PyArrayObject *__pyx_v_C_kk = 0;
+  PyArrayObject *__pyx_v_C_rf = 0;
+  PyArrayObject *__pyx_v_C_fk = 0;
+  PyArrayObject *__pyx_v_C_kr = 0;
+  double __pyx_v_dt;
+  PyArrayObject *__pyx_v_lowerLims = 0;
+  PyArrayObject *__pyx_v_upperLims = 0;
+  PyArrayObject *__pyx_v_dVec = 0;
+  PyArrayObject *__pyx_v_incVec = 0;
+  struct PyPetscMatObject *__pyx_v_pymat = 0;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension (wrapper)", 0);
+  {
+    static PyObject **__pyx_pyargnames[] = {&__pyx_n_s_R,&__pyx_n_s_F,&__pyx_n_s_K,&__pyx_n_s_A,&__pyx_n_s_B_r,&__pyx_n_s_B_f,&__pyx_n_s_B_k,&__pyx_n_s_C_rr,&__pyx_n_s_C_ff,&__pyx_n_s_C_kk,&__pyx_n_s_C_rf,&__pyx_n_s_C_fk,&__pyx_n_s_C_kr,&__pyx_n_s_dt,&__pyx_n_s_lowerLims,&__pyx_n_s_upperLims,&__pyx_n_s_dVec,&__pyx_n_s_incVec,&__pyx_n_s_pymat,0};
+    PyObject* values[19] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+    if (unlikely(__pyx_kwds)) {
+      Py_ssize_t kw_args;
+      const Py_ssize_t pos_args = PyTuple_GET_SIZE(__pyx_args);
+      switch (pos_args) {
+        case 19: values[18] = PyTuple_GET_ITEM(__pyx_args, 18);
+        CYTHON_FALLTHROUGH;
+        case 18: values[17] = PyTuple_GET_ITEM(__pyx_args, 17);
+        CYTHON_FALLTHROUGH;
+        case 17: values[16] = PyTuple_GET_ITEM(__pyx_args, 16);
+        CYTHON_FALLTHROUGH;
+        case 16: values[15] = PyTuple_GET_ITEM(__pyx_args, 15);
+        CYTHON_FALLTHROUGH;
+        case 15: values[14] = PyTuple_GET_ITEM(__pyx_args, 14);
+        CYTHON_FALLTHROUGH;
+        case 14: values[13] = PyTuple_GET_ITEM(__pyx_args, 13);
+        CYTHON_FALLTHROUGH;
+        case 13: values[12] = PyTuple_GET_ITEM(__pyx_args, 12);
+        CYTHON_FALLTHROUGH;
+        case 12: values[11] = PyTuple_GET_ITEM(__pyx_args, 11);
+        CYTHON_FALLTHROUGH;
+        case 11: values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+        CYTHON_FALLTHROUGH;
+        case 10: values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
+        CYTHON_FALLTHROUGH;
+        case  9: values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
+        CYTHON_FALLTHROUGH;
+        case  8: values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+        CYTHON_FALLTHROUGH;
+        case  7: values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+        CYTHON_FALLTHROUGH;
+        case  6: values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+        CYTHON_FALLTHROUGH;
+        case  5: values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+        CYTHON_FALLTHROUGH;
+        case  4: values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+        CYTHON_FALLTHROUGH;
+        case  3: values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+        CYTHON_FALLTHROUGH;
+        case  2: values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+        CYTHON_FALLTHROUGH;
+        case  1: values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      kw_args = PyDict_Size(__pyx_kwds);
+      switch (pos_args) {
+        case  0:
+        if (likely((values[0] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_R)) != 0)) kw_args--;
+        else goto __pyx_L5_argtuple_error;
+        CYTHON_FALLTHROUGH;
+        case  1:
+        if (likely((values[1] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_F)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 1); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  2:
+        if (likely((values[2] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_K)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 2); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  3:
+        if (likely((values[3] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_A)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 3); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  4:
+        if (likely((values[4] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_r)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 4); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  5:
+        if (likely((values[5] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_f)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 5); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  6:
+        if (likely((values[6] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_B_k)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 6); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  7:
+        if (likely((values[7] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rr)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 7); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  8:
+        if (likely((values[8] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_ff)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 8); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case  9:
+        if (likely((values[9] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kk)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 9); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case 10:
+        if (likely((values[10] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_rf)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 10); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case 11:
+        if (likely((values[11] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_fk)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 11); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case 12:
+        if (likely((values[12] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_C_kr)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 12); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case 13:
+        if (likely((values[13] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dt)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 13); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case 14:
+        if (likely((values[14] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_lowerLims)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 14); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case 15:
+        if (likely((values[15] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_upperLims)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 15); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case 16:
+        if (likely((values[16] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_dVec)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 16); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case 17:
+        if (likely((values[17] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_incVec)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 17); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+        CYTHON_FALLTHROUGH;
+        case 18:
+        if (likely((values[18] = __Pyx_PyDict_GetItemStr(__pyx_kwds, __pyx_n_s_pymat)) != 0)) kw_args--;
+        else {
+          __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, 18); __PYX_ERR(0, 56, __pyx_L3_error)
+        }
+      }
+      if (unlikely(kw_args > 0)) {
+        if (unlikely(__Pyx_ParseOptionalKeywords(__pyx_kwds, __pyx_pyargnames, 0, values, pos_args, "formLinearSystem_DirectCrossDiff_Natural_Two_Dimension") < 0)) __PYX_ERR(0, 56, __pyx_L3_error)
+      }
+    } else if (PyTuple_GET_SIZE(__pyx_args) != 19) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = PyTuple_GET_ITEM(__pyx_args, 0);
+      values[1] = PyTuple_GET_ITEM(__pyx_args, 1);
+      values[2] = PyTuple_GET_ITEM(__pyx_args, 2);
+      values[3] = PyTuple_GET_ITEM(__pyx_args, 3);
+      values[4] = PyTuple_GET_ITEM(__pyx_args, 4);
+      values[5] = PyTuple_GET_ITEM(__pyx_args, 5);
+      values[6] = PyTuple_GET_ITEM(__pyx_args, 6);
+      values[7] = PyTuple_GET_ITEM(__pyx_args, 7);
+      values[8] = PyTuple_GET_ITEM(__pyx_args, 8);
+      values[9] = PyTuple_GET_ITEM(__pyx_args, 9);
+      values[10] = PyTuple_GET_ITEM(__pyx_args, 10);
+      values[11] = PyTuple_GET_ITEM(__pyx_args, 11);
+      values[12] = PyTuple_GET_ITEM(__pyx_args, 12);
+      values[13] = PyTuple_GET_ITEM(__pyx_args, 13);
+      values[14] = PyTuple_GET_ITEM(__pyx_args, 14);
+      values[15] = PyTuple_GET_ITEM(__pyx_args, 15);
+      values[16] = PyTuple_GET_ITEM(__pyx_args, 16);
+      values[17] = PyTuple_GET_ITEM(__pyx_args, 17);
+      values[18] = PyTuple_GET_ITEM(__pyx_args, 18);
+    }
+    __pyx_v_R = ((PyArrayObject *)values[0]);
+    __pyx_v_F = ((PyArrayObject *)values[1]);
+    __pyx_v_K = ((PyArrayObject *)values[2]);
+    __pyx_v_A = ((PyArrayObject *)values[3]);
+    __pyx_v_B_r = ((PyArrayObject *)values[4]);
+    __pyx_v_B_f = ((PyArrayObject *)values[5]);
+    __pyx_v_B_k = ((PyArrayObject *)values[6]);
+    __pyx_v_C_rr = ((PyArrayObject *)values[7]);
+    __pyx_v_C_ff = ((PyArrayObject *)values[8]);
+    __pyx_v_C_kk = ((PyArrayObject *)values[9]);
+    __pyx_v_C_rf = ((PyArrayObject *)values[10]);
+    __pyx_v_C_fk = ((PyArrayObject *)values[11]);
+    __pyx_v_C_kr = ((PyArrayObject *)values[12]);
+    __pyx_v_dt = __pyx_PyFloat_AsDouble(values[13]); if (unlikely((__pyx_v_dt == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 56, __pyx_L3_error)
+    __pyx_v_lowerLims = ((PyArrayObject *)values[14]);
+    __pyx_v_upperLims = ((PyArrayObject *)values[15]);
+    __pyx_v_dVec = ((PyArrayObject *)values[16]);
+    __pyx_v_incVec = ((PyArrayObject *)values[17]);
+    __pyx_v_pymat = ((struct PyPetscMatObject *)values[18]);
+  }
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 1, 19, 19, PyTuple_GET_SIZE(__pyx_args)); __PYX_ERR(0, 56, __pyx_L3_error)
+  __pyx_L3_error:;
+  __Pyx_AddTraceback("petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_R), __pyx_ptype_5numpy_ndarray, 1, "R", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_F), __pyx_ptype_5numpy_ndarray, 1, "F", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_K), __pyx_ptype_5numpy_ndarray, 1, "K", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_A), __pyx_ptype_5numpy_ndarray, 1, "A", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_r), __pyx_ptype_5numpy_ndarray, 1, "B_r", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_f), __pyx_ptype_5numpy_ndarray, 1, "B_f", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_B_k), __pyx_ptype_5numpy_ndarray, 1, "B_k", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rr), __pyx_ptype_5numpy_ndarray, 1, "C_rr", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_ff), __pyx_ptype_5numpy_ndarray, 1, "C_ff", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kk), __pyx_ptype_5numpy_ndarray, 1, "C_kk", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_rf), __pyx_ptype_5numpy_ndarray, 1, "C_rf", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_fk), __pyx_ptype_5numpy_ndarray, 1, "C_fk", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_C_kr), __pyx_ptype_5numpy_ndarray, 1, "C_kr", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_lowerLims), __pyx_ptype_5numpy_ndarray, 1, "lowerLims", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_upperLims), __pyx_ptype_5numpy_ndarray, 1, "upperLims", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_dVec), __pyx_ptype_5numpy_ndarray, 1, "dVec", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_incVec), __pyx_ptype_5numpy_ndarray, 1, "incVec", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  if (unlikely(!__Pyx_ArgTypeTest(((PyObject *)__pyx_v_pymat), __pyx_ptype_8petsc4py_5PETSc_Mat, 1, "pymat", 0))) __PYX_ERR(0, 56, __pyx_L1_error)
+  __pyx_r = __pyx_pf_22petsclinearsystemXDiff_10formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(__pyx_self, __pyx_v_R, __pyx_v_F, __pyx_v_K, __pyx_v_A, __pyx_v_B_r, __pyx_v_B_f, __pyx_v_B_k, __pyx_v_C_rr, __pyx_v_C_ff, __pyx_v_C_kk, __pyx_v_C_rf, __pyx_v_C_fk, __pyx_v_C_kr, __pyx_v_dt, __pyx_v_lowerLims, __pyx_v_upperLims, __pyx_v_dVec, __pyx_v_incVec, __pyx_v_pymat);
+
+  /* function exit code */
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_22petsclinearsystemXDiff_10formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(CYTHON_UNUSED PyObject *__pyx_self, PyArrayObject *__pyx_v_R, PyArrayObject *__pyx_v_F, PyArrayObject *__pyx_v_K, PyArrayObject *__pyx_v_A, PyArrayObject *__pyx_v_B_r, PyArrayObject *__pyx_v_B_f, PyArrayObject *__pyx_v_B_k, PyArrayObject *__pyx_v_C_rr, PyArrayObject *__pyx_v_C_ff, PyArrayObject *__pyx_v_C_kk, PyArrayObject *__pyx_v_C_rf, PyArrayObject *__pyx_v_C_fk, PyArrayObject *__pyx_v_C_kr, double __pyx_v_dt, PyArrayObject *__pyx_v_lowerLims, PyArrayObject *__pyx_v_upperLims, PyArrayObject *__pyx_v_dVec, PyArrayObject *__pyx_v_incVec, struct PyPetscMatObject *__pyx_v_pymat) {
+  int __pyx_v_ierr;
+  int __pyx_v_n;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  Py_ssize_t __pyx_t_1;
+  int __pyx_t_2;
+  PyObject *__pyx_t_3 = NULL;
+  PyObject *__pyx_t_4 = NULL;
+  PyObject *__pyx_t_5 = NULL;
+  PyObject *__pyx_t_6 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", 0);
+
+  /* "petsclinearsystemXDiff.pyx":57
+ * 
+ * def formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
+ *     cdef int ierr = 0             # <<<<<<<<<<<<<<
+ *     cdef int n = len(A)
+ * 
+ */
+  __pyx_v_ierr = 0;
+
+  /* "petsclinearsystemXDiff.pyx":58
+ * def formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):
+ *     cdef int ierr = 0
+ *     cdef int n = len(A)             # <<<<<<<<<<<<<<
+ * 
+ *     ierr = FormLinearSystem_DirectCrossDiff_Natural_Two_Dimension(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
+ */
+  __pyx_t_1 = PyObject_Length(((PyObject *)__pyx_v_A)); if (unlikely(__pyx_t_1 == ((Py_ssize_t)-1))) __PYX_ERR(0, 58, __pyx_L1_error)
+  __pyx_v_n = __pyx_t_1;
+
+  /* "petsclinearsystemXDiff.pyx":60
+ *     cdef int n = len(A)
+ * 
+ *     ierr = FormLinearSystem_DirectCrossDiff_Natural_Two_Dimension(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)             # <<<<<<<<<<<<<<
+ *     if ierr != 0: raise Error(ierr)
+ *     return pymat
+ */
+  __pyx_v_ierr = FormLinearSystem_DirectCrossDiff_Natural_Two_Dimension(((double *)__pyx_v_R->data), ((double *)__pyx_v_F->data), ((double *)__pyx_v_K->data), ((double *)__pyx_v_A->data), ((double *)__pyx_v_B_r->data), ((double *)__pyx_v_B_f->data), ((double *)__pyx_v_B_k->data), ((double *)__pyx_v_C_rr->data), ((double *)__pyx_v_C_ff->data), ((double *)__pyx_v_C_kk->data), ((double *)__pyx_v_C_rf->data), ((double *)__pyx_v_C_fk->data), ((double *)__pyx_v_C_kr->data), __pyx_v_dt, ((double *)__pyx_v_lowerLims->data), ((double *)__pyx_v_upperLims->data), ((double *)__pyx_v_dVec->data), ((int *)__pyx_v_incVec->data), __pyx_v_n, __pyx_v_pymat->mat);
+
+  /* "petsclinearsystemXDiff.pyx":61
+ * 
+ *     ierr = FormLinearSystem_DirectCrossDiff_Natural_Two_Dimension(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
+ *     if ierr != 0: raise Error(ierr)             # <<<<<<<<<<<<<<
+ *     return pymat
+ */
+  __pyx_t_2 = ((__pyx_v_ierr != 0) != 0);
+  if (unlikely(__pyx_t_2)) {
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_n_s_Error); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_4);
+    __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_ierr); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_5);
+    __pyx_t_6 = NULL;
+    if (CYTHON_UNPACK_METHODS && unlikely(PyMethod_Check(__pyx_t_4))) {
+      __pyx_t_6 = PyMethod_GET_SELF(__pyx_t_4);
+      if (likely(__pyx_t_6)) {
+        PyObject* function = PyMethod_GET_FUNCTION(__pyx_t_4);
+        __Pyx_INCREF(__pyx_t_6);
+        __Pyx_INCREF(function);
+        __Pyx_DECREF_SET(__pyx_t_4, function);
+      }
+    }
+    __pyx_t_3 = (__pyx_t_6) ? __Pyx_PyObject_Call2Args(__pyx_t_4, __pyx_t_6, __pyx_t_5) : __Pyx_PyObject_CallOneArg(__pyx_t_4, __pyx_t_5);
+    __Pyx_XDECREF(__pyx_t_6); __pyx_t_6 = 0;
+    __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
+    if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 61, __pyx_L1_error)
+    __Pyx_GOTREF(__pyx_t_3);
+    __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
+    __Pyx_Raise(__pyx_t_3, 0, 0, 0);
+    __Pyx_DECREF(__pyx_t_3); __pyx_t_3 = 0;
+    __PYX_ERR(0, 61, __pyx_L1_error)
+  }
+
+  /* "petsclinearsystemXDiff.pyx":62
+ *     ierr = FormLinearSystem_DirectCrossDiff_Natural_Two_Dimension(<double*>R.data,<double*>F.data, <double*>K.data, <double*>A.data, <double*>B_r.data, <double*>B_f.data, <double*>B_k.data, <double*>C_rr.data, <double*>C_ff.data, <double*>C_kk.data, <double*>C_rf.data, <double*>C_fk.data, <double*>C_kr.data, dt, <double*>lowerLims.data, <double*>upperLims.data, <double*>dVec.data, <int*>incVec.data, n, pymat.mat)
+ *     if ierr != 0: raise Error(ierr)
+ *     return pymat             # <<<<<<<<<<<<<<
+ */
+  __Pyx_XDECREF(__pyx_r);
+  __Pyx_INCREF(((PyObject *)__pyx_v_pymat));
+  __pyx_r = ((PyObject *)__pyx_v_pymat);
+  goto __pyx_L0;
+
+  /* "petsclinearsystemXDiff.pyx":56
+ *     return pymat
+ * 
+ * def formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
+ *     cdef int ierr = 0
+ *     cdef int n = len(A)
+ */
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_3);
+  __Pyx_XDECREF(__pyx_t_4);
+  __Pyx_XDECREF(__pyx_t_5);
+  __Pyx_XDECREF(__pyx_t_6);
+  __Pyx_AddTraceback("petsclinearsystemXDiff.formLinearSystem_DirectCrossDiff_Natural_Two_Dimension", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -5659,6 +6058,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_formLinearSystem_DirectCrossDiff, __pyx_k_formLinearSystem_DirectCrossDiff, sizeof(__pyx_k_formLinearSystem_DirectCrossDiff), 0, 0, 1, 1},
   {&__pyx_n_s_formLinearSystem_DirectCrossDiff_2, __pyx_k_formLinearSystem_DirectCrossDiff_2, sizeof(__pyx_k_formLinearSystem_DirectCrossDiff_2), 0, 0, 1, 1},
   {&__pyx_n_s_formLinearSystem_DirectCrossDiff_3, __pyx_k_formLinearSystem_DirectCrossDiff_3, sizeof(__pyx_k_formLinearSystem_DirectCrossDiff_3), 0, 0, 1, 1},
+  {&__pyx_n_s_formLinearSystem_DirectCrossDiff_4, __pyx_k_formLinearSystem_DirectCrossDiff_4, sizeof(__pyx_k_formLinearSystem_DirectCrossDiff_4), 0, 0, 1, 1},
   {&__pyx_n_s_formLinearSystem_Direct_Natural, __pyx_k_formLinearSystem_Direct_Natural, sizeof(__pyx_k_formLinearSystem_Direct_Natural), 0, 0, 1, 1},
   {&__pyx_n_s_formLinearSystem_Direct_Neumann, __pyx_k_formLinearSystem_Direct_Neumann, sizeof(__pyx_k_formLinearSystem_Direct_Neumann), 0, 0, 1, 1},
   {&__pyx_n_s_ierr, __pyx_k_ierr, sizeof(__pyx_k_ierr), 0, 0, 1, 1},
@@ -5712,65 +6112,77 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   __Pyx_GOTREF(__pyx_tuple__2);
   __Pyx_GIVEREF(__pyx_tuple__2);
 
-  /* "petsclinearsystemXDiff.pyx":15
- *     int FormLinearSystem_DirectCrossDiff_Natural(double *R, double *F, double *K, double *A, double *B_r, double *B_f_k, double *B_k, double *C_rr, double *C_ff, double *C_kk, double *C_rf, double *C_fk, double *C_kr, double dt, double *lowerLims, double *upperLims, double *dVec, int *incVec, int n, PetscMat petsc_mat)
+  /* "petsclinearsystemXDiff.pyx":16
+ *     int FormLinearSystem_DirectCrossDiff_Natural_Two_Dimension(double *R, double *F, double *K, double *A, double *B_r, double *B_f_k, double *B_k, double *C_rr, double *C_ff, double *C_kk, double *C_rf, double *C_fk, double *C_kr, double dt, double *lowerLims, double *upperLims, double *dVec, int *incVec, int n, PetscMat petsc_mat)
  * 
  * def formLinearSystem_Direct_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_tuple__3 = PyTuple_Pack(18, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(18, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__3);
   __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(16, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_Direct_Natural, 15, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(16, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_Direct_Natural, 16, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 16, __pyx_L1_error)
 
-  /* "petsclinearsystemXDiff.pyx":23
+  /* "petsclinearsystemXDiff.pyx":24
  *     return pymat
  * 
  * def formLinearSystem_Direct_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_tuple__5 = PyTuple_Pack(18, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(18, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(16, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_Direct_Neumann, 23, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(16, 0, 18, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_Direct_Neumann, 24, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 24, __pyx_L1_error)
 
-  /* "petsclinearsystemXDiff.pyx":31
+  /* "petsclinearsystemXDiff.pyx":32
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_tuple__7 = PyTuple_Pack(21, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_C_rf, __pyx_n_s_C_fk, __pyx_n_s_C_kr, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_tuple__7 = PyTuple_Pack(21, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_C_rf, __pyx_n_s_C_fk, __pyx_n_s_C_kr, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__7)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__7);
   __Pyx_GIVEREF(__pyx_tuple__7);
-  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(19, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_DirectCrossDiff, 31, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_codeobj__8 = (PyObject*)__Pyx_PyCode_New(19, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__7, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_DirectCrossDiff, 32, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__8)) __PYX_ERR(0, 32, __pyx_L1_error)
 
-  /* "petsclinearsystemXDiff.pyx":39
+  /* "petsclinearsystemXDiff.pyx":40
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Mix(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_tuple__9 = PyTuple_Pack(21, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_C_rf, __pyx_n_s_C_fk, __pyx_n_s_C_kr, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_tuple__9 = PyTuple_Pack(21, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_C_rf, __pyx_n_s_C_fk, __pyx_n_s_C_kr, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__9)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__9);
   __Pyx_GIVEREF(__pyx_tuple__9);
-  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(19, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_DirectCrossDiff_2, 39, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_codeobj__10 = (PyObject*)__Pyx_PyCode_New(19, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__9, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_DirectCrossDiff_2, 40, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__10)) __PYX_ERR(0, 40, __pyx_L1_error)
 
-  /* "petsclinearsystemXDiff.pyx":47
+  /* "petsclinearsystemXDiff.pyx":48
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_tuple__11 = PyTuple_Pack(21, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_C_rf, __pyx_n_s_C_fk, __pyx_n_s_C_kr, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_tuple__11 = PyTuple_Pack(21, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_C_rf, __pyx_n_s_C_fk, __pyx_n_s_C_kr, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__11)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__11);
   __Pyx_GIVEREF(__pyx_tuple__11);
-  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(19, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_DirectCrossDiff_3, 47, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_codeobj__12 = (PyObject*)__Pyx_PyCode_New(19, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__11, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_DirectCrossDiff_3, 48, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__12)) __PYX_ERR(0, 48, __pyx_L1_error)
+
+  /* "petsclinearsystemXDiff.pyx":56
+ *     return pymat
+ * 
+ * def formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
+ *     cdef int ierr = 0
+ *     cdef int n = len(A)
+ */
+  __pyx_tuple__13 = PyTuple_Pack(21, __pyx_n_s_R, __pyx_n_s_F, __pyx_n_s_K, __pyx_n_s_A, __pyx_n_s_B_r, __pyx_n_s_B_f, __pyx_n_s_B_k, __pyx_n_s_C_rr, __pyx_n_s_C_ff, __pyx_n_s_C_kk, __pyx_n_s_C_rf, __pyx_n_s_C_fk, __pyx_n_s_C_kr, __pyx_n_s_dt, __pyx_n_s_lowerLims, __pyx_n_s_upperLims, __pyx_n_s_dVec, __pyx_n_s_incVec, __pyx_n_s_pymat, __pyx_n_s_ierr, __pyx_n_s_n); if (unlikely(!__pyx_tuple__13)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__13);
+  __Pyx_GIVEREF(__pyx_tuple__13);
+  __pyx_codeobj__14 = (PyObject*)__Pyx_PyCode_New(19, 0, 21, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__13, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_src_petsclinearsystemXDiff_pyx, __pyx_n_s_formLinearSystem_DirectCrossDiff_4, 56, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__14)) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -6206,64 +6618,76 @@ if (!__Pyx_RefNanny) {
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "petsclinearsystemXDiff.pyx":15
- *     int FormLinearSystem_DirectCrossDiff_Natural(double *R, double *F, double *K, double *A, double *B_r, double *B_f_k, double *B_k, double *C_rr, double *C_ff, double *C_kk, double *C_rf, double *C_fk, double *C_kr, double dt, double *lowerLims, double *upperLims, double *dVec, int *incVec, int n, PetscMat petsc_mat)
+  /* "petsclinearsystemXDiff.pyx":16
+ *     int FormLinearSystem_DirectCrossDiff_Natural_Two_Dimension(double *R, double *F, double *K, double *A, double *B_r, double *B_f_k, double *B_k, double *C_rr, double *C_ff, double *C_kk, double *C_rf, double *C_fk, double *C_kr, double dt, double *lowerLims, double *upperLims, double *dVec, int *incVec, int n, PetscMat petsc_mat)
  * 
  * def formLinearSystem_Direct_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_1formLinearSystem_Direct_Natural, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 15, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_1formLinearSystem_Direct_Natural, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_Direct_Natural, __pyx_t_2) < 0) __PYX_ERR(0, 15, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_Direct_Natural, __pyx_t_2) < 0) __PYX_ERR(0, 16, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "petsclinearsystemXDiff.pyx":23
+  /* "petsclinearsystemXDiff.pyx":24
  *     return pymat
  * 
  * def formLinearSystem_Direct_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_3formLinearSystem_Direct_Neumann, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_3formLinearSystem_Direct_Neumann, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_Direct_Neumann, __pyx_t_2) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_Direct_Neumann, __pyx_t_2) < 0) __PYX_ERR(0, 24, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "petsclinearsystemXDiff.pyx":31
+  /* "petsclinearsystemXDiff.pyx":32
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Neumann(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_5formLinearSystem_DirectCrossDiff_Neumann, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 31, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_5formLinearSystem_DirectCrossDiff_Neumann, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_DirectCrossDiff, __pyx_t_2) < 0) __PYX_ERR(0, 31, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_DirectCrossDiff, __pyx_t_2) < 0) __PYX_ERR(0, 32, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "petsclinearsystemXDiff.pyx":39
+  /* "petsclinearsystemXDiff.pyx":40
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Mix(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_7formLinearSystem_DirectCrossDiff_Mix, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 39, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_7formLinearSystem_DirectCrossDiff_Mix, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_DirectCrossDiff_2, __pyx_t_2) < 0) __PYX_ERR(0, 39, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_DirectCrossDiff_2, __pyx_t_2) < 0) __PYX_ERR(0, 40, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
-  /* "petsclinearsystemXDiff.pyx":47
+  /* "petsclinearsystemXDiff.pyx":48
  *     return pymat
  * 
  * def formLinearSystem_DirectCrossDiff_Natural(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
  *     cdef int ierr = 0
  *     cdef int n = len(A)
  */
-  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_9formLinearSystem_DirectCrossDiff_Natural, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 47, __pyx_L1_error)
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_9formLinearSystem_DirectCrossDiff_Natural, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 48, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_DirectCrossDiff_3, __pyx_t_2) < 0) __PYX_ERR(0, 47, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_DirectCrossDiff_3, __pyx_t_2) < 0) __PYX_ERR(0, 48, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "petsclinearsystemXDiff.pyx":56
+ *     return pymat
+ * 
+ * def formLinearSystem_DirectCrossDiff_Natural_Two_Dimension(np.ndarray R, np.ndarray F, np.ndarray K, np.ndarray A, np.ndarray B_r, np.ndarray B_f, np.ndarray B_k, np.ndarray C_rr, np.ndarray C_ff, np.ndarray C_kk, np.ndarray C_rf, np.ndarray C_fk, np.ndarray C_kr, double dt, np.ndarray lowerLims, np.ndarray upperLims, np.ndarray dVec, np.ndarray incVec, Mat pymat):             # <<<<<<<<<<<<<<
+ *     cdef int ierr = 0
+ *     cdef int n = len(A)
+ */
+  __pyx_t_2 = PyCFunction_NewEx(&__pyx_mdef_22petsclinearsystemXDiff_11formLinearSystem_DirectCrossDiff_Natural_Two_Dimension, NULL, __pyx_n_s_petsclinearsystemXDiff); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 56, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_formLinearSystem_DirectCrossDiff_4, __pyx_t_2) < 0) __PYX_ERR(0, 56, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
   /* "petsclinearsystemXDiff.pyx":1
