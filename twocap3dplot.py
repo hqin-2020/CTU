@@ -76,8 +76,8 @@ beta2 = 0.01
 ymin = -np.log(20)
 ymax = np.log(20)
 
-zmin = -0.1
-zmax = 0.1
+zmin = -0.75
+zmax = 0.75
 
 kamin = -1
 kamax = 1
@@ -90,7 +90,7 @@ nW1 = len(W1)
 
 W2_min = zmin
 W2_max = zmax
-hW2 = 0.002
+hW2 = 0.015
 W2 = np.arange(W2_min, W2_max+hW2, hW2)
 nW2 = len(W2)
 
@@ -177,7 +177,7 @@ plt.plot(W2,i2_star[int(len(W1)/2),:,0],label="$i2$, max = "+str(round(np.max(i2
 plt.legend()
 plt.xlabel('z')
 plt.title('Investment-Capital Ratio, '+str(FC_Err))  
-plt.xlim([-0.1, 0.1])
+plt.xlim([-0.75, 0.75])
 plt.ylim([-0.01,0.05])
 plt.savefig(Fig_Dir+"iz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
@@ -195,7 +195,7 @@ plt.plot(W2,c[int(len(W1)/2),:,0],label="$c$, max = "+str(round(np.max(c[int(len
 plt.legend()
 plt.xlabel('z')
 plt.title('Consumption-Capital Ratio, '+str(FC_Err))  
-plt.xlim([-0.1, 0.1])
+plt.xlim([-0.75, 0.75])
 plt.ylim([-0.01,0.05])
 plt.savefig(Fig_Dir+"cz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
@@ -237,7 +237,7 @@ plt.plot(W2,V0[int(len(W1)/2),:,0],label="$V$")
 plt.legend()
 plt.xlabel('z')
 plt.title('Value function, '+str(FC_Err))  
-plt.xlim([-0.1, 0.1])
+plt.xlim([-0.75, 0.75])
 # plt.ylim([-0.01,0.0])
 plt.savefig(Fig_Dir+"Vz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
@@ -256,7 +256,7 @@ plt.plot(W2,PDE_rhs[0,:,0],label="$PDE error$")
 plt.legend()
 plt.xlabel('z')
 plt.title('PDE error')  
-plt.xlim([-0.1, 0.1])
+plt.xlim([-0.75, 0.75])
 # plt.ylim([-0.01,0.0])
 plt.savefig(Fig_Dir+"ez_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
