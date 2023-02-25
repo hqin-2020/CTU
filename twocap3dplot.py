@@ -142,6 +142,8 @@ W1 = res["W1"]
 W2 = res["W2"]
 i1_star = res["i1_star"]
 i2_star = res["i2_star"]
+k1a = res["k1a"]
+k2a = res["k2a"]
 h1_star = res["h1_star"]
 h2_star = res["h2_star"]
 hz_star = res["hz_star"]
@@ -167,7 +169,7 @@ plt.legend()
 plt.xlabel('y')
 plt.title('Investment-Capital Ratio, '+str(FC_Err))  
 plt.xlim([-np.log(20), np.log(20)])
-plt.ylim([-0.01,0.05])
+plt.ylim([-0.01,0.1])
 plt.savefig(Fig_Dir+"iy_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
@@ -178,7 +180,7 @@ plt.legend()
 plt.xlabel('z')
 plt.title('Investment-Capital Ratio, '+str(FC_Err))  
 plt.xlim([-0.75, 0.75])
-plt.ylim([-0.01,0.05])
+plt.ylim([-0.01,0.1])
 plt.savefig(Fig_Dir+"iz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
@@ -221,6 +223,27 @@ plt.title('Distortion, '+str(FC_Err))
 # plt.xlim([-0.02, 0.02])
 # plt.ylim([0.015,0.040])
 plt.savefig(Fig_Dir+"hz_eps_{}_frac_{}.png".format(epsilon,fraction))
+plt.close()
+
+
+plt.plot(W1,k1a[:,int(len(W2)/2),0],label="$k1$")
+plt.plot(W1,k2a[:,int(len(W2)/2),0],label="$k2$")
+plt.legend()
+plt.xlabel('y')
+plt.title('Distortion, '+str(FC_Err))  
+# plt.xlim([-0.02, 0.02])
+# plt.ylim([0.015,0.040])
+plt.savefig(Fig_Dir+"ky_eps_{}_frac_{}.png".format(epsilon,fraction))
+plt.close()
+
+plt.plot(W2,k1a[int(len(W1)/2),:,0],label="$k1$")
+plt.plot(W2,k2a[int(len(W1)/2),:,0],label="$k2$")
+plt.legend()
+plt.xlabel('z')
+plt.title('Distortion, '+str(FC_Err))  
+# plt.xlim([-0.02, 0.02])
+# plt.ylim([0.015,0.040])
+plt.savefig(Fig_Dir+"kz_eps_{}_frac_{}.png".format(epsilon,fraction))
 plt.close()
 
 
